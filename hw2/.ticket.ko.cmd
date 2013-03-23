@@ -1,0 +1,1 @@
+cmd_/home/binh/Dropbox/cs5460/hw2/ticket.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.5.0-22-generic/scripts/module-common.lds --build-id  -o /home/binh/Dropbox/cs5460/hw2/ticket.ko /home/binh/Dropbox/cs5460/hw2/ticket.o /home/binh/Dropbox/cs5460/hw2/ticket.mod.o

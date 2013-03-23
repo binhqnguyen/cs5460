@@ -1,0 +1,1450 @@
+*****runtime 1 ********
+1 15
+Consumer 1 consumed 7439872 items.
+Producer 0 produced 7439873 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 495991 495991
+*********************
+1 15
+Producer 0 produced 6516011 items.
+Consumer 1 consumed 6515980 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 434400 434398
+********************\n
+1 15
+Producer 0 produced 254676 items.
+Consumer 1 consumed 254645 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 16978 16976
+********************\n
+1 15
+Consumer 1 consumed 16292851 items.
+Producer 0 produced 16292852 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 1086190 1086190
+*******************\n
+2 15
+Producer 0 produced 4977 items.
+Consumer 3 consumed 4947 items.
+Consumer 2 consumed 877 items.
+Producer 1 produced 877 items.
+<1>***Producers standard deviation: 2050
+<2>***Consumers standard deviation: 2035
+<3>***Total items produced/consumed per second 390 388
+*********************
+2 15
+Consumer 3 consumed 879 items.
+Producer 0 produced 880 items.
+Producer 1 produced 880 items.
+Consumer 2 consumed 880 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 117 117
+********************\n
+2 15
+Producer 1 produced 85849 items.
+Producer 0 produced 88995 items.
+Consumer 2 consumed 88286 items.
+Consumer 3 consumed 86528 items.
+<1>***Producers standard deviation: 1573
+<2>***Consumers standard deviation: 879
+<3>***Total items produced/consumed per second 11656 11654
+********************\n
+2 15
+Consumer 3 consumed 2319909 items.
+Producer 0 produced 2271905 items.
+Producer 1 produced 2320082 items.
+Consumer 2 consumed 2272076 items.
+<1>***Producers standard deviation: 24088
+<2>***Consumers standard deviation: 23917
+<3>***Total items produced/consumed per second 306132 306132
+*******************\n
+3 15
+Consumer 4 consumed 523 items.
+Consumer 5 consumed 523 items.
+Producer 1 produced 524 items.
+Producer 0 produced 524 items.
+Producer 2 produced 10349 items.
+Consumer 3 consumed 10349 items.
+<1>***Producers standard deviation: 4632
+<2>***Consumers standard deviation: 4632
+<3>***Total items produced/consumed per second 759 759
+*********************
+3 15
+Producer 1 produced 468 items.
+Consumer 4 consumed 468 items.
+Producer 0 produced 468 items.
+Consumer 3 consumed 468 items.
+Consumer 5 consumed 468 items.
+Producer 2 produced 469 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 93 93
+********************\n
+3 15
+Producer 0 produced 37946 items.
+Consumer 5 consumed 36885 items.
+Producer 1 produced 13264 items.
+Consumer 3 consumed 37216 items.
+Producer 2 produced 36412 items.
+Consumer 4 consumed 13520 items.
+<1>***Producers standard deviation: 11291
+<2>***Consumers standard deviation: 11093
+<3>***Total items produced/consumed per second 5841 5841
+********************\n
+3 15
+Consumer 3 consumed 3517205 items.
+Consumer 5 consumed 3593050 items.
+Producer 0 produced 3471560 items.
+Producer 2 produced 3567540 items.
+Producer 1 produced 3537477 items.
+Consumer 4 consumed 3466320 items.
+<1>***Producers standard deviation: 40085
+<2>***Consumers standard deviation: 52071
+<3>***Total items produced/consumed per second 705105 705105
+*******************\n
+4 15
+Producer 2 produced 402 items.
+Producer 3 produced 401 items.
+Consumer 6 consumed 401 items.
+Producer 1 produced 401 items.
+Consumer 4 consumed 401 items.
+Producer 0 produced 5057 items.
+Consumer 7 consumed 5027 items.
+Consumer 5 consumed 402 items.
+<1>***Producers standard deviation: 2016
+<2>***Consumers standard deviation: 2003
+<3>***Total items produced/consumed per second 417 415
+*********************
+4 15
+Consumer 6 consumed 416 items.
+Producer 1 produced 416 items.
+Consumer 4 consumed 416 items.
+Producer 0 produced 12175 items.
+Consumer 7 consumed 12144 items.
+Producer 2 produced 417 items.
+Consumer 5 consumed 417 items.
+Producer 3 produced 417 items.
+<1>***Producers standard deviation: 5092
+<2>***Consumers standard deviation: 5078
+<3>***Total items produced/consumed per second 895 892
+********************\n
+4 15
+Consumer 5 consumed 17935 items.
+Consumer 4 consumed 14391 items.
+Consumer 6 consumed 11642 items.
+Producer 0 produced 15194 items.
+Producer 2 produced 17915 items.
+Producer 1 produced 12375 items.
+Consumer 7 consumed 15301 items.
+Producer 3 produced 13788 items.
+<1>***Producers standard deviation: 2047
+<2>***Consumers standard deviation: 2248
+<3>***Total items produced/consumed per second 3951 3951
+********************\n
+4 15
+Consumer 4 consumed 2605604 items.
+Consumer 5 consumed 2578170 items.
+Producer 3 produced 2594197 items.
+Consumer 7 consumed 2519484 items.
+Producer 1 produced 2535042 items.
+Producer 2 produced 2665824 items.
+Producer 0 produced 2596492 items.
+Consumer 6 consumed 2688296 items.
+<1>***Producers standard deviation: 46315
+<2>***Consumers standard deviation: 60764
+<3>***Total items produced/consumed per second 692770 692770
+*******************\n
+5 15
+Consumer 5 consumed 233 items.
+Consumer 6 consumed 233 items.
+Producer 3 produced 233 items.
+Consumer 8 consumed 233 items.
+Producer 0 produced 5737 items.
+Consumer 7 consumed 5706 items.
+Producer 1 produced 233 items.
+Producer 4 produced 233 items.
+Producer 2 produced 234 items.
+Consumer 9 consumed 234 items.
+<1>***Producers standard deviation: 2201
+<2>***Consumers standard deviation: 2189
+<3>***Total items produced/consumed per second 444 442
+*********************
+5 15
+Consumer 7 consumed 6279 items.
+Producer 0 produced 6310 items.
+Producer 4 produced 221 items.
+Producer 2 produced 222 items.
+Consumer 9 consumed 222 items.
+Consumer 5 consumed 222 items.
+Consumer 6 consumed 222 items.
+Producer 3 produced 222 items.
+Producer 1 produced 222 items.
+Consumer 8 consumed 222 items.
+<1>***Producers standard deviation: 2435
+<2>***Consumers standard deviation: 2423
+<3>***Total items produced/consumed per second 479 477
+********************\n
+5 15
+Consumer 8 consumed 5435 items.
+Consumer 9 consumed 13422 items.
+Producer 3 produced 5024 items.
+Consumer 5 consumed 9627 items.
+Consumer 7 consumed 6770 items.
+Producer 1 produced 4165 items.
+Producer 4 produced 12638 items.
+Consumer 6 consumed 3881 items.
+Producer 2 produced 9327 items.
+Producer 0 produced 7984 items.
+<1>***Producers standard deviation: 3056
+<2>***Consumers standard deviation: 3375
+<3>***Total items produced/consumed per second 2609 2609
+********************\n
+5 15
+Producer 3 produced 2059166 items.
+Consumer 9 consumed 1870908 items.
+Consumer 8 consumed 2034504 items.
+Consumer 7 consumed 2017002 items.
+Producer 2 produced 1955646 items.
+Producer 4 produced 2000629 items.
+Consumer 6 consumed 1973088 items.
+Consumer 5 consumed 2036001 items.
+Producer 1 produced 1928978 items.
+Producer 0 produced 1987116 items.
+<1>***Producers standard deviation: 44138
+<2>***Consumers standard deviation: 62010
+<3>***Total items produced/consumed per second 662102 662100
+*******************\n
+6 15
+Consumer 8 consumed 152 items.
+Producer 3 produced 152 items.
+Consumer 10 consumed 152 items.
+Producer 1 produced 152 items.
+Producer 4 produced 152 items.
+Producer 0 produced 6573 items.
+Producer 2 produced 153 items.
+Consumer 7 consumed 6542 items.
+Consumer 9 consumed 153 items.
+Consumer 11 consumed 153 items.
+Consumer 6 consumed 153 items.
+Producer 5 produced 153 items.
+<1>***Producers standard deviation: 2393
+<2>***Consumers standard deviation: 2381
+<3>***Total items produced/consumed per second 489 487
+*********************
+6 15
+Consumer 11 consumed 173 items.
+Consumer 8 consumed 173 items.
+Producer 3 produced 174 items.
+Consumer 10 consumed 174 items.
+Producer 1 produced 174 items.
+Producer 4 produced 174 items.
+Producer 0 produced 8997 items.
+Consumer 7 consumed 8997 items.
+Producer 2 produced 175 items.
+Producer 5 produced 175 items.
+Consumer 9 consumed 175 items.
+Consumer 6 consumed 175 items.
+<1>***Producers standard deviation: 3288
+<2>***Consumers standard deviation: 3288
+<3>***Total items produced/consumed per second 657 657
+********************\n
+6 15
+Producer 5 produced 9600 items.
+Consumer 10 consumed 6283 items.
+Producer 2 produced 3778 items.
+Producer 4 produced 6194 items.
+Consumer 6 consumed 5812 items.
+Consumer 8 consumed 5779 items.
+Producer 0 produced 5183 items.
+Producer 3 produced 5556 items.
+Consumer 7 consumed 6494 items.
+Producer 1 produced 2621 items.
+Consumer 9 consumed 4189 items.
+Consumer 11 consumed 4345 items.
+<1>***Producers standard deviation: 2185
+<2>***Consumers standard deviation: 897
+<3>***Total items produced/consumed per second 2195 2193
+********************\n
+6 15
+Consumer 10 consumed 1733014 items.
+Producer 2 produced 1679444 items.
+Producer 1 produced 1681587 items.
+Producer 4 produced 1746617 items.
+Producer 5 produced 1729605 items.
+Consumer 11 consumed 1710564 items.
+Consumer 8 consumed 1767643 items.
+Consumer 7 consumed 1709180 items.
+Consumer 6 consumed 1655328 items.
+Consumer 9 consumed 1720311 items.
+Producer 0 produced 1712018 items.
+Producer 3 produced 1746770 items.
+<1>***Producers standard deviation: 27706
+<2>***Consumers standard deviation: 33497
+<3>***Total items produced/consumed per second 686402 686402
+*******************\n
+*****runtime********\n
+*****runtime 2 ********
+1 15
+Producer 0 produced 62642678 items.
+Consumer 1 consumed 62642674 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 4176178 4176178
+*********************
+1 15
+Producer 0 produced 69470409 items.
+Consumer 1 consumed 69470377 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 4631360 4631358
+********************\n
+1 15
+Producer 0 produced 468672 items.
+Consumer 1 consumed 468641 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 31244 31242
+********************\n
+1 15
+Consumer 1 consumed 16199327 items.
+Producer 0 produced 16199328 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 1079955 1079955
+*******************\n
+2 15
+Producer 0 produced 5488 items.
+Consumer 3 consumed 5457 items.
+Consumer 2 consumed 779 items.
+Producer 1 produced 779 items.
+<1>***Producers standard deviation: 2354
+<2>***Consumers standard deviation: 2339
+<3>***Total items produced/consumed per second 417 415
+*********************
+2 15
+Producer 1 produced 780 items.
+Consumer 2 consumed 779 items.
+Producer 0 produced 11197 items.
+Consumer 3 consumed 11197 items.
+<1>***Producers standard deviation: 5208
+<2>***Consumers standard deviation: 5209
+<3>***Total items produced/consumed per second 798 798
+********************\n
+2 15
+Producer 1 produced 37036 items.
+Producer 0 produced 57567 items.
+Consumer 2 consumed 36882 items.
+Consumer 3 consumed 57691 items.
+<1>***Producers standard deviation: 10265
+<2>***Consumers standard deviation: 10405
+<3>***Total items produced/consumed per second 6306 6304
+********************\n
+2 15
+Producer 1 produced 5322144 items.
+Producer 0 produced 5254390 items.
+Consumer 2 consumed 5303185 items.
+Consumer 3 consumed 5273319 items.
+<1>***Producers standard deviation: 33877
+<2>***Consumers standard deviation: 14933
+<3>***Total items produced/consumed per second 705102 705100
+*******************\n
+3 15
+Producer 0 produced 9286 items.
+Consumer 5 consumed 9255 items.
+Producer 2 produced 566 items.
+Consumer 3 consumed 566 items.
+Producer 1 produced 566 items.
+Consumer 4 consumed 566 items.
+<1>***Producers standard deviation: 4111
+<2>***Consumers standard deviation: 4096
+<3>***Total items produced/consumed per second 694 692
+*********************
+3 15
+Consumer 4 consumed 589 items.
+Producer 2 produced 590 items.
+Consumer 3 consumed 590 items.
+Producer 1 produced 590 items.
+Producer 0 produced 11109 items.
+Consumer 5 consumed 11079 items.
+<1>***Producers standard deviation: 4959
+<2>***Consumers standard deviation: 4945
+<3>***Total items produced/consumed per second 819 817
+********************\n
+3 15
+Producer 2 produced 43512 items.
+Producer 1 produced 16823 items.
+Consumer 5 consumed 35783 items.
+Consumer 3 consumed 39397 items.
+Producer 0 produced 31667 items.
+Consumer 4 consumed 16792 items.
+<1>***Producers standard deviation: 10919
+<2>***Consumers standard deviation: 9915
+<3>***Total items produced/consumed per second 6133 6131
+********************\n
+3 15
+Producer 1 produced 3649404 items.
+Consumer 5 consumed 3597657 items.
+Consumer 3 consumed 3576519 items.
+Producer 2 produced 3604448 items.
+Consumer 4 consumed 3725770 items.
+Producer 0 produced 3646096 items.
+<1>***Producers standard deviation: 20457
+<2>***Consumers standard deviation: 65942
+<3>***Total items produced/consumed per second 726663 726663
+*******************\n
+4 15
+Consumer 4 consumed 405 items.
+Producer 0 produced 4707 items.
+Consumer 7 consumed 4677 items.
+Consumer 5 consumed 406 items.
+Producer 2 produced 407 items.
+Producer 3 produced 406 items.
+Consumer 6 consumed 406 items.
+Producer 1 produced 406 items.
+<1>***Producers standard deviation: 1862
+<2>***Consumers standard deviation: 1850
+<3>***Total items produced/consumed per second 395 392
+*********************
+4 15
+Consumer 5 consumed 447 items.
+Consumer 6 consumed 447 items.
+Producer 3 produced 447 items.
+Consumer 4 consumed 447 items.
+Producer 1 produced 447 items.
+Producer 0 produced 11334 items.
+Consumer 7 consumed 11303 items.
+Producer 2 produced 448 items.
+<1>***Producers standard deviation: 4714
+<2>***Consumers standard deviation: 4701
+<3>***Total items produced/consumed per second 845 842
+********************\n
+4 15
+Producer 1 produced 9074 items.
+Consumer 4 consumed 9450 items.
+Consumer 6 consumed 11210 items.
+Producer 2 produced 17798 items.
+Producer 0 produced 9252 items.
+Consumer 5 consumed 12308 items.
+Consumer 7 consumed 14582 items.
+Producer 3 produced 11427 items.
+<1>***Producers standard deviation: 3536
+<2>***Consumers standard deviation: 1860
+<3>***Total items produced/consumed per second 3170 3170
+********************\n
+4 15
+Consumer 6 consumed 2667848 items.
+Producer 1 produced 2551407 items.
+Producer 2 produced 2641935 items.
+Consumer 4 consumed 2593987 items.
+Producer 3 produced 2619725 items.
+Consumer 7 consumed 2502524 items.
+Producer 0 produced 2553249 items.
+Consumer 5 consumed 2601955 items.
+<1>***Producers standard deviation: 40034
+<2>***Consumers standard deviation: 58867
+<3>***Total items produced/consumed per second 691087 691087
+*******************\n
+5 15
+Consumer 8 consumed 237 items.
+Producer 1 produced 237 items.
+Producer 4 produced 237 items.
+Producer 0 produced 7098 items.
+Consumer 7 consumed 7067 items.
+Producer 2 produced 238 items.
+Consumer 9 consumed 238 items.
+Consumer 5 consumed 238 items.
+Consumer 6 consumed 238 items.
+Producer 3 produced 238 items.
+<1>***Producers standard deviation: 2744
+<2>***Consumers standard deviation: 2732
+<3>***Total items produced/consumed per second 536 534
+*********************
+5 15
+Producer 3 produced 237 items.
+Consumer 6 consumed 237 items.
+Consumer 7 consumed 11959 items.
+Consumer 8 consumed 237 items.
+Producer 1 produced 237 items.
+Producer 4 produced 237 items.
+Consumer 9 consumed 238 items.
+Producer 0 produced 11991 items.
+Producer 2 produced 238 items.
+Consumer 5 consumed 238 items.
+<1>***Producers standard deviation: 4701
+<2>***Consumers standard deviation: 4689
+<3>***Total items produced/consumed per second 862 860
+********************\n
+5 15
+Consumer 9 consumed 7758 items.
+Producer 0 produced 8937 items.
+Producer 4 produced 9162 items.
+Consumer 6 consumed 7829 items.
+Consumer 8 consumed 5418 items.
+Producer 2 produced 12711 items.
+Consumer 7 consumed 10279 items.
+Producer 3 produced 8833 items.
+Producer 1 produced 4862 items.
+Consumer 5 consumed 13190 items.
+<1>***Producers standard deviation: 2486
+<2>***Consumers standard deviation: 2641
+<3>***Total items produced/consumed per second 2967 2964
+********************\n
+5 15
+Producer 3 produced 2055941 items.
+Consumer 8 consumed 2112671 items.
+Consumer 9 consumed 2024860 items.
+Producer 4 produced 2080441 items.
+Producer 1 produced 2045269 items.
+Producer 2 produced 2018921 items.
+Consumer 5 consumed 2002009 items.
+Consumer 6 consumed 2023225 items.
+Consumer 7 consumed 2081789 items.
+Producer 0 produced 2044012 items.
+<1>***Producers standard deviation: 19901
+<2>***Consumers standard deviation: 41435
+<3>***Total items produced/consumed per second 682972 682970
+*******************\n
+6 15
+Consumer 10 consumed 158 items.
+Producer 1 produced 158 items.
+Producer 0 produced 5525 items.
+Consumer 7 consumed 5495 items.
+Producer 4 produced 158 items.
+Producer 2 produced 159 items.
+Consumer 9 consumed 159 items.
+Consumer 6 consumed 159 items.
+Consumer 11 consumed 159 items.
+Producer 5 produced 159 items.
+Consumer 8 consumed 159 items.
+Producer 3 produced 159 items.
+<1>***Producers standard deviation: 2000
+<2>***Consumers standard deviation: 1989
+<3>***Total items produced/consumed per second 421 419
+*********************
+6 15
+Producer 1 produced 167 items.
+Consumer 9 consumed 168 items.
+Producer 0 produced 10310 items.
+Producer 2 produced 168 items.
+Consumer 11 consumed 168 items.
+Consumer 6 consumed 168 items.
+Producer 5 produced 168 items.
+Consumer 8 consumed 168 items.
+Consumer 10 consumed 168 items.
+Producer 3 produced 168 items.
+Consumer 7 consumed 10279 items.
+Producer 4 produced 168 items.
+<1>***Producers standard deviation: 3780
+<2>***Consumers standard deviation: 3768
+<3>***Total items produced/consumed per second 743 741
+********************\n
+6 15
+Consumer 6 consumed 8735 items.
+Producer 3 produced 5683 items.
+Producer 1 produced 7102 items.
+Producer 5 produced 7270 items.
+Consumer 9 consumed 2835 items.
+Consumer 7 consumed 4657 items.
+Consumer 11 consumed 3669 items.
+Producer 4 produced 4560 items.
+Producer 0 produced 3844 items.
+Producer 2 produced 2341 items.
+Consumer 8 consumed 4812 items.
+Consumer 10 consumed 6091 items.
+<1>***Producers standard deviation: 1757
+<2>***Consumers standard deviation: 1899
+<3>***Total items produced/consumed per second 2053 2053
+********************\n
+6 15
+Consumer 6 consumed 1618369 items.
+Consumer 11 consumed 1619528 items.
+Producer 1 produced 1683316 items.
+Producer 0 produced 1679262 items.
+Consumer 9 consumed 1651929 items.
+Producer 3 produced 1669924 items.
+Consumer 7 consumed 1643161 items.
+Producer 4 produced 1641847 items.
+Producer 2 produced 1680883 items.
+Consumer 10 consumed 1730454 items.
+Consumer 8 consumed 1722312 items.
+Producer 5 produced 1630523 items.
+<1>***Producers standard deviation: 20563
+<2>***Consumers standard deviation: 45563
+<3>***Total items produced/consumed per second 665717 665716
+*******************\n
+*****runtime********\n
+*****runtime 3 ********
+1 15
+Consumer 1 consumed 62344211 items.
+Producer 0 produced 62344212 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 4156280 4156280
+*********************
+1 15
+Consumer 1 consumed 68898467 items.
+Producer 0 produced 68898467 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 4593231 4593231
+********************\n
+1 15
+Producer 0 produced 492621 items.
+Consumer 1 consumed 492590 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 32841 32839
+********************\n
+1 15
+Consumer 1 consumed 16391366 items.
+Producer 0 produced 16391367 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 1092757 1092757
+*******************\n
+2 15
+Consumer 3 consumed 8053 items.
+Consumer 2 consumed 804 items.
+Producer 0 produced 8085 items.
+Producer 1 produced 804 items.
+<1>***Producers standard deviation: 3640
+<2>***Consumers standard deviation: 3624
+<3>***Total items produced/consumed per second 592 590
+*********************
+2 15
+Consumer 2 consumed 797 items.
+Consumer 3 consumed 18360 items.
+Producer 1 produced 797 items.
+Producer 0 produced 18392 items.
+<1>***Producers standard deviation: 8798
+<2>***Consumers standard deviation: 8782
+<3>***Total items produced/consumed per second 1279 1277
+********************\n
+2 15
+Consumer 3 consumed 43036 items.
+Producer 0 produced 42907 items.
+Consumer 2 consumed 53976 items.
+Producer 1 produced 54136 items.
+<1>***Producers standard deviation: 5614
+<2>***Consumers standard deviation: 5470
+<3>***Total items produced/consumed per second 6469 6467
+********************\n
+2 15
+Producer 1 produced 6572707 items.
+Consumer 2 consumed 6474673 items.
+Consumer 3 consumed 6667539 items.
+Producer 0 produced 6569536 items.
+<1>***Producers standard deviation: 1586
+<2>***Consumers standard deviation: 96433
+<3>***Total items produced/consumed per second 876149 876147
+*******************\n
+3 15
+Consumer 5 consumed 7309 items.
+Producer 0 produced 7339 items.
+Consumer 4 consumed 565 items.
+Producer 2 produced 566 items.
+Consumer 3 consumed 566 items.
+Producer 1 produced 566 items.
+<1>***Producers standard deviation: 3193
+<2>***Consumers standard deviation: 3179
+<3>***Total items produced/consumed per second 564 562
+*********************
+3 15
+Consumer 5 consumed 10891 items.
+Producer 2 produced 598 items.
+Consumer 3 consumed 598 items.
+Producer 1 produced 598 items.
+Producer 0 produced 10892 items.
+Consumer 4 consumed 598 items.
+<1>***Producers standard deviation: 4853
+<2>***Consumers standard deviation: 4852
+<3>***Total items produced/consumed per second 805 805
+********************\n
+3 15
+Consumer 3 consumed 37521 items.
+Producer 2 produced 41170 items.
+Producer 0 produced 27249 items.
+Consumer 4 consumed 9221 items.
+Producer 1 produced 8773 items.
+Consumer 5 consumed 30449 items.
+<1>***Producers standard deviation: 13270
+<2>***Consumers standard deviation: 12026
+<3>***Total items produced/consumed per second 5146 5146
+********************\n
+3 15
+Consumer 5 consumed 3645945 items.
+Producer 0 produced 3539449 items.
+Producer 2 produced 3715942 items.
+Consumer 3 consumed 3716041 items.
+Consumer 4 consumed 3629999 items.
+Producer 1 produced 3736595 items.
+<1>***Producers standard deviation: 88470
+<2>***Consumers standard deviation: 37373
+<3>***Total items produced/consumed per second 732799 732799
+*******************\n
+4 15
+Consumer 6 consumed 373 items.
+Producer 0 produced 7738 items.
+Consumer 7 consumed 7708 items.
+Consumer 4 consumed 373 items.
+Producer 2 produced 374 items.
+Producer 1 produced 373 items.
+Consumer 5 consumed 374 items.
+Producer 3 produced 374 items.
+<1>***Producers standard deviation: 3189
+<2>***Consumers standard deviation: 3176
+<3>***Total items produced/consumed per second 590 588
+*********************
+4 15
+Consumer 6 consumed 403 items.
+Producer 3 produced 403 items.
+Producer 1 produced 403 items.
+Consumer 4 consumed 403 items.
+Producer 0 produced 6913 items.
+Consumer 7 consumed 6883 items.
+Consumer 5 consumed 404 items.
+Producer 2 produced 405 items.
+<1>***Producers standard deviation: 2819
+<2>***Consumers standard deviation: 2806
+<3>***Total items produced/consumed per second 541 539
+********************\n
+4 15
+Consumer 6 consumed 11227 items.
+Consumer 7 consumed 18122 items.
+Producer 3 produced 7378 items.
+Consumer 5 consumed 13804 items.
+Producer 1 produced 15527 items.
+Producer 0 produced 12076 items.
+Consumer 4 consumed 11520 items.
+Producer 2 produced 19694 items.
+<1>***Producers standard deviation: 4524
+<2>***Consumers standard deviation: 2758
+<3>***Total items produced/consumed per second 3645 3644
+********************\n
+4 15
+Producer 3 produced 2582693 items.
+Producer 2 produced 2623764 items.
+Consumer 4 consumed 2492827 items.
+Consumer 7 consumed 2679223 items.
+Producer 0 produced 2568454 items.
+Consumer 6 consumed 2675556 items.
+Consumer 5 consumed 2609104 items.
+Producer 1 produced 2681828 items.
+<1>***Producers standard deviation: 44018
+<2>***Consumers standard deviation: 75415
+<3>***Total items produced/consumed per second 697115 697114
+*******************\n
+5 15
+Consumer 7 consumed 3430 items.
+Producer 2 produced 245 items.
+Consumer 9 consumed 245 items.
+Producer 0 produced 3462 items.
+Consumer 5 consumed 245 items.
+Producer 3 produced 245 items.
+Consumer 6 consumed 245 items.
+Producer 1 produced 245 items.
+Consumer 8 consumed 245 items.
+Producer 4 produced 245 items.
+<1>***Producers standard deviation: 1287
+<2>***Consumers standard deviation: 1274
+<3>***Total items produced/consumed per second 296 294
+*********************
+5 15
+Consumer 9 consumed 238 items.
+Producer 2 produced 239 items.
+Consumer 5 consumed 238 items.
+Consumer 6 consumed 238 items.
+Producer 3 produced 238 items.
+Consumer 8 consumed 238 items.
+Producer 1 produced 238 items.
+Producer 4 produced 238 items.
+Producer 0 produced 4411 items.
+Consumer 7 consumed 4381 items.
+<1>***Producers standard deviation: 1669
+<2>***Consumers standard deviation: 1657
+<3>***Total items produced/consumed per second 357 355
+********************\n
+5 15
+Consumer 8 consumed 5020 items.
+Consumer 7 consumed 9211 items.
+Consumer 9 consumed 8542 items.
+Consumer 5 consumed 11642 items.
+Producer 3 produced 5442 items.
+Producer 1 produced 4083 items.
+Consumer 6 consumed 4440 items.
+Producer 4 produced 10691 items.
+Producer 2 produced 7060 items.
+Producer 0 produced 11583 items.
+<1>***Producers standard deviation: 2919
+<2>***Consumers standard deviation: 2695
+<3>***Total items produced/consumed per second 2590 2590
+********************\n
+5 15
+Producer 2 produced 2056530 items.
+Producer 1 produced 2166295 items.
+Consumer 7 consumed 2068747 items.
+Consumer 9 consumed 2108564 items.
+Consumer 6 consumed 2185144 items.
+Producer 0 produced 2003635 items.
+Producer 3 produced 2214489 items.
+Consumer 5 consumed 2115493 items.
+Consumer 8 consumed 2050635 items.
+Producer 4 produced 2087661 items.
+<1>***Producers standard deviation: 75719
+<2>***Consumers standard deviation: 46504
+<3>***Total items produced/consumed per second 701907 701905
+*******************\n
+6 15
+Consumer 7 consumed 1556 items.
+Consumer 9 consumed 153 items.
+Producer 2 produced 154 items.
+Consumer 11 consumed 153 items.
+Consumer 6 consumed 153 items.
+Producer 5 produced 153 items.
+Consumer 8 consumed 153 items.
+Producer 3 produced 153 items.
+Consumer 10 consumed 153 items.
+Producer 1 produced 153 items.
+Producer 4 produced 153 items.
+Producer 0 produced 1587 items.
+<1>***Producers standard deviation: 534
+<2>***Consumers standard deviation: 523
+<3>***Total items produced/consumed per second 156 154
+*********************
+6 15
+Consumer 9 consumed 161 items.
+Producer 2 produced 161 items.
+Consumer 11 consumed 161 items.
+Producer 5 produced 161 items.
+Consumer 6 consumed 161 items.
+Producer 3 produced 161 items.
+Consumer 8 consumed 161 items.
+Consumer 7 consumed 10217 items.
+Consumer 10 consumed 161 items.
+Producer 1 produced 161 items.
+Producer 4 produced 161 items.
+Producer 0 produced 10249 items.
+<1>***Producers standard deviation: 3760
+<2>***Consumers standard deviation: 3748
+<3>***Total items produced/consumed per second 736 734
+********************\n
+6 15
+Consumer 7 consumed 3539 items.
+Producer 2 produced 8871 items.
+Consumer 6 consumed 4982 items.
+Consumer 8 consumed 7601 items.
+Producer 0 produced 4664 items.
+Consumer 10 consumed 7836 items.
+Producer 4 produced 2392 items.
+Producer 3 produced 4807 items.
+Consumer 9 consumed 6798 items.
+Producer 5 produced 4393 items.
+Producer 1 produced 11284 items.
+Consumer 11 consumed 5653 items.
+<1>***Producers standard deviation: 3026
+<2>***Consumers standard deviation: 1514
+<3>***Total items produced/consumed per second 2427 2427
+********************\n
+6 15
+Consumer 8 consumed 1650766 items.
+Producer 5 produced 1686447 items.
+Consumer 10 consumed 1645355 items.
+Consumer 9 consumed 1706538 items.
+Producer 3 produced 1676602 items.
+Producer 4 produced 1723991 items.
+Producer 0 produced 1705051 items.
+Consumer 11 consumed 1657217 items.
+Consumer 7 consumed 1732436 items.
+Consumer 6 consumed 1649798 items.
+Producer 2 produced 1621543 items.
+Producer 1 produced 1628477 items.
+<1>***Producers standard deviation: 37524
+<2>***Consumers standard deviation: 33418
+<3>***Total items produced/consumed per second 669474 669474
+*******************\n
+*****runtime********\n
+*****runtime 4 ********
+1 15
+Producer 0 produced 62656759 items.
+Consumer 1 consumed 62656730 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 4177117 4177115
+*********************
+1 15
+Producer 0 produced 70466653 items.
+Consumer 1 consumed 70466652 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 4697776 4697776
+********************\n
+1 15
+Consumer 1 consumed 440084 items.
+Producer 0 produced 440085 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 29339 29338
+********************\n
+1 15
+Producer 0 produced 15579830 items.
+Consumer 1 consumed 15579798 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 1038655 1038653
+*******************\n
+2 15
+Producer 0 produced 16113 items.
+Consumer 3 consumed 16082 items.
+Consumer 2 consumed 778 items.
+Producer 1 produced 778 items.
+<1>***Producers standard deviation: 7667
+<2>***Consumers standard deviation: 7652
+<3>***Total items produced/consumed per second 1126 1124
+*********************
+2 15
+Consumer 3 consumed 19134 items.
+Consumer 2 consumed 781 items.
+Producer 0 produced 19166 items.
+Producer 1 produced 781 items.
+<1>***Producers standard deviation: 9192
+<2>***Consumers standard deviation: 9176
+<3>***Total items produced/consumed per second 1329 1327
+********************\n
+2 15
+Producer 1 produced 42030 items.
+Producer 0 produced 44331 items.
+Consumer 2 consumed 41871 items.
+Consumer 3 consumed 44460 items.
+<1>***Producers standard deviation: 1150
+<2>***Consumers standard deviation: 1294
+<3>***Total items produced/consumed per second 5757 5755
+********************\n
+2 15
+Producer 1 produced 7073108 items.
+Consumer 3 consumed 6852615 items.
+Consumer 2 consumed 6985860 items.
+Producer 0 produced 6765399 items.
+<1>***Producers standard deviation: 153855
+<2>***Consumers standard deviation: 66623
+<3>***Total items produced/consumed per second 922567 922565
+*******************\n
+3 15
+Producer 1 produced 564 items.
+Producer 0 produced 8588 items.
+Consumer 4 consumed 564 items.
+Consumer 5 consumed 8558 items.
+Producer 2 produced 565 items.
+Consumer 3 consumed 565 items.
+<1>***Producers standard deviation: 3782
+<2>***Consumers standard deviation: 3768
+<3>***Total items produced/consumed per second 647 645
+*********************
+3 15
+Producer 2 produced 585 items.
+Consumer 3 consumed 585 items.
+Producer 1 produced 585 items.
+Consumer 4 consumed 585 items.
+Consumer 5 consumed 9026 items.
+Producer 0 produced 9057 items.
+<1>***Producers standard deviation: 3994
+<2>***Consumers standard deviation: 3979
+<3>***Total items produced/consumed per second 681 679
+********************\n
+3 15
+Consumer 3 consumed 18008 items.
+Producer 2 produced 23280 items.
+Consumer 4 consumed 15099 items.
+Producer 0 produced 18887 items.
+Consumer 5 consumed 24318 items.
+Producer 1 produced 15259 items.
+<1>***Producers standard deviation: 3280
+<2>***Consumers standard deviation: 3848
+<3>***Total items produced/consumed per second 3828 3828
+********************\n
+3 15
+Consumer 5 consumed 3768463 items.
+Consumer 3 consumed 3638228 items.
+Consumer 4 consumed 3698959 items.
+Producer 2 produced 3718789 items.
+Producer 0 produced 3682462 items.
+Producer 1 produced 3704402 items.
+<1>***Producers standard deviation: 14937
+<2>***Consumers standard deviation: 53208
+<3>***Total items produced/consumed per second 740376 740376
+*******************\n
+4 15
+Consumer 5 consumed 413 items.
+Producer 2 produced 413 items.
+Consumer 6 consumed 413 items.
+Producer 3 produced 413 items.
+Producer 1 produced 413 items.
+Consumer 4 consumed 413 items.
+Producer 0 produced 8598 items.
+Consumer 7 consumed 8567 items.
+<1>***Producers standard deviation: 3544
+<2>***Consumers standard deviation: 3531
+<3>***Total items produced/consumed per second 655 653
+*********************
+4 15
+Producer 0 produced 13142 items.
+Consumer 7 consumed 13142 items.
+Producer 2 produced 380 items.
+Consumer 5 consumed 380 items.
+Producer 3 produced 380 items.
+Consumer 6 consumed 380 items.
+Producer 1 produced 380 items.
+Consumer 4 consumed 380 items.
+<1>***Producers standard deviation: 5526
+<2>***Consumers standard deviation: 5526
+<3>***Total items produced/consumed per second 952 952
+********************\n
+4 15
+Consumer 5 consumed 15416 items.
+Producer 0 produced 19415 items.
+Consumer 6 consumed 13631 items.
+Producer 2 produced 8828 items.
+Consumer 4 consumed 11702 items.
+Producer 3 produced 11372 items.
+Producer 1 produced 13641 items.
+Consumer 7 consumed 12506 items.
+<1>***Producers standard deviation: 3912
+<2>***Consumers standard deviation: 1394
+<3>***Total items produced/consumed per second 3550 3550
+********************\n
+4 15
+Consumer 6 consumed 2627584 items.
+Producer 0 produced 2574432 items.
+Consumer 4 consumed 2562832 items.
+Consumer 7 consumed 2613604 items.
+Producer 2 produced 2577604 items.
+Producer 1 produced 2674822 items.
+Producer 3 produced 2478727 items.
+Consumer 5 consumed 2501564 items.
+<1>***Producers standard deviation: 69340
+<2>***Consumers standard deviation: 49468
+<3>***Total items produced/consumed per second 687039 687038
+*******************\n
+5 15
+Consumer 7 consumed 4783 items.
+Producer 2 produced 237 items.
+Consumer 9 consumed 237 items.
+Producer 0 produced 4814 items.
+Consumer 5 consumed 237 items.
+Producer 3 produced 237 items.
+Consumer 6 consumed 237 items.
+Producer 1 produced 237 items.
+Consumer 8 consumed 237 items.
+Producer 4 produced 237 items.
+<1>***Producers standard deviation: 1831
+<2>***Consumers standard deviation: 1818
+<3>***Total items produced/consumed per second 384 382
+*********************
+5 15
+Consumer 9 consumed 553 items.
+Producer 3 produced 239 items.
+Consumer 6 consumed 239 items.
+Producer 4 produced 238 items.
+Producer 2 produced 239 items.
+Consumer 5 consumed 239 items.
+Consumer 7 consumed 6609 items.
+Consumer 8 consumed 239 items.
+Producer 1 produced 239 items.
+Producer 0 produced 6955 items.
+<1>***Producers standard deviation: 2686
+<2>***Consumers standard deviation: 2520
+<3>***Total items produced/consumed per second 527 525
+********************\n
+5 15
+Producer 3 produced 7291 items.
+Consumer 8 consumed 10588 items.
+Consumer 6 consumed 6917 items.
+Producer 2 produced 9641 items.
+Producer 0 produced 14611 items.
+Producer 4 produced 5913 items.
+Consumer 7 consumed 9846 items.
+Consumer 9 consumed 12679 items.
+Consumer 5 consumed 7769 items.
+Producer 1 produced 10373 items.
+<1>***Producers standard deviation: 2988
+<2>***Consumers standard deviation: 2052
+<3>***Total items produced/consumed per second 3188 3186
+********************\n
+5 15
+Producer 2 produced 2062059 items.
+Producer 1 produced 2067076 items.
+Consumer 8 consumed 2054241 items.
+Producer 3 produced 2119780 items.
+Producer 0 produced 2091387 items.
+Consumer 9 consumed 2134444 items.
+Consumer 6 consumed 2191700 items.
+Consumer 5 consumed 2028814 items.
+Producer 4 produced 2058600 items.
+Consumer 7 consumed 1989673 items.
+<1>***Producers standard deviation: 23060
+<2>***Consumers standard deviation: 73326
+<3>***Total items produced/consumed per second 693260 693258
+*******************\n
+6 15
+Consumer 9 consumed 156 items.
+Producer 2 produced 156 items.
+Consumer 11 consumed 156 items.
+Producer 5 produced 156 items.
+Consumer 6 consumed 156 items.
+Producer 3 produced 156 items.
+Consumer 8 consumed 156 items.
+Consumer 7 consumed 4256 items.
+Consumer 10 consumed 156 items.
+Producer 1 produced 156 items.
+Producer 4 produced 156 items.
+Producer 0 produced 4288 items.
+<1>***Producers standard deviation: 1540
+<2>***Consumers standard deviation: 1528
+<3>***Total items produced/consumed per second 337 335
+*********************
+6 15
+Consumer 9 consumed 156 items.
+Producer 2 produced 156 items.
+Consumer 11 consumed 156 items.
+Producer 5 produced 156 items.
+Consumer 6 consumed 156 items.
+Producer 4 produced 155 items.
+Producer 3 produced 156 items.
+Consumer 8 consumed 156 items.
+Consumer 7 consumed 8658 items.
+Consumer 10 consumed 156 items.
+Producer 1 produced 156 items.
+Producer 0 produced 8690 items.
+<1>***Producers standard deviation: 3181
+<2>***Consumers standard deviation: 3169
+<3>***Total items produced/consumed per second 631 629
+********************\n
+6 15
+Producer 5 produced 5601 items.
+Consumer 6 consumed 6821 items.
+Producer 0 produced 3591 items.
+Producer 2 produced 4299 items.
+Consumer 8 consumed 6188 items.
+Consumer 10 consumed 4879 items.
+Consumer 11 consumed 5441 items.
+Producer 1 produced 6865 items.
+Consumer 7 consumed 3797 items.
+Producer 3 produced 5487 items.
+Consumer 9 consumed 4162 items.
+Producer 4 produced 5446 items.
+<1>***Producers standard deviation: 1039
+<2>***Consumers standard deviation: 1065
+<3>***Total items produced/consumed per second 2085 2085
+********************\n
+6 15
+Consumer 10 consumed 1731702 items.
+Producer 0 produced 1717484 items.
+Consumer 6 consumed 1708155 items.
+Consumer 11 consumed 1654906 items.
+Consumer 7 consumed 1670639 items.
+Producer 1 produced 1781260 items.
+Consumer 8 consumed 1699238 items.
+Producer 4 produced 1730214 items.
+Producer 5 produced 1545310 items.
+Producer 2 produced 1719579 items.
+Producer 3 produced 1603644 items.
+Consumer 9 consumed 1632850 items.
+<1>***Producers standard deviation: 81309
+<2>***Consumers standard deviation: 33480
+<3>***Total items produced/consumed per second 673166 673166
+*******************\n
+*****runtime********\n
+*****runtime 5 ********
+1 15
+Consumer 1 consumed 62185814 items.
+Producer 0 produced 62185818 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 4145721 4145720
+*********************
+1 15
+Consumer 1 consumed 70376424 items.
+Producer 0 produced 70376456 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 4691763 4691761
+********************\n
+1 15
+Producer 0 produced 478487 items.
+Consumer 1 consumed 478456 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 31899 31897
+********************\n
+1 15
+Producer 0 produced 16648190 items.
+Consumer 1 consumed 16648159 items.
+<1>***Producers standard deviation: 0
+<2>***Consumers standard deviation: 0
+<3>***Total items produced/consumed per second 1109879 1109877
+*******************\n
+2 15
+Consumer 2 consumed 787 items.
+Consumer 3 consumed 9922 items.
+Producer 1 produced 787 items.
+Producer 0 produced 9954 items.
+<1>***Producers standard deviation: 4583
+<2>***Consumers standard deviation: 4567
+<3>***Total items produced/consumed per second 716 713
+*********************
+2 15
+Consumer 3 consumed 26589 items.
+Producer 0 produced 26621 items.
+Consumer 2 consumed 778 items.
+Producer 1 produced 777 items.
+<1>***Producers standard deviation: 12922
+<2>***Consumers standard deviation: 12906
+<3>***Total items produced/consumed per second 1826 1824
+********************\n
+2 15
+Producer 1 produced 47546 items.
+Consumer 2 consumed 47739 items.
+Producer 0 produced 69549 items.
+Consumer 3 consumed 69325 items.
+<1>***Producers standard deviation: 11001
+<2>***Consumers standard deviation: 10793
+<3>***Total items produced/consumed per second 7806 7804
+********************\n
+2 15
+Producer 1 produced 5115706 items.
+Consumer 3 consumed 5152135 items.
+Producer 0 produced 4883695 items.
+Consumer 2 consumed 4847236 items.
+<1>***Producers standard deviation: 116005
+<2>***Consumers standard deviation: 152449
+<3>***Total items produced/consumed per second 666626 666624
+*******************\n
+3 15
+Consumer 4 consumed 636 items.
+Consumer 3 consumed 637 items.
+Producer 0 produced 4736 items.
+Consumer 5 consumed 4705 items.
+Producer 2 produced 638 items.
+Producer 1 produced 636 items.
+<1>***Producers standard deviation: 1932
+<2>***Consumers standard deviation: 1918
+<3>***Total items produced/consumed per second 400 398
+*********************
+3 15
+Producer 2 produced 528 items.
+Consumer 3 consumed 528 items.
+Producer 1 produced 528 items.
+Producer 0 produced 10140 items.
+Consumer 4 consumed 528 items.
+Consumer 5 consumed 10110 items.
+<1>***Producers standard deviation: 4531
+<2>***Consumers standard deviation: 4517
+<3>***Total items produced/consumed per second 746 744
+********************\n
+3 15
+Consumer 3 consumed 24972 items.
+Consumer 4 consumed 17066 items.
+Producer 0 produced 29737 items.
+Producer 2 produced 27071 items.
+Producer 1 produced 17054 items.
+Consumer 5 consumed 31822 items.
+<1>***Producers standard deviation: 5460
+<2>***Consumers standard deviation: 6029
+<3>***Total items produced/consumed per second 4924 4924
+********************\n
+3 15
+Producer 1 produced 3669700 items.
+Consumer 5 consumed 3625779 items.
+Producer 0 produced 3673366 items.
+Producer 2 produced 3649714 items.
+Consumer 3 consumed 3773824 items.
+Consumer 4 consumed 3593147 items.
+<1>***Producers standard deviation: 10394
+<2>***Consumers standard deviation: 78617
+<3>***Total items produced/consumed per second 732852 732850
+*******************\n
+4 15
+Producer 1 produced 424 items.
+Producer 0 produced 7223 items.
+Consumer 7 consumed 7193 items.
+Consumer 4 consumed 424 items.
+Producer 2 produced 425 items.
+Consumer 5 consumed 425 items.
+Producer 3 produced 425 items.
+Consumer 6 consumed 425 items.
+<1>***Producers standard deviation: 2944
+<2>***Consumers standard deviation: 2931
+<3>***Total items produced/consumed per second 566 564
+*********************
+4 15
+Consumer 4 consumed 426 items.
+Producer 0 produced 11196 items.
+Consumer 7 consumed 11165 items.
+Producer 2 produced 427 items.
+Consumer 5 consumed 427 items.
+Consumer 6 consumed 427 items.
+Producer 3 produced 427 items.
+Producer 1 produced 427 items.
+<1>***Producers standard deviation: 4663
+<2>***Consumers standard deviation: 4650
+<3>***Total items produced/consumed per second 831 829
+********************\n
+4 15
+Consumer 4 consumed 13114 items.
+Consumer 5 consumed 13553 items.
+Consumer 7 consumed 15571 items.
+Producer 1 produced 13302 items.
+Producer 3 produced 12352 items.
+Producer 2 produced 14715 items.
+Producer 0 produced 14315 items.
+Consumer 6 consumed 12443 items.
+<1>***Producers standard deviation: 919
+<2>***Consumers standard deviation: 1166
+<3>***Total items produced/consumed per second 3645 3645
+********************\n
+4 15
+Consumer 7 consumed 2758962 items.
+Producer 2 produced 2700557 items.
+Consumer 5 consumed 2729505 items.
+Producer 3 produced 2803122 items.
+Consumer 4 consumed 2647433 items.
+Producer 0 produced 2765606 items.
+Consumer 6 consumed 2715276 items.
+Producer 1 produced 2581893 items.
+<1>***Producers standard deviation: 84013
+<2>***Consumers standard deviation: 40893
+<3>***Total items produced/consumed per second 723411 723411
+*******************\n
+5 15
+Producer 3 produced 250 items.
+Consumer 8 consumed 250 items.
+Consumer 7 consumed 7297 items.
+Producer 4 produced 250 items.
+Producer 1 produced 250 items.
+Producer 0 produced 7329 items.
+Consumer 9 consumed 251 items.
+Producer 2 produced 251 items.
+Consumer 5 consumed 251 items.
+Consumer 6 consumed 251 items.
+<1>***Producers standard deviation: 2831
+<2>***Consumers standard deviation: 2818
+<3>***Total items produced/consumed per second 555 553
+*********************
+5 15
+Producer 0 produced 8887 items.
+Consumer 7 consumed 8856 items.
+Producer 2 produced 248 items.
+Producer 1 produced 247 items.
+Producer 4 produced 247 items.
+Consumer 9 consumed 248 items.
+Consumer 6 consumed 248 items.
+Consumer 5 consumed 248 items.
+Consumer 8 consumed 248 items.
+Producer 3 produced 248 items.
+<1>***Producers standard deviation: 3456
+<2>***Consumers standard deviation: 3443
+<3>***Total items produced/consumed per second 658 656
+********************\n
+5 15
+Consumer 9 consumed 8699 items.
+Producer 0 produced 6543 items.
+Consumer 8 consumed 9378 items.
+Consumer 6 consumed 5278 items.
+Producer 2 produced 6023 items.
+Producer 4 produced 8806 items.
+Consumer 5 consumed 5433 items.
+Producer 3 produced 6381 items.
+Producer 1 produced 8051 items.
+Consumer 7 consumed 6985 items.
+<1>***Producers standard deviation: 1075
+<2>***Consumers standard deviation: 1664
+<3>***Total items produced/consumed per second 2386 2384
+********************\n
+5 15
+Consumer 9 consumed 2133814 items.
+Producer 3 produced 2192012 items.
+Consumer 8 consumed 2039746 items.
+Consumer 5 consumed 2061277 items.
+Producer 2 produced 1994764 items.
+Consumer 7 consumed 2054978 items.
+Producer 4 produced 2041521 items.
+Producer 0 produced 2073154 items.
+Consumer 6 consumed 2020060 items.
+Producer 1 produced 2008424 items.
+<1>***Producers standard deviation: 70481
+<2>***Consumers standard deviation: 38630
+<3>***Total items produced/consumed per second 687325 687325
+*******************\n
+6 15
+Producer 5 produced 142 items.
+Consumer 8 consumed 142 items.
+Producer 3 produced 142 items.
+Consumer 10 consumed 142 items.
+Producer 1 produced 142 items.
+Producer 0 produced 5788 items.
+Consumer 7 consumed 5757 items.
+Producer 4 produced 142 items.
+Producer 2 produced 143 items.
+Consumer 9 consumed 143 items.
+Consumer 11 consumed 143 items.
+Consumer 6 consumed 143 items.
+<1>***Producers standard deviation: 2104
+<2>***Consumers standard deviation: 2092
+<3>***Total items produced/consumed per second 433 431
+*********************
+6 15
+Producer 4 produced 155 items.
+Producer 1 produced 155 items.
+Producer 0 produced 10149 items.
+Consumer 9 consumed 156 items.
+Producer 2 produced 156 items.
+Consumer 11 consumed 156 items.
+Producer 5 produced 156 items.
+Consumer 6 consumed 156 items.
+Consumer 8 consumed 156 items.
+Producer 3 produced 156 items.
+Consumer 10 consumed 156 items.
+Consumer 7 consumed 10118 items.
+<1>***Producers standard deviation: 3724
+<2>***Consumers standard deviation: 3713
+<3>***Total items produced/consumed per second 728 726
+********************\n
+6 15
+Producer 1 produced 4701 items.
+Producer 2 produced 7611 items.
+Consumer 6 consumed 4262 items.
+Producer 4 produced 4821 items.
+Consumer 8 consumed 4784 items.
+Producer 0 produced 3158 items.
+Consumer 10 consumed 4569 items.
+Producer 5 produced 5824 items.
+Consumer 11 consumed 4500 items.
+Consumer 9 consumed 5700 items.
+Producer 3 produced 3185 items.
+Consumer 7 consumed 5455 items.
+<1>***Producers standard deviation: 1540
+<2>***Consumers standard deviation: 522
+<3>***Total items produced/consumed per second 1953 1951
+********************\n
+6 15
+Producer 5 produced 1625202 items.
+Consumer 11 consumed 1642865 items.
+Consumer 9 consumed 1674861 items.
+Consumer 10 consumed 1704566 items.
+Consumer 8 consumed 1651788 items.
+Producer 3 produced 1702441 items.
+Producer 1 produced 1618985 items.
+Consumer 6 consumed 1668402 items.
+Producer 2 produced 1732484 items.
+Producer 4 produced 1705606 items.
+Producer 0 produced 1640754 items.
+Consumer 7 consumed 1682961 items.
+<1>***Producers standard deviation: 44129
+<2>***Consumers standard deviation: 20216
+<3>***Total items produced/consumed per second 668364 668362
+*******************\n
+*****runtime********\n

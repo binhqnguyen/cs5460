@@ -40,6 +40,23 @@ MODULE_LICENSE("GPL");
 /* parameters */
 static int sleepy_ndevices = SLEEPY_NDEVICES;
 
+/* writing waiting queue */
+static wait_queue_head_t *wqlist;
+
+/* initialize the writing waiting queue list */
+int
+init_qw(){
+  int i = 0;
+  wqlist = (wait_queue_head_t*) malloc (sizeof(wait_queue_head_t*sleepy_ndevices));
+  if (wqlist == 0){
+    printk("Error allocating waiting queue list\n");
+    return -1;
+  }
+  for (i=0; i < sleepy_ndevices; ++i)
+    init_waitqueue_head(&wqlist[i]);
+}
+
+
 module_param(sleepy_ndevices, int, S_IRUGO);
 /* ================================================================ */
 

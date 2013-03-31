@@ -51,13 +51,12 @@ static struct shady_dev *shady_devices = NULL;
 static struct class *shady_class = NULL;
 /* ================================================================ */
 
-unsigned long system_call_table_address = 0x0000001;
+void **system_call_table_address = (void*)0xc15b0000;
 
 void set_addr_rw (unsigned long addr){
   unsigned int level;
   pte_t *pte = lookup_address(addr, &level);
   if (pte->pte &~ _PAGE_RW) pte->pte |= _PAGE_RW;
-
 }
 
 asmlinkage int (*old_open) (const char*, int, int);
@@ -275,6 +274,13 @@ shady_init_module(void)
       goto fail;
     }
   }
+
+  /*enable writing in system call table*/
+  set_addr_rw(system_call_table_address);
+
+  /*replace the default open system call address by the my_open() system call address*/
+  old_open = system_call_table_address[__NR_open];
+  system_call_table_address[__NR_open] = my_open;
   
   return 0; /* success */
 
@@ -287,6 +293,8 @@ static void __exit
 shady_exit_module(void)
 {
   shady_cleanup_module(shady_ndevices);
+  /*recover the open address in sys_call_table*/
+  system_call_table_address[__NR_open] = old_open;
   return;
 }
 

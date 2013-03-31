@@ -34,7 +34,6 @@
 
 #include "sleepy.h"
 
-#include <string.h>
 
 MODULE_AUTHOR("Eugene A. Shatokhin, John Regehr");
 MODULE_LICENSE("GPL");
@@ -123,22 +122,24 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   struct sleepy_dev *dev = (struct sleepy_dev *)filp->private_data;
   ssize_t retval = 0;
 
+  unsigned long sleep;
+  unsigned long woken_up; /*jiffies before and after sleep*/
+  unsigned int elapsed;  /*time slept, in seconds*/
+  char *buffer; 
+  int write_val;  /*value written into the device*/
+
   /*check the number of bytes written*/
   if (count != 4){
     printk(KERN_WARNING "Not writing 4 bytes to dev, writing %d bytes\n", count);
     return -EINVAL;
   }
 
-  const char * buffer; 
-  const int write_val;  /*value written into the device*/
   if (copy_from_user(buffer, buf, count) != 0){
     printk(KERN_WARNING "sleepy_write(): copy form user failed.\n");
     retval = -EFAULT;
     goto ret;
   }
 
-  unsigned long sleep, woken_up; /*jiffies before and after sleep*/
-  unsigned int elapsed;  /*time slept, in seconds*/
 	
   if (mutex_lock_killable(&dev->sleepy_mutex))
     return -EINTR;
@@ -157,14 +158,14 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   /*if written value is not negative, sleep for write_val second*/
   /*HZ = number of jiffies per second*/
   sleep = jiffies;  /*ticket count before sleeping*/
-  wait_event_interruptible_timeout(dev->wait_queue, flag != 0, write_val*HZ);
+  wait_event_interruptible_timeout(dev->wait_queue, dev->flag != 0, write_val*HZ);
   woken_up = jiffies; /*ticket count after waking up*/
   dev->flag = 0;
 
   /*slept time in seconds*/
   elapsed = (woken_up - sleep)/HZ;
   retval = write_val - elapsed; /*return time left*/
-  if (retval < 0){ /*process has been woken up by read (before time out event)*/
+  if (retval > 0){ /*process has been woken up by read (before time out event)*/
     printk(KERN_INFO "Process has been woken up by read() (abnormally). Time left %d.\n",retval);
   }
   else{ /*process has been slept for write_val seconds*/

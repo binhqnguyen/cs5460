@@ -20,5 +20,7 @@ struct sleepy_dev {
   unsigned char *data;
   struct mutex sleepy_mutex; 
   struct cdev cdev;
+  wait_queue_head_t wait_queue;	/*dev waiting queue*/
+  int flag;	/*wake up condition, 1 is set*/
 };
 #endif /* SLEEPY_H_1727_INCLUDED */

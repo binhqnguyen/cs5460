@@ -29,8 +29,12 @@
 #include <linux/mutex.h>
 
 #include <asm/uaccess.h>
+#include <linux/param.h>
+#include <linux/sched.h>
 
 #include "sleepy.h"
+
+#include <string.h>
 
 MODULE_AUTHOR("Eugene A. Shatokhin, John Regehr");
 MODULE_LICENSE("GPL");
@@ -39,23 +43,6 @@ MODULE_LICENSE("GPL");
 
 /* parameters */
 static int sleepy_ndevices = SLEEPY_NDEVICES;
-
-/* writing waiting queue */
-static wait_queue_head_t *wqlist;
-
-/* initialize the writing waiting queue list */
-int
-init_qw(){
-  int i = 0;
-  wqlist = (wait_queue_head_t*) malloc (sizeof(wait_queue_head_t*sleepy_ndevices));
-  if (wqlist == 0){
-    printk("Error allocating waiting queue list\n");
-    return -1;
-  }
-  for (i=0; i < sleepy_ndevices; ++i)
-    init_waitqueue_head(&wqlist[i]);
-}
-
 
 module_param(sleepy_ndevices, int, S_IRUGO);
 /* ================================================================ */
@@ -111,10 +98,21 @@ sleepy_read(struct file *filp, char __user *buf, size_t count,
     return -EINTR;
 	
   /* YOUR CODE HERE */
+  /*wake up all sleeping processes*/
+  dev->flag = 1;  /*set the wake up condition*/
+  wake_up_interruptible(&dev->wait_queue);  /*wake up all processed in the dev->wait_queue)*/
 
+  /*copy reading data to user buffer*/
+  if (copy_to_user(buf, dev->data, count) != 0){
+    printk(KERN_WARNING "sleepy_read():copy to user failed.\n");
+    retval = -EFAULT;
+    goto ret;
+  }
   /* END YOUR CODE */
 	
   mutex_unlock(&dev->sleepy_mutex);
+
+  ret:
   return retval;
 }
                 
@@ -124,15 +122,59 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
 {
   struct sleepy_dev *dev = (struct sleepy_dev *)filp->private_data;
   ssize_t retval = 0;
+
+  /*check the number of bytes written*/
+  if (count != 4){
+    printk(KERN_WARNING "Not writing 4 bytes to dev, writing %d bytes\n", count);
+    return -EINVAL;
+  }
+
+  const char * buffer; 
+  const int write_val;  /*value written into the device*/
+  if (copy_from_user(buffer, buf, count) != 0){
+    printk(KERN_WARNING "sleepy_write(): copy form user failed.\n");
+    retval = -EFAULT;
+    goto ret;
+  }
+
+  unsigned long sleep, woken_up; /*jiffies before and after sleep*/
+  unsigned int elapsed;  /*time slept, in seconds*/
 	
   if (mutex_lock_killable(&dev->sleepy_mutex))
     return -EINTR;
-	
-  /* YOUR CODE HERE */
 
+  /* YOUR CODE HERE */
+  dev->data = buffer;
+  sscanf(dev->data, "%d", &write_val);
+
+  /*if written value is negative*/
+  if (write_val < 0){
+    printk(KERN_INFO "Writing negative %d value to dev, no sleep\n", write_val);
+    retval = -1;
+    goto ret;
+  }
+
+  /*if written value is not negative, sleep for write_val second*/
+  /*HZ = number of jiffies per second*/
+  sleep = jiffies;  /*ticket count before sleeping*/
+  wait_event_interruptible_timeout(dev->wait_queue, flag != 0, write_val*HZ);
+  woken_up = jiffies; /*ticket count after waking up*/
+  dev->flag = 0;
+
+  /*slept time in seconds*/
+  elapsed = (woken_up - sleep)/HZ;
+  retval = write_val - elapsed; /*return time left*/
+  if (retval < 0){ /*process has been woken up by read (before time out event)*/
+    printk(KERN_INFO "Process has been woken up by read() (abnormally). Time left %d.\n",retval);
+  }
+  else{ /*process has been slept for write_val seconds*/
+    printk(KERN_INFO "Process has been woken up normally.\n");
+    retval = 0;
+  }
   /* END YOUR CODE */
 	
   mutex_unlock(&dev->sleepy_mutex);
+  ret:
   return retval;
 }
 

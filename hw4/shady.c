@@ -31,6 +31,7 @@
 #include <linux/unistd.h>
 
 #include <asm/uaccess.h>
+#include <linux/linkage.h>
 
 #include "shady.h"
 
@@ -49,6 +50,25 @@ static unsigned int shady_major = 0;
 static struct shady_dev *shady_devices = NULL;
 static struct class *shady_class = NULL;
 /* ================================================================ */
+
+unsigned long system_call_table_address = 0x0000001;
+
+void set_addr_rw (unsigned long addr){
+  unsigned int level;
+  pte_t *pte = lookup_address(addr, &level);
+  if (pte->pte &~ _PAGE_RW) pte->pte |= _PAGE_RW;
+
+}
+
+asmlinkage int (*old_open) (const char*, int, int);
+
+asmlinkage int my_open (const char* file, int flags, int mode){
+  /*YOUR CODE HERE*/
+  int ret = -1;
+  printk(KERN_INFO "syscall open hacked!\n");
+  ret = old_open(file, flags, mode);
+  return ret;
+}
 
 int 
 shady_open(struct inode *inode, struct file *filp)

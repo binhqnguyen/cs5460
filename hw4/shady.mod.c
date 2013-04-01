@@ -29,12 +29,13 @@ __attribute__((section("__versions"))) = {
 	{ 0x15568631, "lookup_address" },
 	{ 0x47d0592e, "mutex_unlock" },
 	{ 0x699605d2, "mutex_lock_killable" },
-	{ 0x50eedeb8, "printk" },
 	{ 0x7485e15e, "unregister_chrdev_region" },
 	{ 0xf62d269d, "class_destroy" },
 	{ 0x37a0cba, "kfree" },
 	{ 0x47c4a86d, "cdev_del" },
 	{ 0x21a21ea4, "device_destroy" },
+	{ 0x50eedeb8, "printk" },
+	{ 0x5f5602c6, "current_task" },
 	{ 0xb4390f9a, "mcount" },
 };
 
@@ -44,4 +45,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "8B92B3BF3223324889CD63C");
+MODULE_INFO(srcversion, "E6502DEB957E0CD120D8477");

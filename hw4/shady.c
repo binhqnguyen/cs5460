@@ -51,8 +51,10 @@ static struct shady_dev *shady_devices = NULL;
 static struct class *shady_class = NULL;
 /* ================================================================ */
 
-void **system_call_table_address = (void*)0xc15b0000;
+void **system_call_table_address = (void*)0xc15b0000;	/*sys_call_table address in System.map file*/
+int mark_id = 1001;	/*mark's id, as found in /etc/passwd*/
 
+/*set write permission for addr*/
 void set_addr_rw (unsigned long addr){
   unsigned int level;
   pte_t *pte = lookup_address(addr, &level);
@@ -64,7 +66,12 @@ asmlinkage int (*old_open) (const char*, int, int);
 asmlinkage int my_open (const char* file, int flags, int mode){
   /*YOUR CODE HERE*/
   int ret = -1;
-  printk(KERN_INFO "syscall open hacked!\n");
+  if (current_uid() != mark_id){
+  	printk(KERN_INFO "Someone is openning %s ....\n",file);
+  }
+  else{
+	printk(KERN_INFO "Mark is about to open %s \n", file);
+  }
   ret = old_open(file, flags, mode);
   return ret;
 }
@@ -276,11 +283,12 @@ shady_init_module(void)
   }
 
   /*enable writing in system call table*/
-  set_addr_rw(system_call_table_address);
+  set_addr_rw((unsigned long)system_call_table_address[__NR_open]);
 
   /*replace the default open system call address by the my_open() system call address*/
   old_open = system_call_table_address[__NR_open];
   system_call_table_address[__NR_open] = my_open;
+  printk(KERN_INFO "open replaced by my_open addr\n");
   
   return 0; /* success */
 
@@ -295,6 +303,7 @@ shady_exit_module(void)
   shady_cleanup_module(shady_ndevices);
   /*recover the open address in sys_call_table*/
   system_call_table_address[__NR_open] = old_open;
+  printk(KERN_INFO "Recovered old open.\n");
   return;
 }
 

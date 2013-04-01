@@ -82,7 +82,7 @@ sleepy_open(struct inode *inode, struct file *filp)
 	printk(KERN_WARNING "Failed allocating dev->data.\n");
 	return -EFAULT;
   }
-  dev->flag = 0;
+  dev->flag = 1;
   init_waitqueue_head(&dev->wait_queue);
 	
   return 0;
@@ -135,9 +135,8 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   unsigned long woken_up; /*jiffies before and after sleep*/
   unsigned int elapsed;  /*time slept, in seconds*/
   int write_val;  /*value written into the device*/
-  int is_interrupted = 0; 
 
-  printk(KERN_INFO "Writing to dev sleepy \n");
+  printk(KERN_INFO "Opened, Writing to dev sleepy \n");
   /*check the number of bytes written*/
   if (count != 4){
     printk(KERN_WARNING "Not writing 4 bytes to dev, writing %d bytes\n", count);
@@ -171,20 +170,17 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   /*if written value is not negative, sleep for write_val second*/
   /*HZ = number of jiffies per second*/
   sleep = jiffies;  /*ticket count before sleeping*/
-  printk(KERN_WARNING "aa5 %lu\n",sleep);
-  mutex_unlock(&dev->sleepy_mutex);	/*release the lock before going to sleep*/
-  if (wait_event_interruptible_timeout(dev->wait_queue, dev->flag != 0, write_val*10)!=0){
-	is_interrupted = 1;
-  }
+  printk(KERN_WARNING "aa5 %d\n",(write_val*HZ));
+  wait_event_interruptible_timeout(dev->wait_queue, dev->flag != 0, write_val*HZ);
+  printk(KERN_WARNING "aa6\n");
   woken_up = jiffies; /*ticket count after waking up*/
-  mutex_lock(&dev->sleepy_mutex);	/*acquire the lock when woke up*/
-  printk(KERN_WARNING "aa6 %lu\n",woken_up);
   dev->flag = 0;
+
   printk(KERN_WARNING "aa7\n");
   /*slept time in seconds*/
-  if (is_interrupted == 1){ /*process has been woken up by read (before time out event)*/
-    elapsed = (woken_up - sleep)/HZ;
-    retval = write_val - elapsed; /*return time left*/
+  elapsed = (woken_up - sleep)/HZ;
+  retval = write_val - elapsed; /*return time left*/
+  if (retval > 0){ /*process has been woken up by read (before time out event)*/
     printk(KERN_INFO "Process has been woken up by read() (abnormally). Time left %d.\n",retval);
   }
   else{ /*process has been slept for write_val seconds*/
@@ -192,6 +188,7 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
     retval = 0;
   }
   /* END YOUR CODE */
+	
   mutex_unlock(&dev->sleepy_mutex);
   ret:
   return retval;

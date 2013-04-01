@@ -26,19 +26,23 @@ __attribute__((section("__versions"))) = {
 	{ 0x12da5bb2, "__kmalloc" },
 	{ 0xd6e17aa6, "__class_create" },
 	{ 0x29537c9e, "alloc_chrdev_region" },
+	{ 0x48eb0c0d, "__init_waitqueue_head" },
+	{ 0x156b0a42, "kmem_cache_alloc_trace" },
+	{ 0x992847d2, "kmalloc_caches" },
 	{ 0x2f287f0d, "copy_to_user" },
 	{ 0xe45f60d8, "__wake_up" },
-	{ 0x47d0592e, "mutex_unlock" },
-	{ 0x50eedeb8, "printk" },
+	{ 0x2f159505, "mutex_lock" },
 	{ 0x75bb675a, "finish_wait" },
 	{ 0xd62c833f, "schedule_timeout" },
 	{ 0x622fa02a, "prepare_to_wait" },
 	{ 0xc8b57c27, "autoremove_wake_function" },
 	{ 0x5f5602c6, "current_task" },
+	{ 0x47d0592e, "mutex_unlock" },
 	{ 0x7d11c268, "jiffies" },
 	{ 0x42224298, "sscanf" },
-	{ 0x699605d2, "mutex_lock_killable" },
 	{ 0x362ef408, "_copy_from_user" },
+	{ 0x699605d2, "mutex_lock_killable" },
+	{ 0x50eedeb8, "printk" },
 	{ 0x7485e15e, "unregister_chrdev_region" },
 	{ 0xf62d269d, "class_destroy" },
 	{ 0x37a0cba, "kfree" },
@@ -53,4 +57,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "83E9329ECCCAEF5FF321CF9");
+MODULE_INFO(srcversion, "A30A0665642A47ED06F5F28");

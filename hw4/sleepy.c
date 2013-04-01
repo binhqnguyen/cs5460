@@ -76,15 +76,6 @@ sleepy_open(struct inode *inode, struct file *filp)
       return -ENODEV; /* No such device */
     }
   
-  /*allocate data for dev->data*/
-  dev->data = (char*) kmalloc(sizeof(char),GFP_ATOMIC);
-  if (dev->data == NULL){
-	printk(KERN_WARNING "Failed allocating dev->data.\n");
-	return -EFAULT;
-  }
-  dev->flag = 0;
-  init_waitqueue_head(&dev->wait_queue);
-	
   return 0;
 }
 
@@ -103,9 +94,8 @@ sleepy_read(struct file *filp, char __user *buf, size_t count,
   printk(KERN_INFO "reading from sleepy dev\n");	
   if (mutex_lock_killable(&dev->sleepy_mutex))
     return -EINTR;
-  printk(KERN_INFO "reading holding lock\n");
-	
-  /* YOUR CODE HERE */
+  
+/* YOUR CODE HERE */
   /*wake up all sleeping processes*/
   dev->flag = 1;  /*set the wake up condition*/
   wake_up_interruptible(&dev->wait_queue);  /*wake up all processed in the dev->wait_queue)*/
@@ -117,7 +107,6 @@ sleepy_read(struct file *filp, char __user *buf, size_t count,
     goto ret;
   }
   /* END YOUR CODE */
-	
   mutex_unlock(&dev->sleepy_mutex);
 
   ret:
@@ -156,12 +145,12 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
     goto ret;
   }
 
-  printk(KERN_WARNING "aa3\n");
-  sscanf(dev->data, "%d", &write_val);
+  //sscanf(dev->data, "%d", &write_val);
+  write_val = *(int*)dev->data;
 
   printk(KERN_WARNING "aa4\n");
   /*if written value is negative*/
-  if (write_val < 0){
+  if (write_val< 0){
     printk(KERN_INFO "Writing negative %d value to dev, no sleep\n", write_val);
     retval = -1;
     goto ret;
@@ -173,7 +162,7 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   sleep = jiffies;  /*ticket count before sleeping*/
   printk(KERN_WARNING "aa5 %lu\n",sleep);
   mutex_unlock(&dev->sleepy_mutex);	/*release the lock before going to sleep*/
-  if (wait_event_interruptible_timeout(dev->wait_queue, dev->flag != 0, write_val*10)!=0){
+  if (wait_event_interruptible_timeout(dev->wait_queue, dev->flag != 0, write_val*HZ)!=0){
 	is_interrupted = 1;
   }
   woken_up = jiffies; /*ticket count after waking up*/
@@ -253,6 +242,15 @@ sleepy_construct_device(struct sleepy_dev *dev, int minor,
     cdev_del(&dev->cdev);
     return err;
   }
+
+  /*allocate data for dev->data*/
+  dev->data = (char*) kzalloc(4*sizeof(char),GFP_KERNEL);
+  if (dev->data == NULL){
+	printk(KERN_WARNING "Failed allocating dev->data.\n");
+	return -EFAULT;
+  }
+  dev->flag = 0;
+  init_waitqueue_head(&dev->wait_queue);
   return 0;
 }
 

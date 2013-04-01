@@ -650,6 +650,29 @@ deps_/home/binh/cs5460/hw4/shady.o := \
     $(wildcard include/config/x86/intel/usercopy.h) \
   /usr/src/linux-headers-3.2.0-29-generic-pae/arch/x86/include/asm/uaccess_32.h \
     $(wildcard include/config/debug/strict/user/copy/checks.h) \
+  include/linux/mm.h \
+    $(wildcard include/config/ksm.h) \
+    $(wildcard include/config/debug/pagealloc.h) \
+    $(wildcard include/config/hugetlbfs.h) \
+  include/linux/debug_locks.h \
+    $(wildcard include/config/debug/locking/api/selftests.h) \
+  include/linux/range.h \
+  /usr/src/linux-headers-3.2.0-29-generic-pae/arch/x86/include/asm/pgtable.h \
+  /usr/src/linux-headers-3.2.0-29-generic-pae/arch/x86/include/asm/pgtable_32.h \
+    $(wildcard include/config/highpte.h) \
+  /usr/src/linux-headers-3.2.0-29-generic-pae/arch/x86/include/asm/pgtable_32_types.h \
+  /usr/src/linux-headers-3.2.0-29-generic-pae/arch/x86/include/asm/pgtable-3level.h \
+  include/asm-generic/pgtable.h \
+  include/linux/page-flags.h \
+    $(wildcard include/config/pageflags/extended.h) \
+    $(wildcard include/config/arch/uses/pg/uncached.h) \
+    $(wildcard include/config/memory/failure.h) \
+    $(wildcard include/config/swap.h) \
+    $(wildcard include/config/s390.h) \
+  include/linux/huge_mm.h \
+  include/linux/vmstat.h \
+    $(wildcard include/config/vm/event/counters.h) \
+  include/linux/vm_event_item.h \
   /home/binh/cs5460/hw4/shady.h \
 
 /home/binh/cs5460/hw4/shady.o: $(deps_/home/binh/cs5460/hw4/shady.o)

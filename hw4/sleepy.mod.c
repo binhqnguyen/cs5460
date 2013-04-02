@@ -17,34 +17,34 @@ __attribute__((section(".gnu.linkonce.this_module"))) = {
 static const struct modversion_info ____versions[]
 __used
 __attribute__((section("__versions"))) = {
-	{ 0x98397cc5, "module_layout" },
+	{ 0x68d372d2, "module_layout" },
 	{ 0x3ec8886f, "param_ops_int" },
 	{ 0x48eb0c0d, "__init_waitqueue_head" },
-	{ 0xf1faf509, "device_create" },
-	{ 0x8c71be19, "cdev_add" },
-	{ 0x9f4ce64, "cdev_init" },
-	{ 0xa62925c6, "__mutex_init" },
-	{ 0xd6e17aa6, "__class_create" },
+	{ 0xc60796c9, "device_create" },
+	{ 0x80d78e54, "cdev_add" },
+	{ 0xd46f48e8, "cdev_init" },
+	{ 0x466cddcf, "__mutex_init" },
+	{ 0x34d76c42, "__class_create" },
 	{ 0x29537c9e, "alloc_chrdev_region" },
 	{ 0x12da5bb2, "__kmalloc" },
 	{ 0x2f287f0d, "copy_to_user" },
 	{ 0xe45f60d8, "__wake_up" },
-	{ 0x2f159505, "mutex_lock" },
+	{ 0x4158396c, "mutex_lock" },
 	{ 0x75bb675a, "finish_wait" },
 	{ 0xd62c833f, "schedule_timeout" },
 	{ 0x622fa02a, "prepare_to_wait" },
 	{ 0xc8b57c27, "autoremove_wake_function" },
-	{ 0x5f5602c6, "current_task" },
-	{ 0x47d0592e, "mutex_unlock" },
+	{ 0xc5734835, "current_task" },
+	{ 0x42119286, "mutex_unlock" },
 	{ 0x7d11c268, "jiffies" },
 	{ 0x362ef408, "_copy_from_user" },
-	{ 0x699605d2, "mutex_lock_killable" },
+	{ 0xea5bac94, "mutex_lock_killable" },
 	{ 0x50eedeb8, "printk" },
 	{ 0x7485e15e, "unregister_chrdev_region" },
-	{ 0xf62d269d, "class_destroy" },
+	{ 0x6dcd7881, "class_destroy" },
 	{ 0x37a0cba, "kfree" },
-	{ 0x47c4a86d, "cdev_del" },
-	{ 0x21a21ea4, "device_destroy" },
+	{ 0x8adef804, "cdev_del" },
+	{ 0x6d597694, "device_destroy" },
 	{ 0xb4390f9a, "mcount" },
 };
 
@@ -54,4 +54,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "E749178ABB34006BB6450F7");
+MODULE_INFO(srcversion, "A69D5AD83F7633808A65F5D");

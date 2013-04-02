@@ -146,7 +146,7 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   }
 
   //sscanf(dev->data, "%d", &write_val);
-  write_val = *(int*)dev->data;
+  write_val = (int)*dev->data;
 
   printk(KERN_WARNING "aa4\n");
   /*if written value is negative*/

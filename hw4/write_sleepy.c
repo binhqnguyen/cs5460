@@ -6,7 +6,7 @@
 
 int main( int argc, char* argv[]){
 	int dev_n = -1;
-	int write_val = -1;
+	int write_val;
 	//check the command line argument
 	if (argc != 3){
 		printf("Usage: %s <dev number> <write value>\n", argv[0]);
@@ -23,20 +23,24 @@ int main( int argc, char* argv[]){
 		return -1;
 	}
 
-	char *k_buffer;
 	int w_filedesc = -1;	//writing file description
 	switch (dev_n){
 	case 0:
 		w_filedesc = open("/dev/sleepy0", O_WRONLY);	//write to /dev/sleepy0
-		printf("%d\n",w_filedesc);
+		//printf("%d\n",w_filedesc);
 		if ( (w_filedesc < 0)){
 			printf("Failed to open file /dev/sleepy0\n");
 			return -1;
 		}
-		k_buffer = malloc(sizeof(char));
 		//write to /dev/sleepy0
-		if ( write(w_filedesc, k_buffer, 1) != 1){
-			printf("Error while writing /dev/sleepy0\n");
+		int w_ret = write(w_filedesc, &write_val,4);
+		if ( w_ret < 0){
+			printf("Error while writing /dev/sleepy0. Return %d\n",w_ret);
+		}
+		else if (w_ret != 0){/*sleepy dev woken up normally*/
+			printf("/dev/sleepy0 woken up normally\n");
+		} else {
+			printf("/dev/sleepy0 woken up abnormally. Time left = %d\n",w_ret);
 		}
 		close(w_filedesc);
 		break;
@@ -46,9 +50,8 @@ int main( int argc, char* argv[]){
 			printf("Failed to open file /dev/sleepy1\n");
 			return -1;
 		}
-		k_buffer = malloc(1*sizeof(char));
 		//write to /dev/sleepy1
-		if ( write(w_filedesc, k_buffer, 1) != 1 ){
+		if ( write(w_filedesc, &write_val, 1) != 1 ){
 			printf("Error while writing /dev/sleepy1\n");
 		}
 		close(w_filedesc);
@@ -59,9 +62,8 @@ int main( int argc, char* argv[]){
 			printf("Failed to open file /dev/sleepy2\n");
 			return -1;
 		}
-		k_buffer = malloc(1*sizeof(char));
 		//write to /dev/sleepy2
-		if ( write(w_filedesc, k_buffer, 1) != 1 ){
+		if ( write(w_filedesc, &write_val, 1) != 1 ){
 			printf("Error while writing /dev/sleepy2\n");
 		}
 		close(w_filedesc);
@@ -72,9 +74,8 @@ int main( int argc, char* argv[]){
 			printf("Failed to open file /dev/sleepy3\n");
 			return -1;
 		}
-		k_buffer = malloc(1*sizeof(char));
 		//write to /dev/sleepy3
-		if ( write(w_filedesc, k_buffer, 1) != 1 ){
+		if ( write(w_filedesc, &write_val, 1) != 1 ){
 			printf("Error while writing /dev/sleepy3\n");
 		}
 		close(w_filedesc);
@@ -85,9 +86,8 @@ int main( int argc, char* argv[]){
 			printf("Failed to open file /dev/sleepy4\n");
 			return -1;
 		}
-		k_buffer = (char*) malloc(1*sizeof(char));
 		//write to /dev/sleepy4
-		if ( write(w_filedesc, k_buffer, 1) != 1){
+		if ( write(w_filedesc, &write_val, 1) != 1){
 			printf("Error while writing /dev/sleepy4\n");
 		}
 		close(w_filedesc);
@@ -98,9 +98,8 @@ int main( int argc, char* argv[]){
 			printf("Failed to open file /dev/sleepy9\n");
 			return -1;
 		}
-		k_buffer = malloc(1*sizeof(char));
 		//write to /dev/sleepy9
-		if ( write(w_filedesc, k_buffer, 1) != 1 ){
+		if ( write(w_filedesc, &write_val, 1) != 1 ){
 			printf("Error while writing /dev/sleepy9\n");
 		}
 		close(w_filedesc);

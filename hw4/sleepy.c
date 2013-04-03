@@ -91,15 +91,19 @@ sleepy_read(struct file *filp, char __user *buf, size_t count,
 {
   struct sleepy_dev *dev = (struct sleepy_dev *)filp->private_data;
   ssize_t retval = 0;
-  printk(KERN_INFO "reading from sleepy dev\n");	
   if (mutex_lock_killable(&dev->sleepy_mutex))
     return -EINTR;
   
 /* YOUR CODE HERE */
   /*wake up all sleeping processes*/
+  if (waitqueue_active(&dev->wait_queue)==0){   /*if there is no waiting process in the queue, just return*/
+	retval = 0;
+	printk(KERN_INFO "No process in the wait queue. Read returns immediately\n");
+	goto ret;
+  }
+  /*if there is process waiting*/
   dev->flag = 1;  /*set the wake up condition*/
   wake_up_interruptible(&dev->wait_queue);  /*wake up all processed in the dev->wait_queue)*/
-  printk(KERN_WARNING "woke up all processed\n");
   /*copy reading data to user buffer*/
   if (copy_to_user(buf, dev->data, count) != 0){
     printk(KERN_WARNING "sleepy_read():copy to user failed.\n");
@@ -107,9 +111,9 @@ sleepy_read(struct file *filp, char __user *buf, size_t count,
     goto ret;
   }
   /* END YOUR CODE */
-  mutex_unlock(&dev->sleepy_mutex);
 
   ret:
+  mutex_unlock(&dev->sleepy_mutex); /*release lock before returning*/
   return retval;
 }
                 
@@ -126,18 +130,15 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   int write_val;  /*value written into the device*/
   int is_interrupted = 0; 
 
-  printk(KERN_INFO "Writing to dev sleepy \n");
   /*check the number of bytes written*/
   if (count != 4){
     printk(KERN_WARNING "Not writing 4 bytes to dev, writing %d bytes\n", count);
-    return -EINVAL;
+    return -EINVAL; 
   }
 
-  printk(KERN_WARNING "aa1\n");
   if (mutex_lock_killable(&dev->sleepy_mutex))
     return -EINTR;
 
-  printk(KERN_WARNING "aa2\n");
   /* YOUR CODE HERE */
   if (copy_from_user(dev->data, buf, count) != 0){
     printk(KERN_WARNING "sleepy_write(): copy form user failed.\n");
@@ -145,14 +146,12 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
     goto ret;
   }
 
-  //sscanf(dev->data, "%d", &write_val);
-  write_val = (int)*dev->data;
+  write_val = *(int*)dev->data;
 
-  printk(KERN_WARNING "aa4\n");
   /*if written value is negative*/
   if (write_val< 0){
     printk(KERN_INFO "Writing negative %d value to dev, no sleep\n", write_val);
-    retval = -1;
+    retval = 0;
     goto ret;
   }
   
@@ -160,16 +159,13 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   /*if written value is not negative, sleep for write_val second*/
   /*HZ = number of jiffies per second*/
   sleep = jiffies;  /*ticket count before sleeping*/
-  printk(KERN_WARNING "aa5 %lu\n",sleep);
   mutex_unlock(&dev->sleepy_mutex);	/*release the lock before going to sleep*/
   if (wait_event_interruptible_timeout(dev->wait_queue, dev->flag != 0, write_val*HZ)!=0){
 	is_interrupted = 1;
   }
   woken_up = jiffies; /*ticket count after waking up*/
   mutex_lock(&dev->sleepy_mutex);	/*acquire the lock when woke up*/
-  printk(KERN_WARNING "aa6 %lu\n",woken_up);
   dev->flag = 0;
-  printk(KERN_WARNING "aa7\n");
   /*slept time in seconds*/
   if (is_interrupted == 1){ /*process has been woken up by read (before time out event)*/
     elapsed = (woken_up - sleep)/HZ;
@@ -179,10 +175,11 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   else{ /*process has been slept for write_val seconds*/
     printk(KERN_INFO "Process has been woken up normally.\n");
     retval = 0;
+    goto ret;
   }
   /* END YOUR CODE */
-  mutex_unlock(&dev->sleepy_mutex);
   ret:
+  mutex_unlock(&dev->sleepy_mutex); /*release lock before returning*/
   return retval;
 }
 

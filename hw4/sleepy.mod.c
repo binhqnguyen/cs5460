@@ -37,9 +37,9 @@ __attribute__((section("__versions"))) = {
 	{ 0xc5734835, "current_task" },
 	{ 0x42119286, "mutex_unlock" },
 	{ 0x7d11c268, "jiffies" },
+	{ 0x50eedeb8, "printk" },
 	{ 0x362ef408, "_copy_from_user" },
 	{ 0xea5bac94, "mutex_lock_killable" },
-	{ 0x50eedeb8, "printk" },
 	{ 0x7485e15e, "unregister_chrdev_region" },
 	{ 0x6dcd7881, "class_destroy" },
 	{ 0x37a0cba, "kfree" },
@@ -54,4 +54,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "A69D5AD83F7633808A65F5D");
+MODULE_INFO(srcversion, "35E1ED0F926775EBB6D0322");

@@ -305,7 +305,7 @@ static void __exit
 shady_exit_module(void)
 {
   shady_cleanup_module(shady_ndevices);
-  /*recover the open address in sys_call_table*/
+  /*recover the original open address in sys_call_table*/
   system_call_table_address[__NR_open] = old_open;
   printk(KERN_INFO "Recovered address of the old open inside sys_cal_table.\n");
   return;

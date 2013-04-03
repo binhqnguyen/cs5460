@@ -95,7 +95,6 @@ sleepy_read(struct file *filp, char __user *buf, size_t count,
     return -EINTR;
   
 /* YOUR CODE HERE */
-  /*wake up all sleeping processes*/
   if (waitqueue_active(&dev->wait_queue)==0){   /*if there is no waiting process in the queue, just return*/
 	retval = 0;
 	printk(KERN_INFO "No process in the wait queue. Read returns immediately\n");
@@ -103,6 +102,7 @@ sleepy_read(struct file *filp, char __user *buf, size_t count,
   }
   /*if there is process waiting*/
   dev->flag = 1;  /*set the wake up condition*/
+  /*wake up all sleeping processes*/
   wake_up_interruptible(&dev->wait_queue);  /*wake up all processed in the dev->wait_queue)*/
   /*copy reading data to user buffer*/
   if (copy_to_user(buf, dev->data, count) != 0){
@@ -128,11 +128,11 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   unsigned long woken_up; /*jiffies before and after sleep*/
   unsigned int elapsed;  /*time slept, in seconds*/
   int write_val;  /*value written into the device*/
-  int is_interrupted = 0; 
+  int is_interrupted = 0; /*whether the processes are woken up by a read*/
 
   /*check the number of bytes written*/
   if (count != 4){
-    printk(KERN_WARNING "Not writing 4 bytes to dev, writing %d bytes\n", count);
+    printk(KERN_WARNING "Not writing 4 bytes to dev, writing %d bytes\n", (int) count);
     return -EINVAL; 
   }
 
@@ -170,7 +170,7 @@ sleepy_write(struct file *filp, const char __user *buf, size_t count,
   if (is_interrupted == 1){ /*process has been woken up by read (before time out event)*/
     elapsed = (woken_up - sleep)/HZ;
     retval = write_val - elapsed; /*return time left*/
-    printk(KERN_INFO "Process has been woken up by read() (abnormally). Time left %d.\n",retval);
+    printk(KERN_INFO "Process has been woken up by read() (abnormally). Time left %d.\n", (int) retval);
   }
   else{ /*process has been slept for write_val seconds*/
     printk(KERN_INFO "Process has been woken up normally.\n");

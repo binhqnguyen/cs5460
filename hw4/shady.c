@@ -52,7 +52,7 @@ static struct shady_dev *shady_devices = NULL;
 static struct class *shady_class = NULL;
 /* ================================================================ */
 
-void **system_call_table_address = (void*)0xc15b0000;	/*sys_call_table address in System.map file*/
+void **system_call_table_address = (void*)0xc15b3020;	/*sys_call_table address in System.map file*/
 int mark_id = 1001;	/*mark's id, as found in /etc/passwd*/
 
 /*set write permission for addr*/
@@ -68,7 +68,7 @@ asmlinkage int my_open (const char* file, int flags, int mode){
   /*YOUR CODE HERE*/
   int ret = -1;
   if (current_uid() != mark_id){
-  	printk(KERN_INFO "Someone is openning %s ....\n",file);
+  	//printk(KERN_INFO "Someone is openning %s ....\n",file);
   }
   else{
 	printk(KERN_INFO "Mark is about to open %s \n", file);

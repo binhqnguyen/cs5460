@@ -63,8 +63,8 @@ static struct kmem_cache * minix_inode_cachep;
 
 static struct inode *minix_alloc_inode(struct super_block *sb)
 {
-	printk(KERN_INFO "inode: minix_alloc_inode\n");
 	struct minix_inode_info *ei;
+	printk(KERN_INFO "inode: minix_alloc_inode\n");
 	ei = (struct minix_inode_info *)kmem_cache_alloc(minix_inode_cachep, GFP_KERNEL);
 	if (!ei)
 		return NULL;

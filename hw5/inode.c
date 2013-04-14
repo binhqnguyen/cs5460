@@ -40,9 +40,9 @@ static void minix_evict_inode(struct inode *inode)
 
 static void minix_put_super(struct super_block *sb)
 {
-	printk(KERN_INFO "inode: minix_put_super\n");
 	int i;
 	struct minix_sb_info *sbi = minix_sb(sb);
+	printk(KERN_INFO "inode: minix_put_super\n");
 
 	if (!(sb->s_flags & MS_RDONLY)) {
 		if (sbi->s_version != MINIX_V3)	 /* s_state is now out from V3 sb */
@@ -92,12 +92,13 @@ static void init_once(void *foo)
 
 static int init_inodecache(void)
 {
-	printk(KERN_INFO "inode: init_inodecache\n");
 	minix_inode_cachep = kmem_cache_create("minix_inode_cache",
 					     sizeof(struct minix_inode_info),
 					     0, (SLAB_RECLAIM_ACCOUNT|
 						SLAB_MEM_SPREAD),
 					     init_once);
+		printk(KERN_INFO "inode: init_inodecache\n");
+
 	if (minix_inode_cachep == NULL)
 		return -ENOMEM;
 	return 0;
@@ -121,9 +122,9 @@ static const struct super_operations minix_sops = {
 
 static int minix_remount (struct super_block * sb, int * flags, char * data)
 {
-	printk(KERN_INFO "inode: minix_remout\n");
 	struct minix_sb_info * sbi = minix_sb(sb);
 	struct minix_super_block * ms;
+	printk(KERN_INFO "inode: minix_remout\n");
 
 	ms = sbi->s_ms;
 	if ((*flags & MS_RDONLY) == (sb->s_flags & MS_RDONLY))
@@ -158,7 +159,6 @@ static int minix_remount (struct super_block * sb, int * flags, char * data)
 
 static int minix_fill_super(struct super_block *s, void *data, int silent)
 {
-	printk(KERN_INFO "inode: minix_fill_super\n");
 	struct buffer_head *bh;
 	struct buffer_head **map;
 	struct minix_super_block *ms;
@@ -167,6 +167,7 @@ static int minix_fill_super(struct super_block *s, void *data, int silent)
 	struct inode *root_inode;
 	struct minix_sb_info *sbi;
 	int ret = -EINVAL;
+	printk(KERN_INFO "inode: minix_fill_super\n");
 
 	sbi = kzalloc(sizeof(struct minix_sb_info), GFP_KERNEL);
 	if (!sbi)
@@ -495,11 +496,11 @@ static struct inode *V1_minix_iget(struct inode *inode)
  */
 static struct inode *V2_minix_iget(struct inode *inode)
 {
-	printk(KERN_INFO "inode: V2_minix_iget\n");
 	struct buffer_head * bh;
 	struct minix2_inode * raw_inode;
 	struct minix_inode_info *minix_inode = minix_i(inode);
 	int i;
+	printk(KERN_INFO "inode: V2_minix_iget\n");
 
 	raw_inode = minix_V2_raw_inode(inode->i_sb, inode->i_ino, &bh);
 	if (!raw_inode) {
@@ -531,8 +532,10 @@ static struct inode *V2_minix_iget(struct inode *inode)
  */
 struct inode *minix_iget(struct super_block *sb, unsigned long ino)
 {
-	printk(KERN_INFO "inode: minix_iget\n");
 	struct inode *inode;
+
+		printk(KERN_INFO "inode: minix_iget\n");
+
 
 	inode = iget_locked(sb, ino);
 	if (!inode)
@@ -578,11 +581,12 @@ static struct buffer_head * V1_minix_update_inode(struct inode * inode)
  */
 static struct buffer_head * V2_minix_update_inode(struct inode * inode)
 {
-	printk(KERN_INFO "inode: V2_minix_update_inode\n");
 	struct buffer_head * bh;
 	struct minix2_inode * raw_inode;
 	struct minix_inode_info *minix_inode = minix_i(inode);
 	int i;
+
+		printk(KERN_INFO "inode: V2_minix_update_inode\n");
 
 	raw_inode = minix_V2_raw_inode(inode->i_sb, inode->i_ino, &bh);
 	if (!raw_inode)
@@ -605,9 +609,10 @@ static struct buffer_head * V2_minix_update_inode(struct inode * inode)
 
 static int minix_write_inode(struct inode *inode, struct writeback_control *wbc)
 {
-	printk(KERN_INFO "inode: minix_write_inode\n");
 	int err = 0;
 	struct buffer_head *bh;
+
+	printk(KERN_INFO "inode: minix_write_inode\n");
 
 	if (INODE_VERSION(inode) == MINIX_V1)
 		bh = V1_minix_update_inode(inode);

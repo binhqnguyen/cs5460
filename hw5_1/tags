@@ -1,0 +1,17 @@
+INODE_VERSION	minix.h	/^#define INODE_VERSION(inode)	minix_sb(inode->i_sb)/
+minix2_inode	minix_fs.h	/^struct minix2_inode {$/
+minix3_dir_entry	minix_fs.h	/^struct minix3_dir_entry {$/
+minix3_super_block	minix_fs.h	/^struct minix3_super_block {$/
+minix_blocks_needed	minix.h	/^static inline unsigned minix_blocks_needed(unsigne/
+minix_dir_entry	minix_fs.h	/^struct minix_dir_entry {$/
+minix_find_first_zero_bit	minix.h	/^#define minix_find_first_zero_bit(addr, size) \\$/
+minix_i	minix.h	/^static inline struct minix_inode_info *minix_i(str/
+minix_inode	minix_fs.h	/^struct minix_inode {$/
+minix_inode_info	minix.h	/^struct minix_inode_info {$/
+minix_sb	minix.h	/^static inline struct minix_sb_info *minix_sb(struc/
+minix_sb_info	minix.h	/^struct minix_sb_info {$/
+minix_set_bit	minix.h	/^#define minix_set_bit(nr, addr)		\\$/
+minix_super_block	minix_fs.h	/^struct minix_super_block {$/
+minix_test_and_clear_bit	minix.h	/^#define minix_test_and_clear_bit(nr, addr) \\$/
+minix_test_and_set_bit	minix.h	/^#define minix_test_and_set_bit(nr, addr)	\\$/
+minix_test_bit	minix.h	/^#define minix_test_bit(nr, addr)		\\$/

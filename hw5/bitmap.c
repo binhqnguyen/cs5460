@@ -133,8 +133,9 @@ minix_V1_raw_inode(struct super_block *sb, ino_t ino, struct buffer_head **bh)
 	return p + ino % MINIX_INODES_PER_BLOCK;
 }
 
+/*return the disk address of an inode (pointer to an inode)*/
 struct minix2_inode *
-minix_V2_raw_inode(struct super_block *sb, ino_t ino, struct buffer_head **bh)	/*read an inode from a memory?*/
+minix_V2_raw_inode(struct super_block *sb, ino_t ino, struct buffer_head **bh)	/*read an inode from disk, put the block data into buffer_head*/
 {
 	int block;
 	struct minix_sb_info *sbi = minix_sb(sb);
@@ -150,13 +151,13 @@ minix_V2_raw_inode(struct super_block *sb, ino_t ino, struct buffer_head **bh)	/
 	}
 	ino--;
 	block = 2 + sbi->s_imap_blocks + sbi->s_zmap_blocks +
-		 ino / minix2_inodes_per_block;
-	*bh = sb_bread(sb, block);
+		 ino / minix2_inodes_per_block;	/*get the block number (on disk) that contains the inode*/
+	*bh = sb_bread(sb, block); /*read the block by sb_read(), value is put into bh buffer_head*/
 	if (!*bh) {
 		printk("Unable to read inode block\n");
 		return NULL;
 	}
-	p = (void *)(*bh)->b_data;
+	p = (void *)(*bh)->b_data;/*address of block contain the seeking inode*/
 	return p + ino % minix2_inodes_per_block;
 }
 

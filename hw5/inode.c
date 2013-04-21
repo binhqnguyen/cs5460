@@ -61,6 +61,7 @@ static void minix_put_super(struct super_block *sb)
 
 static struct kmem_cache * minix_inode_cachep;
 
+/*allocate new space in memory for an inode*/
 static struct inode *minix_alloc_inode(struct super_block *sb)
 {
 	struct minix_inode_info *ei;
@@ -502,11 +503,12 @@ static struct inode *V2_minix_iget(struct inode *inode)
 	int i;
 	printk(KERN_INFO "inode: V2_minix_iget\n");
 
-	raw_inode = minix_V2_raw_inode(inode->i_sb, inode->i_ino, &bh);
+	raw_inode = minix_V2_raw_inode(inode->i_sb, inode->i_ino, &bh);/*read inode from disk*/
 	if (!raw_inode) {
 		iget_failed(inode);
 		return ERR_PTR(-EIO);
 	}
+	/*copy the inode retrieved from disk to the inode in memory*/
 	inode->i_mode = raw_inode->i_mode;
 	inode->i_uid = (uid_t)raw_inode->i_uid;
 	inode->i_gid = (gid_t)raw_inode->i_gid;
@@ -519,9 +521,9 @@ static struct inode *V2_minix_iget(struct inode *inode)
 	inode->i_atime.tv_nsec = 0;
 	inode->i_ctime.tv_nsec = 0;
 	inode->i_blocks = 0;
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < 10; i++)/*copy zones*/
 		minix_inode->u.i2_data[i] = raw_inode->i_zone[i];
-	minix_set_inode(inode, old_decode_dev(raw_inode->i_zone[0]));
+	minix_set_inode(inode, old_decode_dev(raw_inode->i_zone[0]));/*set inode type: directory or file*/
 	brelse(bh);
 	unlock_new_inode(inode);
 	return inode;

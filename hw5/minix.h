@@ -16,7 +16,7 @@
 struct minix_inode_info {
 	union {
 		__u16 i1_data[16];
-		__u32 i2_data[16];
+		__u32 i2_data[16];/*zones*/
 	} u;
 	struct inode vfs_inode;
 };

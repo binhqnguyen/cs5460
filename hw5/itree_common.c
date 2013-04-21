@@ -141,7 +141,7 @@ changed:
 		minix_free_block(inode, block_to_cpu(where[i].key));
 	return -EAGAIN;
 }
-
+/*load a block from disk to buffer_head bh*/
 static inline int get_block(struct inode * inode, sector_t block,
 			struct buffer_head *bh, int create)
 {
@@ -150,9 +150,9 @@ static inline int get_block(struct inode * inode, sector_t block,
 	Indirect chain[DEPTH];
 	Indirect *partial;
 	int left;
-	int depth = block_to_path(inode, block, offsets);
-
-	if (depth == 0)
+	int depth = block_to_path(inode, block, offsets); /*get the depth (indirect) that this block is in*/
+	printk(KERN_INFO "itree_common: get_block\n");
+	if (depth == 0)/*invalid block number*/
 		goto out;
 
 reread:
@@ -160,8 +160,9 @@ reread:
 
 	/* Simplest case - block found, no allocation needed */
 	if (!partial) {
+	printk(KERN_INFO "itree_common->get_block: get_branch inode found\n");
 got_it:
-		map_bh(bh, inode->i_sb, block_to_cpu(chain[depth-1].key));
+		map_bh(bh, inode->i_sb, block_to_cpu(chain[depth-1].key));/*map a block (on disk) to bh*/
 		/* Clean up and exit */
 		partial = chain+depth-1; /* the whole chain */
 		goto cleanup;

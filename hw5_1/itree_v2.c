@@ -68,11 +68,10 @@ static int block_to_path(struct inode *inode, long block){
 	int i;
 	for (i = 0; i < 7; ++i){
 		if (minix_inode->u.i2_data[i] == block){	//block number matched in inode
-			printk(KERN_INFO "Found block %lu in inode\n",block);
 			retval = 1;
+			break;
 		}
 	}
-	printk(KERN_INFO "block %lu not found in inode\n",block);
 	return retval;
 }
 #include "itree_common.c"

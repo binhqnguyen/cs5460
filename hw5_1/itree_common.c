@@ -152,12 +152,13 @@ static inline int get_block(struct inode * inode, sector_t block,
 	//Indirect *partial;
 	//int left;
 	int is_valid = block_to_path(inode, block); /*check if the block is not in the inode zone*/
-	printk(KERN_INFO "itree_common: get_block\n");
-	if (is_valid == 0)/*invalid block number*/
+	if (is_valid == 0){/*invalid block number*/
+		printk(KERN_INFO "itree_common->get_block: block %lu not found\n", block);
 		goto out;
+	}
 
 	/* Simplest case - block found, no allocation needed */
-	printk(KERN_INFO "itree_common->get_block: block found\n");
+	printk(KERN_INFO "itree_common->get_block: block %lu found\n", block);
 	map_bh(bh, inode->i_sb, block);/*map a block (on disk) to bh*/
 
 	/* Next simple case - plain lookup or failed read of indirect block */

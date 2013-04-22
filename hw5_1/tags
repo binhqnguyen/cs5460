@@ -1,17 +1,225 @@
-INODE_VERSION	minix.h	/^#define INODE_VERSION(inode)	minix_sb(inode->i_sb)/
-minix2_inode	minix_fs.h	/^struct minix2_inode {$/
-minix3_dir_entry	minix_fs.h	/^struct minix3_dir_entry {$/
-minix3_super_block	minix_fs.h	/^struct minix3_super_block {$/
-minix_blocks_needed	minix.h	/^static inline unsigned minix_blocks_needed(unsigne/
-minix_dir_entry	minix_fs.h	/^struct minix_dir_entry {$/
-minix_find_first_zero_bit	minix.h	/^#define minix_find_first_zero_bit(addr, size) \\$/
-minix_i	minix.h	/^static inline struct minix_inode_info *minix_i(str/
-minix_inode	minix_fs.h	/^struct minix_inode {$/
-minix_inode_info	minix.h	/^struct minix_inode_info {$/
-minix_sb	minix.h	/^static inline struct minix_sb_info *minix_sb(struc/
-minix_sb_info	minix.h	/^struct minix_sb_info {$/
-minix_set_bit	minix.h	/^#define minix_set_bit(nr, addr)		\\$/
-minix_super_block	minix_fs.h	/^struct minix_super_block {$/
-minix_test_and_clear_bit	minix.h	/^#define minix_test_and_clear_bit(nr, addr) \\$/
-minix_test_and_set_bit	minix.h	/^#define minix_test_and_set_bit(nr, addr)	\\$/
-minix_test_bit	minix.h	/^#define minix_test_bit(nr, addr)		\\$/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+DEPTH	itree_v1.c	/^enum {DEPTH = 3, DIRECT = 7};	\/* Only double indirect *\/$/;"	e	enum:__anon2	file:
+DEPTH	itree_v2.c	/^enum {DIRECT = 7, DEPTH = 4};	\/* Have triple indirect *\/$/;"	e	enum:__anon3	file:
+DIRCOUNT	itree_v2.c	23;"	d	file:
+DIRECT	itree_v1.c	/^enum {DEPTH = 3, DIRECT = 7};	\/* Only double indirect *\/$/;"	e	enum:__anon2	file:
+DIRECT	itree_v2.c	/^enum {DIRECT = 7, DEPTH = 4};	\/* Have triple indirect *\/$/;"	e	enum:__anon3	file:
+FS_MINIX_H	minix.h	2;"	d
+INDIRCOUNT	itree_v2.c	24;"	d	file:
+INODE_VERSION	minix.h	8;"	d
+Indirect	itree_common.c	/^} Indirect;$/;"	t	typeref:struct:__anon1	file:
+MINIX2_LINK_MAX	minix_fs.h	21;"	d
+MINIX_ERROR_FS	minix_fs.h	26;"	d
+MINIX_INODES_PER_BLOCK	minix_fs.h	28;"	d
+MINIX_I_MAP_SLOTS	minix_fs.h	23;"	d
+MINIX_LINK_MAX	minix_fs.h	20;"	d
+MINIX_ROOT_INO	minix_fs.h	17;"	d
+MINIX_V1	minix.h	9;"	d
+MINIX_V2	minix.h	10;"	d
+MINIX_V3	minix.h	11;"	d
+MINIX_VALID_FS	minix_fs.h	25;"	d
+MINIX_Z_MAP_SLOTS	minix_fs.h	24;"	d
+V1_minix_blocks	itree_v1.c	/^unsigned V1_minix_blocks(loff_t size, struct super_block *sb)$/;"	f
+V1_minix_get_block	itree_v1.c	/^int V1_minix_get_block(struct inode * inode, long block,$/;"	f
+V1_minix_iget	inode.c	/^static struct inode *V1_minix_iget(struct inode *inode)$/;"	f	file:
+V1_minix_truncate	itree_v1.c	/^void V1_minix_truncate(struct inode * inode)$/;"	f
+V1_minix_update_inode	inode.c	/^static struct buffer_head * V1_minix_update_inode(struct inode * inode)$/;"	f	file:
+V2_minix_blocks	itree_v2.c	/^unsigned V2_minix_blocks(loff_t size, struct super_block *sb)$/;"	f
+V2_minix_get_block	itree_v2.c	/^int V2_minix_get_block(struct inode * inode, long block,$/;"	f
+V2_minix_iget	inode.c	/^static struct inode *V2_minix_iget(struct inode *inode)$/;"	f	file:
+V2_minix_truncate	itree_v2.c	/^void V2_minix_truncate(struct inode * inode)$/;"	f
+V2_minix_update_inode	inode.c	/^static struct buffer_head * V2_minix_update_inode(struct inode * inode)$/;"	f	file:
+_LINUX_MINIX_FS_H	minix_fs.h	2;"	d
+add_chain	itree_common.c	/^static inline void add_chain(Indirect *p, struct buffer_head *bh, block_t *v)$/;"	f	file:
+add_nondir	namei.c	/^static int add_nondir(struct dentry *dentry, struct inode *inode)$/;"	f	file:
+all_zeroes	itree_common.c	/^static inline int all_zeroes(block_t *p, block_t *q)$/;"	f	file:
+alloc_branch	itree_common.c	/^static int alloc_branch(struct inode *inode,$/;"	f	file:
+bh	itree_common.c	/^	struct buffer_head *bh;$/;"	m	struct:__anon1	typeref:struct:__anon1::buffer_head	file:
+block_end	itree_common.c	/^static inline block_t *block_end(struct buffer_head *bh)$/;"	f	file:
+block_t	itree_v1.c	/^typedef u16 block_t;	\/* 16 bit, host order *\/$/;"	t	file:
+block_t	itree_v2.c	/^typedef u32 block_t;	\/* 32 bit, host order *\/$/;"	t	file:
+block_to_cpu	itree_v1.c	/^static inline unsigned long block_to_cpu(block_t n)$/;"	f	file:
+block_to_cpu	itree_v2.c	/^static inline unsigned long block_to_cpu(block_t n)$/;"	f	file:
+block_to_path	itree_v1.c	/^static int block_to_path(struct inode * inode, long block, int offsets[DEPTH])$/;"	f	file:
+block_to_path	itree_v2.c	/^static int block_to_path(struct inode *inode, long block){$/;"	f	file:
+count_free	bitmap.c	/^static __u32 count_free(struct buffer_head *map[], unsigned blocksize, __u32 numbits)$/;"	f	file:
+cpu_to_block	itree_v1.c	/^static inline block_t cpu_to_block(unsigned long n)$/;"	f	file:
+cpu_to_block	itree_v2.c	/^static inline block_t cpu_to_block(unsigned long n)$/;"	f	file:
+destroy_inodecache	inode.c	/^static void destroy_inodecache(void)$/;"	f	file:
+dir_commit_chunk	dir.c	/^static int dir_commit_chunk(struct page *page, loff_t pos, unsigned len)$/;"	f	file:
+dir_get_page	dir.c	/^static struct page * dir_get_page(struct inode *dir, unsigned long n)$/;"	f	file:
+dir_pages	dir.c	/^static inline unsigned long dir_pages(struct inode *inode)$/;"	f	file:
+dir_put_page	dir.c	/^static inline void dir_put_page(struct page *page)$/;"	f	file:
+exit_minix_fs	inode.c	/^static void __exit exit_minix_fs(void)$/;"	f	file:
+find_shared	itree_common.c	/^static Indirect *find_shared(struct inode *inode,$/;"	f	file:
+free_branches	itree_common.c	/^static void free_branches(struct inode *inode, block_t *p, block_t *q, int depth)$/;"	f	file:
+free_data	itree_common.c	/^static inline void free_data(struct inode *inode, block_t *p, block_t *q)$/;"	f	file:
+get_block	itree_common.c	/^static inline int get_block(struct inode * inode, sector_t block,$/;"	f	file:
+get_branch	itree_common.c	/^static inline Indirect *get_branch(struct inode *inode,$/;"	f	file:
+i1_data	minix.h	/^		__u16 i1_data[16];$/;"	m	union:minix_inode_info::__anon4
+i2_data	minix.h	/^		__u32 i2_data[16];\/*zones*\/$/;"	m	union:minix_inode_info::__anon4
+i_atime	minix_fs.h	/^	__u32 i_atime;$/;"	m	struct:minix2_inode
+i_ctime	minix_fs.h	/^	__u32 i_ctime;$/;"	m	struct:minix2_inode
+i_data	itree_v1.c	/^static inline block_t *i_data(struct inode *inode)$/;"	f	file:
+i_data	itree_v2.c	/^static inline block_t *i_data(struct inode *inode)$/;"	f	file:
+i_gid	minix_fs.h	/^	__u16 i_gid;$/;"	m	struct:minix2_inode
+i_gid	minix_fs.h	/^	__u8  i_gid;$/;"	m	struct:minix_inode
+i_mode	minix_fs.h	/^	__u16 i_mode;$/;"	m	struct:minix2_inode
+i_mode	minix_fs.h	/^	__u16 i_mode;$/;"	m	struct:minix_inode
+i_mtime	minix_fs.h	/^	__u32 i_mtime;$/;"	m	struct:minix2_inode
+i_nlinks	minix_fs.h	/^	__u16 i_nlinks;$/;"	m	struct:minix2_inode
+i_nlinks	minix_fs.h	/^	__u8  i_nlinks;$/;"	m	struct:minix_inode
+i_size	minix_fs.h	/^	__u32 i_size;$/;"	m	struct:minix2_inode
+i_size	minix_fs.h	/^	__u32 i_size;$/;"	m	struct:minix_inode
+i_time	minix_fs.h	/^	__u32 i_time;$/;"	m	struct:minix_inode
+i_uid	minix_fs.h	/^	__u16 i_uid;$/;"	m	struct:minix2_inode
+i_uid	minix_fs.h	/^	__u16 i_uid;$/;"	m	struct:minix_inode
+i_zone	minix_fs.h	/^	__u16 i_zone[9];$/;"	m	struct:minix_inode
+i_zone	minix_fs.h	/^	__u32 i_zone[10];\/*3 bytes (24 bits) are block number, 1 byte (8 bits) is region length*\/$/;"	m	struct:minix2_inode
+init_inodecache	inode.c	/^static int init_inodecache(void)$/;"	f	file:
+init_minix_fs	inode.c	/^static int __init init_minix_fs(void)$/;"	f	file:
+init_once	inode.c	/^static void init_once(void *foo)$/;"	f	file:
+inode	minix_fs.h	/^	__u16 inode;$/;"	m	struct:minix_dir_entry
+inode	minix_fs.h	/^	__u32 inode;$/;"	m	struct:minix3_dir_entry
+key	itree_common.c	/^	block_t	key;$/;"	m	struct:__anon1	file:
+minix2_inode	minix_fs.h	/^struct minix2_inode {$/;"	s
+minix3_dir_entry	minix_fs.h	/^struct minix3_dir_entry {$/;"	s
+minix3_dirent	dir.c	/^typedef struct minix3_dir_entry minix3_dirent;$/;"	t	typeref:struct:minix3_dir_entry	file:
+minix3_super_block	minix_fs.h	/^struct minix3_super_block {$/;"	s
+minix_V1_raw_inode	bitmap.c	/^minix_V1_raw_inode(struct super_block *sb, ino_t ino, struct buffer_head **bh)$/;"	f
+minix_V2_raw_inode	bitmap.c	/^minix_V2_raw_inode(struct super_block *sb, ino_t ino, struct buffer_head **bh)	\/*read an inode from disk, put the block data into buffer_head*\/$/;"	f
+minix_add_link	dir.c	/^int minix_add_link(struct dentry *dentry, struct inode *inode)$/;"	f
+minix_alloc_inode	inode.c	/^static struct inode *minix_alloc_inode(struct super_block *sb)$/;"	f	file:
+minix_aops	inode.c	/^static const struct address_space_operations minix_aops = {$/;"	v	typeref:struct:address_space_operations	file:
+minix_blocks_needed	minix.h	/^static inline unsigned minix_blocks_needed(unsigned bits, unsigned blocksize)$/;"	f
+minix_bmap	inode.c	/^static sector_t minix_bmap(struct address_space *mapping, sector_t block)$/;"	f	file:
+minix_clear_inode	bitmap.c	/^static void minix_clear_inode(struct inode *inode)$/;"	f	file:
+minix_count_free_blocks	bitmap.c	/^unsigned long minix_count_free_blocks(struct super_block *sb)$/;"	f
+minix_count_free_inodes	bitmap.c	/^unsigned long minix_count_free_inodes(struct super_block *sb)$/;"	f
+minix_create	namei.c	/^static int minix_create(struct inode * dir, struct dentry *dentry, int mode,$/;"	f	file:
+minix_delete_entry	dir.c	/^int minix_delete_entry(struct minix_dir_entry *de, struct page *page)$/;"	f
+minix_destroy_inode	inode.c	/^static void minix_destroy_inode(struct inode *inode)$/;"	f	file:
+minix_dir_entry	minix_fs.h	/^struct minix_dir_entry {$/;"	s
+minix_dir_inode_operations	namei.c	/^const struct inode_operations minix_dir_inode_operations = {$/;"	v	typeref:struct:inode_operations
+minix_dir_operations	dir.c	/^const struct file_operations minix_dir_operations = {$/;"	v	typeref:struct:file_operations
+minix_dirent	dir.c	/^typedef struct minix_dir_entry minix_dirent;$/;"	t	typeref:struct:minix_dir_entry	file:
+minix_dotdot	dir.c	/^struct minix_dir_entry * minix_dotdot (struct inode *dir, struct page **p)$/;"	f
+minix_empty_dir	dir.c	/^int minix_empty_dir(struct inode * inode)$/;"	f
+minix_evict_inode	inode.c	/^static void minix_evict_inode(struct inode *inode)$/;"	f	file:
+minix_file_inode_operations	file.c	/^const struct inode_operations minix_file_inode_operations = {$/;"	v	typeref:struct:inode_operations
+minix_file_operations	file.c	/^const struct file_operations minix_file_operations = {$/;"	v	typeref:struct:file_operations
+minix_fill_super	inode.c	/^static int minix_fill_super(struct super_block *s, void *data, int silent)$/;"	f	file:
+minix_find_entry	dir.c	/^minix_dirent *minix_find_entry(struct dentry *dentry, struct page **res_page)$/;"	f
+minix_find_first_zero_bit	minix.h	/^static inline int minix_find_first_zero_bit(const void *vaddr, unsigned size)$/;"	f
+minix_find_first_zero_bit	minix.h	116;"	d
+minix_find_first_zero_bit	minix.h	166;"	d
+minix_free_block	bitmap.c	/^void minix_free_block(struct inode *inode, unsigned long block)$/;"	f
+minix_free_inode	bitmap.c	/^void minix_free_inode(struct inode * inode)$/;"	f
+minix_fs_type	inode.c	/^static struct file_system_type minix_fs_type = {$/;"	v	typeref:struct:file_system_type	file:
+minix_get_block	inode.c	/^static int minix_get_block(struct inode *inode, sector_t block,$/;"	f	file:
+minix_getattr	inode.c	/^int minix_getattr(struct vfsmount *mnt, struct dentry *dentry, struct kstat *stat)$/;"	f
+minix_i	minix.h	/^static inline struct minix_inode_info *minix_i(struct inode *inode)$/;"	f
+minix_i_callback	inode.c	/^static void minix_i_callback(struct rcu_head *head)$/;"	f	file:
+minix_iget	inode.c	/^struct inode *minix_iget(struct super_block *sb, unsigned long ino)$/;"	f
+minix_inode	minix_fs.h	/^struct minix_inode {$/;"	s
+minix_inode_by_name	dir.c	/^ino_t minix_inode_by_name(struct dentry *dentry)$/;"	f
+minix_inode_cachep	inode.c	/^static struct kmem_cache * minix_inode_cachep;$/;"	v	typeref:struct:kmem_cache	file:
+minix_inode_info	minix.h	/^struct minix_inode_info {$/;"	s
+minix_last_byte	dir.c	/^minix_last_byte(struct inode *inode, unsigned long page_nr)$/;"	f	file:
+minix_link	namei.c	/^static int minix_link(struct dentry * old_dentry, struct inode * dir,$/;"	f	file:
+minix_lookup	namei.c	/^static struct dentry *minix_lookup(struct inode * dir, struct dentry *dentry, struct nameidata *nd)$/;"	f	file:
+minix_make_empty	dir.c	/^int minix_make_empty(struct inode *inode, struct inode *dir)$/;"	f
+minix_mkdir	namei.c	/^static int minix_mkdir(struct inode * dir, struct dentry *dentry, int mode)$/;"	f	file:
+minix_mknod	namei.c	/^static int minix_mknod(struct inode * dir, struct dentry *dentry, int mode, dev_t rdev)$/;"	f	file:
+minix_mount	inode.c	/^static struct dentry *minix_mount(struct file_system_type *fs_type,$/;"	f	file:
+minix_new_block	bitmap.c	/^int minix_new_block(struct inode * inode)$/;"	f
+minix_new_inode	bitmap.c	/^struct inode *minix_new_inode(const struct inode *dir, int mode, int *error)$/;"	f
+minix_next_entry	dir.c	/^static inline void *minix_next_entry(void *de, struct minix_sb_info *sbi)$/;"	f	file:
+minix_prepare_chunk	inode.c	/^int minix_prepare_chunk(struct page *page, loff_t pos, unsigned len)$/;"	f
+minix_put_super	inode.c	/^static void minix_put_super(struct super_block *sb)$/;"	f	file:
+minix_readdir	dir.c	/^static int minix_readdir(struct file * filp, void * dirent, filldir_t filldir)$/;"	f	file:
+minix_readpage	inode.c	/^static int minix_readpage(struct file *file, struct page *page)$/;"	f	file:
+minix_remount	inode.c	/^static int minix_remount (struct super_block * sb, int * flags, char * data)$/;"	f	file:
+minix_rename	namei.c	/^static int minix_rename(struct inode * old_dir, struct dentry *old_dentry,$/;"	f	file:
+minix_rmdir	namei.c	/^static int minix_rmdir(struct inode * dir, struct dentry *dentry)$/;"	f	file:
+minix_sb	minix.h	/^static inline struct minix_sb_info *minix_sb(struct super_block *sb)$/;"	f
+minix_sb_info	minix.h	/^struct minix_sb_info {$/;"	s
+minix_set_bit	minix.h	110;"	d
+minix_set_bit	minix.h	145;"	d
+minix_set_bit	minix.h	163;"	d
+minix_set_inode	inode.c	/^void minix_set_inode(struct inode *inode, dev_t rdev)$/;"	f
+minix_set_link	dir.c	/^void minix_set_link(struct minix_dir_entry *de, struct page *page,$/;"	f
+minix_setattr	file.c	/^static int minix_setattr(struct dentry *dentry, struct iattr *attr)$/;"	f	file:
+minix_sops	inode.c	/^static const struct super_operations minix_sops = {$/;"	v	typeref:struct:super_operations	file:
+minix_statfs	inode.c	/^static int minix_statfs(struct dentry *dentry, struct kstatfs *buf)$/;"	f	file:
+minix_super_block	minix_fs.h	/^struct minix_super_block {$/;"	s
+minix_symlink	namei.c	/^static int minix_symlink(struct inode * dir, struct dentry *dentry,$/;"	f	file:
+minix_symlink_inode_operations	inode.c	/^static const struct inode_operations minix_symlink_inode_operations = {$/;"	v	typeref:struct:inode_operations	file:
+minix_test_and_clear_bit	minix.h	112;"	d
+minix_test_and_clear_bit	minix.h	147;"	d
+minix_test_and_clear_bit	minix.h	164;"	d
+minix_test_and_set_bit	minix.h	108;"	d
+minix_test_and_set_bit	minix.h	143;"	d
+minix_test_and_set_bit	minix.h	162;"	d
+minix_test_bit	minix.h	/^static inline int minix_test_bit(int nr, const void *vaddr)$/;"	f
+minix_test_bit	minix.h	114;"	d
+minix_test_bit	minix.h	165;"	d
+minix_truncate	inode.c	/^void minix_truncate(struct inode * inode)$/;"	f
+minix_unlink	namei.c	/^static int minix_unlink(struct inode * dir, struct dentry *dentry)$/;"	f	file:
+minix_write_begin	inode.c	/^static int minix_write_begin(struct file *file, struct address_space *mapping,$/;"	f	file:
+minix_write_inode	inode.c	/^static int minix_write_inode(struct inode *inode, struct writeback_control *wbc)$/;"	f	file:
+minix_writepage	inode.c	/^static int minix_writepage(struct page *page, struct writeback_control *wbc)$/;"	f	file:
+name	minix_fs.h	/^	char name[0];$/;"	m	struct:minix3_dir_entry
+name	minix_fs.h	/^	char name[0];$/;"	m	struct:minix_dir_entry
+namecompare	dir.c	/^static inline int namecompare(int len, int maxlen,$/;"	f	file:
+nblocks	itree_common.c	/^static inline unsigned nblocks(loff_t size, struct super_block *sb)$/;"	f	file:
+p	itree_common.c	/^	block_t	*p;$/;"	m	struct:__anon1	file:
+s_blocksize	minix_fs.h	/^	__u16 s_blocksize;$/;"	m	struct:minix3_super_block
+s_dirsize	minix.h	/^	int s_dirsize;$/;"	m	struct:minix_sb_info
+s_disk_version	minix_fs.h	/^	__u8  s_disk_version;$/;"	m	struct:minix3_super_block
+s_firstdatazone	minix.h	/^	unsigned long s_firstdatazone;$/;"	m	struct:minix_sb_info
+s_firstdatazone	minix_fs.h	/^	__u16 s_firstdatazone;$/;"	m	struct:minix3_super_block
+s_firstdatazone	minix_fs.h	/^	__u16 s_firstdatazone;$/;"	m	struct:minix_super_block
+s_imap	minix.h	/^	struct buffer_head ** s_imap;$/;"	m	struct:minix_sb_info	typeref:struct:minix_sb_info::buffer_head
+s_imap_blocks	minix.h	/^	unsigned long s_imap_blocks;$/;"	m	struct:minix_sb_info
+s_imap_blocks	minix_fs.h	/^	__u16 s_imap_blocks;$/;"	m	struct:minix3_super_block
+s_imap_blocks	minix_fs.h	/^	__u16 s_imap_blocks;$/;"	m	struct:minix_super_block
+s_link_max	minix.h	/^	int s_link_max;$/;"	m	struct:minix_sb_info
+s_log_zone_size	minix.h	/^	unsigned long s_log_zone_size;$/;"	m	struct:minix_sb_info
+s_log_zone_size	minix_fs.h	/^	__u16 s_log_zone_size;$/;"	m	struct:minix3_super_block
+s_log_zone_size	minix_fs.h	/^	__u16 s_log_zone_size;$/;"	m	struct:minix_super_block
+s_magic	minix_fs.h	/^	__u16 s_magic;$/;"	m	struct:minix3_super_block
+s_magic	minix_fs.h	/^	__u16 s_magic;$/;"	m	struct:minix_super_block
+s_max_size	minix.h	/^	unsigned long s_max_size;$/;"	m	struct:minix_sb_info
+s_max_size	minix_fs.h	/^	__u32 s_max_size;$/;"	m	struct:minix3_super_block
+s_max_size	minix_fs.h	/^	__u32 s_max_size;$/;"	m	struct:minix_super_block
+s_mount_state	minix.h	/^	unsigned short s_mount_state;$/;"	m	struct:minix_sb_info
+s_ms	minix.h	/^	struct minix_super_block * s_ms;$/;"	m	struct:minix_sb_info	typeref:struct:minix_sb_info::minix_super_block
+s_namelen	minix.h	/^	int s_namelen;$/;"	m	struct:minix_sb_info
+s_ninodes	minix.h	/^	unsigned long s_ninodes;$/;"	m	struct:minix_sb_info
+s_ninodes	minix_fs.h	/^	__u16 s_ninodes;$/;"	m	struct:minix_super_block
+s_ninodes	minix_fs.h	/^	__u32 s_ninodes;$/;"	m	struct:minix3_super_block
+s_nzones	minix.h	/^	unsigned long s_nzones;$/;"	m	struct:minix_sb_info
+s_nzones	minix_fs.h	/^	__u16 s_nzones;$/;"	m	struct:minix_super_block
+s_pad0	minix_fs.h	/^	__u16 s_pad0;$/;"	m	struct:minix3_super_block
+s_pad1	minix_fs.h	/^	__u16 s_pad1;$/;"	m	struct:minix3_super_block
+s_pad2	minix_fs.h	/^	__u16 s_pad2;$/;"	m	struct:minix3_super_block
+s_sbh	minix.h	/^	struct buffer_head * s_sbh;$/;"	m	struct:minix_sb_info	typeref:struct:minix_sb_info::buffer_head
+s_state	minix_fs.h	/^	__u16 s_state;$/;"	m	struct:minix_super_block
+s_version	minix.h	/^	unsigned short s_version;$/;"	m	struct:minix_sb_info
+s_zmap	minix.h	/^	struct buffer_head ** s_zmap;$/;"	m	struct:minix_sb_info	typeref:struct:minix_sb_info::buffer_head
+s_zmap_blocks	minix.h	/^	unsigned long s_zmap_blocks;$/;"	m	struct:minix_sb_info
+s_zmap_blocks	minix_fs.h	/^	__u16 s_zmap_blocks;$/;"	m	struct:minix3_super_block
+s_zmap_blocks	minix_fs.h	/^	__u16 s_zmap_blocks;$/;"	m	struct:minix_super_block
+s_zones	minix_fs.h	/^	__u32 s_zones;$/;"	m	struct:minix3_super_block
+s_zones	minix_fs.h	/^	__u32 s_zones;$/;"	m	struct:minix_super_block
+splice_branch	itree_common.c	/^static inline int splice_branch(struct inode *inode,$/;"	f	file:
+truncate	itree_common.c	/^static inline void truncate (struct inode * inode)$/;"	f	file:
+u	minix.h	/^	} u;$/;"	m	struct:minix_inode_info	typeref:union:minix_inode_info::__anon4
+verify_chain	itree_common.c	/^static inline int verify_chain(Indirect *from, Indirect *to)$/;"	f	file:
+vfs_inode	minix.h	/^	struct inode vfs_inode;$/;"	m	struct:minix_inode_info	typeref:struct:minix_inode_info::inode

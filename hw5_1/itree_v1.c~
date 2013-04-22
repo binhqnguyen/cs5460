@@ -48,20 +48,6 @@ static int block_to_path(struct inode * inode, long block, int offsets[DEPTH])
 	return n;
 }
 */
-static int block_to_path(struct inode *inode, long block){
-	struct minix_inode_info* minix_inode = minix_i(inode);
-	int retval = 0;
-	int i;
-	for (i = 0; i < 7; ++i){
-		if (minix_inode->u.i2_data[i] == block){	//block number matched in inode
-			printk(KERN_INFO "Found block %lu in inode\n",block);
-			retval = 1;
-		}
-	}
-	printk(KERN_INFO "block %lu not found in inode\n",block);
-	return retval;
-}
-
 #include "itree_common.c"
 
 int V1_minix_get_block(struct inode * inode, long block,

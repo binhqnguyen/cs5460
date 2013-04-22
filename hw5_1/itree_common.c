@@ -66,7 +66,7 @@ failure:
 no_block:
 	return p;
 }
-
+/*
 static int alloc_branch(struct inode *inode,
 			     int num,
 			     int *offsets,
@@ -79,7 +79,7 @@ static int alloc_branch(struct inode *inode,
 	branch[0].key = cpu_to_block(parent);
 	if (parent) for (n = 1; n < num; n++) {
 		struct buffer_head *bh;
-		/* Allocate the next block */
+		// Allocate the next block /
 		int nr = minix_new_block(inode);
 		if (!nr)
 			break;
@@ -98,14 +98,14 @@ static int alloc_branch(struct inode *inode,
 	if (n == num)
 		return 0;
 
-	/* Allocation failed, free what we already allocated */
+	// Allocation failed, free what we already allocated /
 	for (i = 1; i < n; i++)
 		bforget(branch[i].bh);
 	for (i = 0; i < n; i++)
 		minix_free_block(inode, block_to_cpu(branch[i].key));
 	return -ENOSPC;
 }
-
+*/
 static inline int splice_branch(struct inode *inode,
 				     Indirect chain[DEPTH],
 				     Indirect *where,
@@ -157,8 +157,7 @@ static inline int get_block(struct inode * inode, sector_t block,
 		goto out;
 
 	/* Simplest case - block found, no allocation needed */
-	printk(KERN_INFO "itree_common->get_block: get_branch inode found\n");
-got_it:
+	printk(KERN_INFO "itree_common->get_block: block found\n");
 	map_bh(bh, inode->i_sb, block);/*map a block (on disk) to bh*/
 
 	/* Next simple case - plain lookup or failed read of indirect block */
@@ -266,7 +265,7 @@ static inline void truncate (struct inode * inode)
 	iblock = (inode->i_size + sb->s_blocksize -1) >> sb->s_blocksize_bits;
 	block_truncate_page(inode->i_mapping, inode->i_size, get_block);
 
-	n = block_to_path(inode, iblock, offsets);
+	n = block_to_path(inode, iblock);
 	if (!n)
 		return;
 

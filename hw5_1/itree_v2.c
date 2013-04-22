@@ -27,6 +27,7 @@ static inline block_t *i_data(struct inode *inode)
 *return n: level in which the block is in.
 *offsets[i]: offset of block in level (i-1)
 */
+/*
 static int block_to_path(struct inode * inode, long block, int offsets[DEPTH])
 {
 	int n = 0;
@@ -55,11 +56,25 @@ static int block_to_path(struct inode * inode, long block, int offsets[DEPTH])
 		offsets[n++] = DIRCOUNT + 2;
 		offsets[n++] = (block / INDIRCOUNT(sb)) / INDIRCOUNT(sb);
 		offsets[n++] = (block / INDIRCOUNT(sb)) % INDIRCOUNT(sb);
-		offsets[n++] = block % INDIRCOUNT(sb);
+	<D-r>	offsets[n++] = block % INDIRCOUNT(sb);
 	}
 	return n;
 }
-
+*/
+/*check if block number is in an inode*/
+static int block_to_path(struct inode *inode, long block){
+	struct minix_inode_info* minix_inode = minix_i(inode);
+	int retval = 0;
+	int i;
+	for (i = 0; i < 7; ++i){
+		if (minix_inode->u.i2_data[i] == block){	//block number matched in inode
+			printk(KERN_INFO "Found block %lu in inode\n",block);
+			retval = 1;
+		}
+	}
+	printk(KERN_INFO "block %lu not found in inode\n",block);
+	return retval;
+}
 #include "itree_common.c"
 
 int V2_minix_get_block(struct inode * inode, long block,

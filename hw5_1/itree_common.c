@@ -35,7 +35,8 @@ static inline Indirect *get_branch(struct inode *inode,
 	struct super_block *sb = inode->i_sb;
 	Indirect *p = chain;
 	struct buffer_head *bh;
-
+	
+	printk(KERN_INFO "itree_common: get_branch\n");
 	*err = 0;
 	/* i_data is not going away, no lock needed */
 	add_chain (chain, NULL, i_data(inode) + *offsets);
@@ -146,64 +147,23 @@ static inline int get_block(struct inode * inode, sector_t block,
 			struct buffer_head *bh, int create)
 {
 	int err = -EIO;
-	int offsets[DEPTH];
-	Indirect chain[DEPTH];
-	Indirect *partial;
-	int left;
-	int depth = block_to_path(inode, block, offsets); /*get the depth (indirect) that this block is in*/
+	//int offsets[DEPTH];
+	//Indirect chain[DEPTH];
+	//Indirect *partial;
+	//int left;
+	int is_valid = block_to_path(inode, block); /*check if the block is not in the inode zone*/
 	printk(KERN_INFO "itree_common: get_block\n");
-	if (depth == 0)/*invalid block number*/
+	if (is_valid == 0)/*invalid block number*/
 		goto out;
 
-reread:
-	partial = get_branch(inode, depth, offsets, chain, &err);
-
 	/* Simplest case - block found, no allocation needed */
-	if (!partial) {
 	printk(KERN_INFO "itree_common->get_block: get_branch inode found\n");
 got_it:
-		map_bh(bh, inode->i_sb, block_to_cpu(chain[depth-1].key));/*map a block (on disk) to bh*/
-		/* Clean up and exit */
-		partial = chain+depth-1; /* the whole chain */
-		goto cleanup;
-	}
+	map_bh(bh, inode->i_sb, block);/*map a block (on disk) to bh*/
 
 	/* Next simple case - plain lookup or failed read of indirect block */
-	if (!create || err == -EIO) {
-cleanup:
-		while (partial > chain) {
-			brelse(partial->bh);
-			partial--;
-		}
 out:
-		return err;
-	}
-
-	/*
-	 * Indirect block might be removed by truncate while we were
-	 * reading it. Handling of that case (forget what we've got and
-	 * reread) is taken out of the main path.
-	 */
-	if (err == -EAGAIN)
-		goto changed;
-
-	left = (chain + depth) - partial;
-	err = alloc_branch(inode, left, offsets+(partial-chain), partial);
-	if (err)
-		goto cleanup;
-
-	if (splice_branch(inode, chain, partial, left) < 0)
-		goto changed;
-
-	set_buffer_new(bh);
-	goto got_it;
-
-changed:
-	while (partial > chain) {
-		brelse(partial->bh);
-		partial--;
-	}
-	goto reread;
+	return err;
 }
 
 static inline int all_zeroes(block_t *p, block_t *q)

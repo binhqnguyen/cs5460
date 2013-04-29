@@ -1,1 +1,1 @@
-cmd_/home/binhn/cs5460/hw4/shady.ko := cp /home/binhn/cs5460/hw4/shady.ko.unsigned /home/binhn/cs5460/hw4/shady.ko
+cmd_/home/binh/cs5460/hw4/shady.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.2.0-29-generic-pae/scripts/module-common.lds --build-id  -o /home/binh/cs5460/hw4/shady.ko /home/binh/cs5460/hw4/shady.o /home/binh/cs5460/hw4/shady.mod.o

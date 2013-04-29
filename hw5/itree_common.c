@@ -160,9 +160,10 @@ reread:
 
 	/* Simplest case - block found, no allocation needed */
 	if (!partial) {
-	printk(KERN_INFO "itree_common->get_block: get_branch inode found\n");
-got_it:
+got_it:	
+		printk(KERN_EMERG "get_block got block %lu\n",block_to_cpu(chain[depth-1].key));
 		map_bh(bh, inode->i_sb, block_to_cpu(chain[depth-1].key));/*map a block (on disk) to bh*/
+		printk(KERN_INFO "itree_common->get_block: get_branch inode found, block  %lu\n",block_to_cpu(chain[depth-1].key));
 		/* Clean up and exit */
 		partial = chain+depth-1; /* the whole chain */
 		goto cleanup;
@@ -176,9 +177,11 @@ cleanup:
 			partial--;
 		}
 out:
+		printk(KERN_INFO "get_block returns %d\n", err);
 		return err;
 	}
 
+	printk(KERN_INFO "itree_common->get_block: get_branch inode not found\n");
 	/*
 	 * Indirect block might be removed by truncate while we were
 	 * reading it. Handling of that case (forget what we've got and
@@ -189,12 +192,13 @@ out:
 
 	left = (chain + depth) - partial;
 	err = alloc_branch(inode, left, offsets+(partial-chain), partial);
+	printk(KERN_EMERG "Alloc_branch returns %d\n",err);
 	if (err)
 		goto cleanup;
 
 	if (splice_branch(inode, chain, partial, left) < 0)
 		goto changed;
-
+	
 	set_buffer_new(bh);
 	goto got_it;
 
@@ -354,6 +358,7 @@ static inline unsigned nblocks(loff_t size, struct super_block *sb)
 	unsigned blocks, res, direct = DIRECT, i = DEPTH;
 	blocks = (size + sb->s_blocksize - 1) >> (BLOCK_SIZE_BITS + k);
 	res = blocks;
+	printk(KERN_EMERG "s_blocksize_bits:%d\nsize:%d\ns_blocksize:%d\nBLOCK_SIZE_BITS:%d\n",(int)sb->s_blocksize_bits,(int)size,(int)sb->s_blocksize,(int)BLOCK_SIZE_BITS);
 	while (--i && blocks > direct) {
 		blocks -= direct;
 		blocks += sb->s_blocksize/sizeof(block_t) - 1;
@@ -361,5 +366,6 @@ static inline unsigned nblocks(loff_t size, struct super_block *sb)
 		res += blocks;
 		direct = 1;
 	}
+	printk(KERN_EMERG "itree_common:nblocks, size = %d, returns %d\n",(int) size,res);
 	return res;
 }

@@ -1,1 +1,1 @@
-cmd_/home/binhn/cs5460/hw4/sleepy.ko := cp /home/binhn/cs5460/hw4/sleepy.ko.unsigned /home/binhn/cs5460/hw4/sleepy.ko
+cmd_/home/binh/cs5460/hw4/sleepy.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.2.0-29-generic-pae/scripts/module-common.lds --build-id  -o /home/binh/cs5460/hw4/sleepy.ko /home/binh/cs5460/hw4/sleepy.o /home/binh/cs5460/hw4/sleepy.mod.o

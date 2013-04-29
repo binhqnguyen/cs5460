@@ -72,6 +72,8 @@ void minix_free_block(struct inode *inode, unsigned long block)
 	return;
 }
 
+/*new block
+ *return 0 if fail, non zero if succeed*/
 int minix_new_block(struct inode * inode)
 {
 	struct minix_sb_info *sbi = minix_sb(inode->i_sb);

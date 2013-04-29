@@ -1,1 +1,1 @@
-cmd_/home/binh/cs5460/hw5/minix.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.2.0-29-generic-pae/scripts/module-common.lds --build-id  -o /home/binh/cs5460/hw5/minix.ko /home/binh/cs5460/hw5/minix.o /home/binh/cs5460/hw5/minix.mod.o
+cmd_/home/binh/cs5460/hw5_a/minix.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.2.0-29-generic-pae/scripts/module-common.lds --build-id  -o /home/binh/cs5460/hw5_a/minix.ko /home/binh/cs5460/hw5_a/minix.o /home/binh/cs5460/hw5_a/minix.mod.o

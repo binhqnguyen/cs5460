@@ -93,6 +93,8 @@ static inline unsigned minix_blocks_needed(unsigned bits, unsigned blocksize)
 	return DIV_ROUND_UP(bits, blocksize * 8);
 }
 
+//extern int is_valid_block(struct inode*, sector_t);
+
 #if defined(CONFIG_MINIX_FS_NATIVE_ENDIAN) && \
 	defined(CONFIG_MINIX_FS_BIG_ENDIAN_16BIT_INDEXED)
 

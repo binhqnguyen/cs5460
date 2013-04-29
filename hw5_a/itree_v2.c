@@ -23,6 +23,7 @@ static inline block_t *i_data(struct inode *inode)
 #define DIRCOUNT 7 /*number of direct blocks*/
 #define INDIRCOUNT(sb) (1 << ((sb)->s_blocksize_bits - 2))
 
+
 /*get block position in an inode
 *return n: level in which the block is in.
 *offsets[i]: offset of block in level (i-1)

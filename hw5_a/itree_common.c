@@ -1,12 +1,31 @@
 /* Generic part */
 
 typedef struct {
-	block_t	*p;
-	block_t	key;
+	block_t	*p;//pointer to first level block
+	block_t	key;//pointer to real block
 	struct buffer_head *bh;
 } Indirect;
 
 static DEFINE_RWLOCK(pointers_lock);
+
+static int is_valid_block(struct inode *inode, long block){
+	char b[BDEVNAME_SIZE];
+	struct super_block *sb = inode->i_sb;
+	int retval = 1;
+
+	if (block < 0) {
+		printk("MINIX-fs: block_to_path: block %ld < 0 on dev %s\n",block, bdevname(sb->s_bdev, b));
+		retval = 0;
+		
+	} else if (block >= (minix_sb(inode->i_sb)->s_max_size/sb->s_blocksize)) {
+		if (printk_ratelimit())
+			printk("MINIX-fs: block_to_path: "
+			       "block %ld too big on dev %s\n",
+				block, bdevname(sb->s_bdev, b));
+		retval = 0;
+	}
+	return retval;
+}
 
 static inline void add_chain(Indirect *p, struct buffer_head *bh, block_t *v)
 {
@@ -141,6 +160,8 @@ changed:
 		minix_free_block(inode, block_to_cpu(where[i].key));
 	return -EAGAIN;
 }
+
+
 /*load a block from disk to buffer_head bh*/
 static inline int get_block(struct inode * inode, sector_t block,
 			struct buffer_head *bh, int create)
@@ -152,7 +173,8 @@ static inline int get_block(struct inode * inode, sector_t block,
 	int left;
 	int depth = block_to_path(inode, block, offsets); /*get the depth (indirect) that this block is in*/
 	printk(KERN_INFO "itree_common: get_block\n");
-	if (depth == 0)/*invalid block number*/
+	//if (depth == 0)/*invalid block number*/
+	if (!is_valid_block(inode, block))/*check for valid block*/
 		goto out;
 
 reread:
@@ -364,3 +386,4 @@ static inline unsigned nblocks(loff_t size, struct super_block *sb)
 	}
 	return res;
 }
+

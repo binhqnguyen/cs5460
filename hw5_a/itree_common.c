@@ -161,6 +161,20 @@ changed:
 	return -EAGAIN;
 }
 
+static int alloc_extent(struct inode *inode, unsigned long *block){
+	*block = minix_new_block(inode);
+	if (*block!=0){ //succeed allocated a new block in bitmap
+		//bh = sb_getblk(inode->i_sb, block);	//new a block on disk.
+		//lock_buffer(bh);
+		//memset(bh->b_data, 0, bh->b_size);
+		//set_buffer_uptodate(bh);
+		//unlock_buffer(bh);
+		//mark_buffer_dirty_inode(bh,inode);
+		printk(KERN_INFO "itree_common->get_block: New block created, bitmap = %lu\n",*block);
+		return 0;
+	}
+	return -ENOSPC;	//failed
+}
 
 /*load a block from disk to buffer_head bh*/
 
@@ -169,46 +183,37 @@ static inline int get_block(struct inode * inode, sector_t block,
 {
 	int err = -EIO;
 	unsigned long block_value = 0;
-	int new_block = 0;
 
 	printk(KERN_INFO "itree_common: get_block\n");
 	if (!is_valid_block(inode, block))/*check for valid block*/
 		goto out;
-
 	block_value = *(i_data(inode)+block); //get the value contain in the zone inside the inode.
-	if (!block_value){	//block=0, not found on disk
-		goto new_block;
-	}
-	else{	//block found on disk
+reread:
+	if (block_value!=0){	//block!=0, found on disk
 		map_bh(bh, inode->i_sb, block_value);	
 		printk(KERN_INFO "itree_common->get_block: block in zone %lu found on disk, value=%lu\n",block_to_cpu(block),block_value);
+		err = 0; 	//succeed.
+		goto out;
 	}
 	/* Next simple case - plain lookup or failed read of indirect block */
-	if (!create || err == -EIO) {
+	if (!create) {
 		printk(KERN_INFO "itree_common->get_block: read an unfound block, error\n");
 out:
+		printk(KERN_EMERG "get_block returns err = %d\n",err);
 		return err;
 	}
-	/*Create a new block*/
+	printk(KERN_EMERG "get_block: creating new block\n");
+	/*Block not found and creating needed, create a new block*/
 	/*So far, block contains only block number, in the extent version, block contains both block number and length of region*/
-new_block:
-	new_block = minix_new_block(inode);
-	if (new_block!=0){ //succeed allocated a new block
-		bh = sb_getblk(inode->i_sb, new_block);	//new a block on disk.
-		lock_buffer(bh);
-		memset(bh->b_data, 0, bh->b_size);
-		set_buffer_uptodate(bh);
-		unlock_buffer(bh);
-		mark_buffer_dirty_inode(bh,inode);
-		printk(KERN_INFO "itree_common->get_block: New block created, bitmap = %d\n",new_block);
-		err = 0; //succeed
-	}
+	err = alloc_extent(inode, &block_value);	
+	if (err==0)	//succeed, reread block again
+		goto reread;
 	else{	//failed allocating a new block
-		minix_free_block(inode,block);
 		printk(KERN_INFO "itree_common->get_block: failed allocating new block\n");
+		minix_free_block(inode,block);
 		err = -ENOSPC;
+		goto out;
 	}
-	return err;
 }
 
 static inline int all_zeroes(block_t *p, block_t *q)

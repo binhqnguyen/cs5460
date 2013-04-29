@@ -35,8 +35,7 @@ static inline Indirect *get_branch(struct inode *inode,
 	struct super_block *sb = inode->i_sb;
 	Indirect *p = chain;
 	struct buffer_head *bh;
-	
-	printk(KERN_INFO "itree_common: get_branch\n");
+
 	*err = 0;
 	/* i_data is not going away, no lock needed */
 	add_chain (chain, NULL, i_data(inode) + *offsets);
@@ -66,7 +65,7 @@ failure:
 no_block:
 	return p;
 }
-/*
+
 static int alloc_branch(struct inode *inode,
 			     int num,
 			     int *offsets,
@@ -79,7 +78,7 @@ static int alloc_branch(struct inode *inode,
 	branch[0].key = cpu_to_block(parent);
 	if (parent) for (n = 1; n < num; n++) {
 		struct buffer_head *bh;
-		// Allocate the next block /
+		/* Allocate the next block */
 		int nr = minix_new_block(inode);
 		if (!nr)
 			break;
@@ -98,14 +97,14 @@ static int alloc_branch(struct inode *inode,
 	if (n == num)
 		return 0;
 
-	// Allocation failed, free what we already allocated /
+	/* Allocation failed, free what we already allocated */
 	for (i = 1; i < n; i++)
 		bforget(branch[i].bh);
 	for (i = 0; i < n; i++)
 		minix_free_block(inode, block_to_cpu(branch[i].key));
 	return -ENOSPC;
 }
-*/
+
 static inline int splice_branch(struct inode *inode,
 				     Indirect chain[DEPTH],
 				     Indirect *where,
@@ -147,23 +146,65 @@ static inline int get_block(struct inode * inode, sector_t block,
 			struct buffer_head *bh, int create)
 {
 	int err = -EIO;
-	//int offsets[DEPTH];
-	//Indirect chain[DEPTH];
-	//Indirect *partial;
-	//int left;
-	int is_valid = block_to_path(inode, block); /*check if the block is not in the inode zone*/
-	if (is_valid == 0){/*invalid block number*/
-		printk(KERN_INFO "itree_common->get_block: block %llu not found\n", block);
+	int offsets[DEPTH];
+	Indirect chain[DEPTH];
+	Indirect *partial;
+	int left;
+	int depth = block_to_path(inode, block, offsets); /*get the depth (indirect) that this block is in*/
+	printk(KERN_INFO "itree_common: get_block\n");
+	if (depth == 0)/*invalid block number*/
 		goto out;
-	}
+
+reread:
+	partial = get_branch(inode, depth, offsets, chain, &err);
 
 	/* Simplest case - block found, no allocation needed */
-	printk(KERN_INFO "itree_common->get_block: block %llu found\n", block);
-	map_bh(bh, inode->i_sb, block);/*map a block (on disk) to bh*/
+	if (!partial) {
+got_it:	
+		map_bh(bh, inode->i_sb, block_to_cpu(chain[depth-1].key));/*map a block (on disk) to bh*/
+		printk(KERN_INFO "itree_common->get_block: get_branch inode found, block  %lu\n",block_to_cpu(chain[depth-1].key));
+		/* Clean up and exit */
+		partial = chain+depth-1; /* the whole chain */
+		goto cleanup;
+	}
+	printk(KERN_INFO "itree_common->get_block: get_branch inode not found\n");
 
 	/* Next simple case - plain lookup or failed read of indirect block */
+	if (!create || err == -EIO) {
+cleanup:
+		while (partial > chain) {
+			brelse(partial->bh);
+			partial--;
+		}
 out:
-	return err;
+		return err;
+	}
+
+	/*
+	 * Indirect block might be removed by truncate while we were
+	 * reading it. Handling of that case (forget what we've got and
+	 * reread) is taken out of the main path.
+	 */
+	if (err == -EAGAIN)
+		goto changed;
+
+	left = (chain + depth) - partial;
+	err = alloc_branch(inode, left, offsets+(partial-chain), partial);
+	if (err)
+		goto cleanup;
+
+	if (splice_branch(inode, chain, partial, left) < 0)
+		goto changed;
+
+	set_buffer_new(bh);
+	goto got_it;
+
+changed:
+	while (partial > chain) {
+		brelse(partial->bh);
+		partial--;
+	}
+	goto reread;
 }
 
 static inline int all_zeroes(block_t *p, block_t *q)
@@ -266,7 +307,7 @@ static inline void truncate (struct inode * inode)
 	iblock = (inode->i_size + sb->s_blocksize -1) >> sb->s_blocksize_bits;
 	block_truncate_page(inode->i_mapping, inode->i_size, get_block);
 
-	n = block_to_path(inode, iblock);
+	n = block_to_path(inode, iblock, offsets);
 	if (!n)
 		return;
 

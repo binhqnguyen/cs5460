@@ -35,11 +35,13 @@ __attribute__((section("__versions"))) = {
 	{ 0x25820c64, "fs_overflowuid" },
 	{ 0xc01cf848, "_raw_read_lock" },
 	{ 0x2a74416d, "__lock_page" },
+	{ 0xbff7f4ae, "__lock_buffer" },
 	{ 0x5b8c46a0, "generic_file_aio_read" },
 	{ 0x34bc01e0, "block_read_full_page" },
 	{ 0x95411160, "end_writeback" },
 	{ 0xf1d6c006, "mount_bdev" },
 	{ 0xcb53c49e, "generic_read_dir" },
+	{ 0x2638289d, "unlock_buffer" },
 	{ 0x105afe74, "generic_file_aio_write" },
 	{ 0xf8e02d44, "__insert_inode_hash" },
 	{ 0x2bc95bd4, "memset" },
@@ -68,7 +70,9 @@ __attribute__((section("__versions"))) = {
 	{ 0xd9062079, "generic_file_mmap" },
 	{ 0xe2b631e6, "kmap" },
 	{ 0x346ffe73, "block_write_full_page" },
+	{ 0x9edece30, "bdevname" },
 	{ 0xf974b989, "block_write_end" },
+	{ 0xf0fdf6cb, "__stack_chk_fail" },
 	{ 0xfa8f68f2, "generic_write_end" },
 	{ 0xe449e0a3, "do_sync_read" },
 	{ 0x22d06cd3, "unlock_new_inode" },
@@ -86,6 +90,7 @@ __attribute__((section("__versions"))) = {
 	{ 0xddd60fba, "ihold" },
 	{ 0x2e60bace, "memcpy" },
 	{ 0x50f5e532, "call_rcu_sched" },
+	{ 0x6128b5fc, "__printk_ratelimit" },
 	{ 0x64c3533, "vmtruncate" },
 	{ 0xf5bd6bb9, "block_truncate_page" },
 	{ 0x9f6cdf31, "sb_set_blocksize" },
@@ -100,6 +105,7 @@ __attribute__((section("__versions"))) = {
 	{ 0xc08f1e1, "init_special_inode" },
 	{ 0xeb408b22, "new_inode" },
 	{ 0x11c29bca, "generic_file_splice_read" },
+	{ 0x9095abaf, "__getblk" },
 	{ 0x52813875, "page_put_link" },
 	{ 0x57e2f6a6, "d_instantiate" },
 	{ 0x6b470e4, "generic_block_bmap" },
@@ -117,4 +123,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "1EAB42A8E702A62A25C2A73");
+MODULE_INFO(srcversion, "12A3757C3FF71213421AE7C");

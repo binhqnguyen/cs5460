@@ -5,23 +5,11 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 BLOCKSIZE	../hw5/p5.h	24;"	d
-BLOCKSIZE	../hw5_a/p5.h	24;"	d
-BLOCKSIZE	p5.h	24;"	d
 BLOCK_MAP_END	../hw5/p5.c	15;"	d	file:
-BLOCK_MAP_END	../hw5_a/p5.c	15;"	d	file:
-BLOCK_MAP_END	p5.c	15;"	d	file:
 BLOCK_MAP_START	../hw5/p5.c	14;"	d	file:
-BLOCK_MAP_START	../hw5_a/p5.c	14;"	d	file:
-BLOCK_MAP_START	p5.c	14;"	d	file:
 BLOCK_SIZE	../hw5/p5.c	6;"	d	file:
-BLOCK_SIZE	../hw5_a/p5.c	6;"	d	file:
-BLOCK_SIZE	p5.c	6;"	d	file:
 BLOCK_SIZE_BIT	../hw5/p5.c	19;"	d	file:
-BLOCK_SIZE_BIT	../hw5_a/p5.c	19;"	d	file:
-BLOCK_SIZE_BIT	p5.c	19;"	d	file:
 BLOCK_START	../hw5/p5.c	16;"	d	file:
-BLOCK_START	../hw5_a/p5.c	16;"	d	file:
-BLOCK_START	p5.c	16;"	d	file:
 DEPTH	../hw5/itree_v1.c	/^enum {DEPTH = 3, DIRECT = 7};	\/* Only double indirect *\/$/;"	e	enum:__anon11	file:
 DEPTH	../hw5/itree_v2.c	/^enum {DIRECT = 7, DEPTH = 4};	\/* Have triple indirect *\/$/;"	e	enum:__anon13	file:
 DEPTH	../hw5_a/itree_v1.c	/^enum {DEPTH = 3, DIRECT = 7};	\/* Only double indirect *\/$/;"	e	enum:__anon7	file:
@@ -44,20 +32,10 @@ INDIRCOUNT	../hw5/itree_v2.c	24;"	d	file:
 INDIRCOUNT	../hw5_a/itree_v2.c	24;"	d	file:
 INDIRCOUNT	itree_v2.c	24;"	d	file:
 INODES_IN_BLOCK	../hw5/p5.c	20;"	d	file:
-INODES_IN_BLOCK	../hw5_a/p5.c	20;"	d	file:
-INODES_IN_BLOCK	p5.c	20;"	d	file:
 INODE_END	../hw5/p5.c	11;"	d	file:
-INODE_END	../hw5_a/p5.c	11;"	d	file:
-INODE_END	p5.c	11;"	d	file:
 INODE_MAP	../hw5/p5.c	12;"	d	file:
-INODE_MAP	../hw5_a/p5.c	12;"	d	file:
-INODE_MAP	p5.c	12;"	d	file:
 INODE_NUM	../hw5/p5.c	9;"	d	file:
-INODE_NUM	../hw5_a/p5.c	9;"	d	file:
-INODE_NUM	p5.c	9;"	d	file:
 INODE_START	../hw5/p5.c	10;"	d	file:
-INODE_START	../hw5_a/p5.c	10;"	d	file:
-INODE_START	p5.c	10;"	d	file:
 INODE_VERSION	../hw5/minix.h	8;"	d
 INODE_VERSION	../hw5_a/minix.h	8;"	d
 INODE_VERSION	minix.h	8;"	d
@@ -74,20 +52,10 @@ KDIR	Makefile	/^KDIR := \/lib\/modules\/$(shell uname -r)\/build$/;"	m
 LEN	../hw3/hw3/prob1/pthread1.c	8;"	d	file:
 LEN	../hw3/prob1/pthread1.c	8;"	d	file:
 MAX_FILENAME	../hw5/p5.c	32;"	d	file:
-MAX_FILENAME	../hw5_a/p5.c	32;"	d	file:
-MAX_FILENAME	p5.c	32;"	d	file:
 MAX_FILE_NAME_LENGTH	../hw5/p5.c	29;"	d	file:
 MAX_FILE_NAME_LENGTH	../hw5/p5.h	5;"	d
-MAX_FILE_NAME_LENGTH	../hw5_a/p5.c	29;"	d	file:
-MAX_FILE_NAME_LENGTH	../hw5_a/p5.h	5;"	d
-MAX_FILE_NAME_LENGTH	p5.c	29;"	d	file:
-MAX_FILE_NAME_LENGTH	p5.h	5;"	d
 MAX_OPEN_FILES	../hw5/p5.h	6;"	d
-MAX_OPEN_FILES	../hw5_a/p5.h	6;"	d
-MAX_OPEN_FILES	p5.h	6;"	d
 MAX_PATH_DEPTH	../hw5/p5.c	31;"	d	file:
-MAX_PATH_DEPTH	../hw5_a/p5.c	31;"	d	file:
-MAX_PATH_DEPTH	p5.c	31;"	d	file:
 MINIX2_LINK_MAX	../hw5/minix_fs.h	21;"	d
 MINIX2_LINK_MAX	../hw5_a/minix_fs.h	21;"	d
 MINIX2_LINK_MAX	minix_fs.h	21;"	d
@@ -126,8 +94,6 @@ MODULE	../hw1/module.c	15;"	d	file:
 NUM_THREADS	../hw3/hw3/prob1/pthread1.c	6;"	d	file:
 NUM_THREADS	../hw3/prob1/pthread1.c	6;"	d	file:
 P5_H	../hw5/p5.h	3;"	d
-P5_H	../hw5_a/p5.h	3;"	d
-P5_H	p5.h	3;"	d
 PWD	../hw1/Makefile	/^PWD := $(shell pwd)$/;"	m
 PWD	../hw2/Makefile	/^PWD := $(shell pwd)$/;"	m
 PWD	../hw4/Makefile	/^PWD := $(shell pwd)$/;"	m
@@ -135,17 +101,9 @@ PWD	../hw5/Makefile	/^PWD := $(shell pwd)$/;"	m
 PWD	../hw5_a/Makefile	/^PWD := $(shell pwd)$/;"	m
 PWD	Makefile	/^PWD := $(shell pwd)$/;"	m
 RESET	../hw5/p5.c	23;"	d	file:
-RESET	../hw5_a/p5.c	23;"	d	file:
-RESET	p5.c	23;"	d	file:
 RESET_CODE	../hw5/p5.c	25;"	d	file:
-RESET_CODE	../hw5_a/p5.c	25;"	d	file:
-RESET_CODE	p5.c	25;"	d	file:
 SET	../hw5/p5.c	22;"	d	file:
-SET	../hw5_a/p5.c	22;"	d	file:
-SET	p5.c	22;"	d	file:
 SET_CODE	../hw5/p5.c	26;"	d	file:
-SET_CODE	../hw5_a/p5.c	26;"	d	file:
-SET_CODE	p5.c	26;"	d	file:
 SHADY_DEVICE_NAME	../hw4/shady.c	42;"	d	file:
 SHADY_DEVICE_NAME	../hw4/sub/shady.c	42;"	d	file:
 SHADY_H_1727_INCLUDED	../hw4/shady.h	4;"	d
@@ -209,6 +167,8 @@ __this_module	../hw2/ticket.mod.c	/^struct module __this_module$/;"	v	typeref:st
 __this_module	../hw4/shady.mod.c	/^struct module __this_module$/;"	v	typeref:struct:module
 __this_module	../hw4/sleepy.mod.c	/^struct module __this_module$/;"	v	typeref:struct:module
 __this_module	../hw5/minix.mod.c	/^struct module __this_module$/;"	v	typeref:struct:module
+__this_module	../hw5_a/minix.mod.c	/^struct module __this_module$/;"	v	typeref:struct:module
+__this_module	minix.mod.c	/^struct module __this_module$/;"	v	typeref:struct:module
 __used	../hw2/ticket.mod.c	/^__used$/;"	v	file:
 __used	../hw2/ticket.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
 __used	../hw4/shady.mod.c	/^__used$/;"	v	file:
@@ -217,6 +177,10 @@ __used	../hw4/sleepy.mod.c	/^__used$/;"	v	file:
 __used	../hw4/sleepy.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
 __used	../hw5/minix.mod.c	/^__used$/;"	v	file:
 __used	../hw5/minix.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	../hw5_a/minix.mod.c	/^__used$/;"	v	file:
+__used	../hw5_a/minix.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	minix.mod.c	/^__used$/;"	v	file:
+__used	minix.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
 _queue_t	../hw3/hw3/prob6/problem_6.c	/^typedef struct _queue_t{$/;"	s	file:
 _queue_t	../hw3/prob6/problem_6.c	/^typedef struct _queue_t{$/;"	s	file:
 _queue_t	../hw3/prob7/problem_6.c	/^typedef struct _queue_t{$/;"	s	file:
@@ -310,21 +274,13 @@ bh	../hw5_1/itree_common.c	/^	struct buffer_head *bh;$/;"	m	struct:__anon5	typer
 bh	../hw5_a/itree_common.c	/^	struct buffer_head *bh;$/;"	m	struct:__anon6	typeref:struct:__anon6::buffer_head	file:
 bh	itree_common.c	/^	struct buffer_head *bh;$/;"	m	struct:__anon1	typeref:struct:__anon1::buffer_head	file:
 block	../hw5/p5.h	/^typedef char block [BLOCKSIZE];$/;"	t
-block	../hw5_a/p5.h	/^typedef char block [BLOCKSIZE];$/;"	t
-block	p5.h	/^typedef char block [BLOCKSIZE];$/;"	t
 blockBitmapPosition	../hw5/p5.c	/^	int blockBitmapPosition;	\/*block bitmap position*\/$/;"	m	struct:superblock	file:
-blockBitmapPosition	../hw5_a/p5.c	/^	int blockBitmapPosition;	\/*block bitmap position*\/$/;"	m	struct:superblock	file:
-blockBitmapPosition	p5.c	/^	int blockBitmapPosition;	\/*block bitmap position*\/$/;"	m	struct:superblock	file:
 blockCommand	../hw5/p5.c	/^int blockCommand(int Position,int Cmd)$/;"	f
-blockCommand	../hw5_a/p5.c	/^int blockCommand(int Position,int Cmd)$/;"	f
-blockCommand	p5.c	/^int blockCommand(int Position,int Cmd)$/;"	f
 block_end	../hw5/itree_common.c	/^static inline block_t *block_end(struct buffer_head *bh)$/;"	f	file:
 block_end	../hw5_1/itree_common.c	/^static inline block_t *block_end(struct buffer_head *bh)$/;"	f	file:
 block_end	../hw5_a/itree_common.c	/^static inline block_t *block_end(struct buffer_head *bh)$/;"	f	file:
 block_end	itree_common.c	/^static inline block_t *block_end(struct buffer_head *bh)$/;"	f	file:
 block_size	../hw5/p5.c	/^int block_size;				\/*number of blocks that the system has occupied*\/$/;"	v
-block_size	../hw5_a/p5.c	/^int block_size;				\/*number of blocks that the system has occupied*\/$/;"	v
-block_size	p5.c	/^int block_size;				\/*number of blocks that the system has occupied*\/$/;"	v
 block_t	../hw5/itree_v1.c	/^typedef u16 block_t;	\/* 16 bit, host order *\/$/;"	t	file:
 block_t	../hw5/itree_v2.c	/^typedef u32 block_t;	\/* 32 bit, host order *\/$/;"	t	file:
 block_t	../hw5_a/itree_v1.c	/^typedef u16 block_t;	\/* 16 bit, host order *\/$/;"	t	file:
@@ -344,8 +300,6 @@ block_to_path	../hw5_a/itree_v2.c	/^static int block_to_path(struct inode * inod
 block_to_path	itree_v1.c	/^static int block_to_path(struct inode * inode, long block, int offsets[DEPTH])$/;"	f	file:
 block_to_path	itree_v2.c	/^static int block_to_path(struct inode * inode, long block, int offsets[DEPTH])$/;"	f	file:
 blockbuf	../hw5/p5.c	/^int blockbuf[10];			\/*read buffers*\/$/;"	v
-blockbuf	../hw5_a/p5.c	/^int blockbuf[10];			\/*read buffers*\/$/;"	v
-blockbuf	p5.c	/^int blockbuf[10];			\/*read buffers*\/$/;"	v
 buffer0	../hw5/testp5.c	/^char buffer0 [] = "hello world";$/;"	v
 buffer0	../hw5_a/testp5.c	/^char buffer0 [] = "hello world";$/;"	v
 buffer0	testp5.c	/^char buffer0 [] = "hello world";$/;"	v
@@ -365,11 +319,7 @@ buffer5	../hw5/testp5.c	/^char buffer5 [50 * 1024 * 1024]; \/* max size, 50MB *\
 buffer5	../hw5_a/testp5.c	/^char buffer5 [50 * 1024 * 1024]; \/* max size, 50MB *\/$/;"	v
 buffer5	testp5.c	/^char buffer5 [50 * 1024 * 1024]; \/* max size, 50MB *\/$/;"	v
 bufferBlock	../hw5/p5.c	/^struct bufferBlock$/;"	s	file:
-bufferBlock	../hw5_a/p5.c	/^struct bufferBlock$/;"	s	file:
-bufferBlock	p5.c	/^struct bufferBlock$/;"	s	file:
 bufferInt	../hw5/p5.c	/^ int bufferInt[256];$/;"	m	struct:bufferBlock	file:
-bufferInt	../hw5_a/p5.c	/^ int bufferInt[256];$/;"	m	struct:bufferBlock	file:
-bufferInt	p5.c	/^ int bufferInt[256];$/;"	m	struct:bufferBlock	file:
 cdev	../hw2/ticket.c	/^  struct cdev cdev;$/;"	m	struct:ticket_dev	typeref:struct:ticket_dev::cdev	file:
 cdev	../hw4/shady.h	/^  struct cdev cdev;$/;"	m	struct:shady_dev	typeref:struct:shady_dev::cdev
 cdev	../hw4/sleepy.h	/^  struct cdev cdev;$/;"	m	struct:sleepy_dev	typeref:struct:sleepy_dev::cdev
@@ -482,8 +432,6 @@ dir_put_page	../hw5/dir.c	/^static inline void dir_put_page(struct page *page)$/
 dir_put_page	../hw5_a/dir.c	/^static inline void dir_put_page(struct page *page)$/;"	f	file:
 dir_put_page	dir.c	/^static inline void dir_put_page(struct page *page)$/;"	f	file:
 directBlockPosition	../hw5/p5.c	/^	int directBlockPosition[4];	\/*directBlockPosition[0]: position of folder*\/$/;"	m	struct:inode	file:
-directBlockPosition	../hw5_a/p5.c	/^	int directBlockPosition[4];	\/*directBlockPosition[0]: position of folder*\/$/;"	m	struct:inode	file:
-directBlockPosition	p5.c	/^	int directBlockPosition[4];	\/*directBlockPosition[0]: position of folder*\/$/;"	m	struct:inode	file:
 enq	../hw3/hw3/prob6/problem_6.c	/^int enq(int v, queue_t *q){$/;"	f
 enq	../hw3/prob6/problem_6.c	/^int enq(int v, queue_t *q){$/;"	f
 enq	../hw3/prob7/problem_6.c	/^int enq(int v, queue_t *q){$/;"	f
@@ -508,32 +456,18 @@ fd	../hw5/block.c	/^static int fd = -1;$/;"	v	file:
 fd	../hw5_a/block.c	/^static int fd = -1;$/;"	v	file:
 fd	block.c	/^static int fd = -1;$/;"	v	file:
 fileLength	../hw5/p5.c	/^	int fileLength;	\/*fileLength*\/$/;"	m	struct:inode	file:
-fileLength	../hw5_a/p5.c	/^	int fileLength;	\/*fileLength*\/$/;"	m	struct:inode	file:
-fileLength	p5.c	/^	int fileLength;	\/*fileLength*\/$/;"	m	struct:inode	file:
 fileOrFolder	../hw5/p5.c	/^	int fileOrFolder; 	\/*file or folder*\/$/;"	m	struct:inode	file:
-fileOrFolder	../hw5_a/p5.c	/^	int fileOrFolder; 	\/*file or folder*\/$/;"	m	struct:inode	file:
-fileOrFolder	p5.c	/^	int fileOrFolder; 	\/*file or folder*\/$/;"	m	struct:inode	file:
 findAnEmptyBlock	../hw5/p5.c	/^int findAnEmptyBlock()$/;"	f
-findAnEmptyBlock	../hw5_a/p5.c	/^int findAnEmptyBlock()$/;"	f
-findAnEmptyBlock	p5.c	/^int findAnEmptyBlock()$/;"	f
 findAnEmptyInode	../hw5/p5.c	/^int findAnEmptyInode()$/;"	f
-findAnEmptyInode	../hw5_a/p5.c	/^int findAnEmptyInode()$/;"	f
-findAnEmptyInode	p5.c	/^int findAnEmptyInode()$/;"	f
 find_shared	../hw5/itree_common.c	/^static Indirect *find_shared(struct inode *inode,$/;"	f	file:
 find_shared	../hw5_1/itree_common.c	/^static Indirect *find_shared(struct inode *inode,$/;"	f	file:
 find_shared	../hw5_a/itree_common.c	/^static Indirect *find_shared(struct inode *inode,$/;"	f	file:
 find_shared	itree_common.c	/^static Indirect *find_shared(struct inode *inode,$/;"	f	file:
 firstLevelIndirectBlock	../hw5/p5.c	/^	int firstLevelIndirectBlock;$/;"	m	struct:inode	file:
-firstLevelIndirectBlock	../hw5_a/p5.c	/^	int firstLevelIndirectBlock;$/;"	m	struct:inode	file:
-firstLevelIndirectBlock	p5.c	/^	int firstLevelIndirectBlock;$/;"	m	struct:inode	file:
 flag	../hw4/sleepy.h	/^  int flag;	\/*wake up condition, 1 is set*\/$/;"	m	struct:sleepy_dev
 flag	../hw4/sub/sleepy.h	/^  int flag;	\/*wake up condition, 1 is set*\/$/;"	m	struct:sleepy_dev
 folder	../hw5/p5.c	/^struct folder$/;"	s	file:
-folder	../hw5_a/p5.c	/^struct folder$/;"	s	file:
-folder	p5.c	/^struct folder$/;"	s	file:
 freeInodeAndBlock	../hw5/p5.c	/^int freeInodeAndBlock(int index)$/;"	f
-freeInodeAndBlock	../hw5_a/p5.c	/^int freeInodeAndBlock(int index)$/;"	f
-freeInodeAndBlock	p5.c	/^int freeInodeAndBlock(int index)$/;"	f
 free_branches	../hw5/itree_common.c	/^static void free_branches(struct inode *inode, block_t *p, block_t *q, int depth)$/;"	f	file:
 free_branches	../hw5_1/itree_common.c	/^static void free_branches(struct inode *inode, block_t *p, block_t *q, int depth)$/;"	f	file:
 free_branches	../hw5_a/itree_common.c	/^static void free_branches(struct inode *inode, block_t *p, block_t *q, int depth)$/;"	f	file:
@@ -543,14 +477,8 @@ free_data	../hw5_1/itree_common.c	/^static inline void free_data(struct inode *i
 free_data	../hw5_a/itree_common.c	/^static inline void free_data(struct inode *inode, block_t *p, block_t *q)$/;"	f	file:
 free_data	itree_common.c	/^static inline void free_data(struct inode *inode, block_t *p, block_t *q)$/;"	f	file:
 getFolderByBlockIndex	../hw5/p5.c	/^int getFolderByBlockIndex(int index,struct folder* Folder)$/;"	f
-getFolderByBlockIndex	../hw5_a/p5.c	/^int getFolderByBlockIndex(int index,struct folder* Folder)$/;"	f
-getFolderByBlockIndex	p5.c	/^int getFolderByBlockIndex(int index,struct folder* Folder)$/;"	f
 getInodeByFilePath	../hw5/p5.c	/^int getInodeByFilePath(int depth,char **argp)$/;"	f
-getInodeByFilePath	../hw5_a/p5.c	/^int getInodeByFilePath(int depth,char **argp)$/;"	f
-getInodeByFilePath	p5.c	/^int getInodeByFilePath(int depth,char **argp)$/;"	f
 getInodeByIndex	../hw5/p5.c	/^int getInodeByIndex(int index,struct inode* iNode)$/;"	f
-getInodeByIndex	../hw5_a/p5.c	/^int getInodeByIndex(int index,struct inode* iNode)$/;"	f
-getInodeByIndex	p5.c	/^int getInodeByIndex(int index,struct inode* iNode)$/;"	f
 get_block	../hw5/itree_common.c	/^static inline int get_block(struct inode * inode, sector_t block,$/;"	f	file:
 get_block	../hw5_1/itree_common.c	/^static inline int get_block(struct inode * inode, sector_t block,$/;"	f	file:
 get_block	../hw5_a/itree_common.c	/^static inline int get_block(struct inode * inode, sector_t block,$/;"	f	file:
@@ -597,11 +525,7 @@ hello_cleanup	../hw1/module.c	/^static void __exit hello_cleanup(void)$/;"	f	fil
 hello_init	../hw1/module.c	/^module_init(hello_init);$/;"	v
 hello_init	../hw1/module.c	/^static int __init hello_init(void)$/;"	f	file:
 highwatermarkforBlock	../hw5/p5.c	/^int highwatermarkforBlock;$/;"	v
-highwatermarkforBlock	../hw5_a/p5.c	/^int highwatermarkforBlock;$/;"	v
-highwatermarkforBlock	p5.c	/^int highwatermarkforBlock;$/;"	v
 highwatermarkforInode	../hw5/p5.c	/^int highwatermarkforInode;$/;"	v
-highwatermarkforInode	../hw5_a/p5.c	/^int highwatermarkforInode;$/;"	v
-highwatermarkforInode	p5.c	/^int highwatermarkforInode;$/;"	v
 i1_data	../hw5/minix.h	/^		__u16 i1_data[16];$/;"	m	union:minix_inode_info::__anon12
 i1_data	../hw5_a/minix.h	/^		__u16 i1_data[16];$/;"	m	union:minix_inode_info::__anon8
 i1_data	minix.h	/^		__u16 i1_data[16];$/;"	m	union:minix_inode_info::__anon3
@@ -687,14 +611,8 @@ in_cs	../hw3/submit/problem_3.c	/^volatile int in_cs = 0;$/;"	v
 in_cs	../hw3/submit/problem_4.c	/^volatile int in_cs = 0;$/;"	v
 in_cs	../hw3/submit/problem_5.c	/^volatile int in_cs = 0;$/;"	v
 initBufferBlock	../hw5/p5.c	/^void initBufferBlock(struct bufferBlock* buffBlock)$/;"	f
-initBufferBlock	../hw5_a/p5.c	/^void initBufferBlock(struct bufferBlock* buffBlock)$/;"	f
-initBufferBlock	p5.c	/^void initBufferBlock(struct bufferBlock* buffBlock)$/;"	f
 initFolder	../hw5/p5.c	/^void initFolder(struct folder* Folder)$/;"	f
-initFolder	../hw5_a/p5.c	/^void initFolder(struct folder* Folder)$/;"	f
-initFolder	p5.c	/^void initFolder(struct folder* Folder)$/;"	f
 initInode	../hw5/p5.c	/^void initInode(struct inode* iNode)$/;"	f
-initInode	../hw5_a/p5.c	/^void initInode(struct inode* iNode)$/;"	f
-initInode	p5.c	/^void initInode(struct inode* iNode)$/;"	f
 init_inodecache	../hw5/inode.c	/^static int init_inodecache(void)$/;"	f	file:
 init_inodecache	../hw5_1/inode.c	/^static int init_inodecache(void)$/;"	f	file:
 init_inodecache	../hw5_a/inode.c	/^static int init_inodecache(void)$/;"	f	file:
@@ -712,22 +630,12 @@ inode	../hw5/minix_fs.h	/^	__u32 inode;$/;"	m	struct:minix3_dir_entry
 inode	../hw5/p5.c	/^struct inode$/;"	s	file:
 inode	../hw5_a/minix_fs.h	/^	__u16 inode;$/;"	m	struct:minix_dir_entry
 inode	../hw5_a/minix_fs.h	/^	__u32 inode;$/;"	m	struct:minix3_dir_entry
-inode	../hw5_a/p5.c	/^struct inode$/;"	s	file:
 inode	minix_fs.h	/^	__u16 inode;$/;"	m	struct:minix_dir_entry
 inode	minix_fs.h	/^	__u32 inode;$/;"	m	struct:minix3_dir_entry
-inode	p5.c	/^struct inode$/;"	s	file:
 inodeBitMapPosition	../hw5/p5.c	/^	int inodeBitMapPosition;	\/*i-node bitmap position*\/$/;"	m	struct:superblock	file:
-inodeBitMapPosition	../hw5_a/p5.c	/^	int inodeBitMapPosition;	\/*i-node bitmap position*\/$/;"	m	struct:superblock	file:
-inodeBitMapPosition	p5.c	/^	int inodeBitMapPosition;	\/*i-node bitmap position*\/$/;"	m	struct:superblock	file:
 inodeCommand	../hw5/p5.c	/^int inodeCommand(int Position,int Cmd)$/;"	f
-inodeCommand	../hw5_a/p5.c	/^int inodeCommand(int Position,int Cmd)$/;"	f
-inodeCommand	p5.c	/^int inodeCommand(int Position,int Cmd)$/;"	f
 inodeNum	../hw5/p5.c	/^	int inodeNum;	\/*numer of i-nodes*\/$/;"	m	struct:superblock	file:
-inodeNum	../hw5_a/p5.c	/^	int inodeNum;	\/*numer of i-nodes*\/$/;"	m	struct:superblock	file:
-inodeNum	p5.c	/^	int inodeNum;	\/*numer of i-nodes*\/$/;"	m	struct:superblock	file:
 inodePosition	../hw5/p5.c	/^	int inodePosition[10];$/;"	m	struct:folder	file:
-inodePosition	../hw5_a/p5.c	/^	int inodePosition[10];$/;"	m	struct:folder	file:
-inodePosition	p5.c	/^	int inodePosition[10];$/;"	m	struct:folder	file:
 is_empty	../hw3/hw3/prob6/problem_6.c	/^int is_empty(queue_t *q){$/;"	f
 is_empty	../hw3/prob6/problem_6.c	/^int is_empty(queue_t *q){$/;"	f
 is_empty	../hw3/prob7/problem_6.c	/^int is_empty(queue_t *q){$/;"	f
@@ -773,10 +681,12 @@ is_stop	../hw3/submit/problem_3.c	/^volatile int is_stop = 0;$/;"	v
 is_stop	../hw3/submit/problem_4.c	/^volatile int is_stop = 0;$/;"	v
 is_stop	../hw3/submit/problem_5.c	/^volatile int is_stop = 0;$/;"	v
 is_stop	../hw3/submit/problem_7.c	/^int is_stop = 0;$/;"	v
+is_valid_block	../hw5_a/itree_common.c	/^static int is_valid_block(struct inode *inode, long block){$/;"	f	file:
+is_valid_block	itree_common.c	/^static int is_valid_block(struct inode *inode, long block){$/;"	f	file:
 key	../hw5/itree_common.c	/^	block_t	key;$/;"	m	struct:__anon10	file:
 key	../hw5_1/itree_common.c	/^	block_t	key;$/;"	m	struct:__anon5	file:
-key	../hw5_a/itree_common.c	/^	block_t	key;$/;"	m	struct:__anon6	file:
-key	itree_common.c	/^	block_t	key;$/;"	m	struct:__anon1	file:
+key	../hw5_a/itree_common.c	/^	block_t	key;\/\/pointer to real block$/;"	m	struct:__anon6	file:
+key	itree_common.c	/^	block_t	key;\/\/pointer to real block$/;"	m	struct:__anon1	file:
 lock	../hw3/hw3/prob1/problem_1.c	/^void lock(int tid){$/;"	f
 lock	../hw3/hw3/prob1/pthread.c	/^void lock(int tid){$/;"	f
 lock	../hw3/hw3/prob1/pthread1.c	/^void lock(uint32_t tid){$/;"	f
@@ -976,11 +886,11 @@ minix_find_first_zero_bit	../hw5/minix.h	/^static inline int minix_find_first_ze
 minix_find_first_zero_bit	../hw5/minix.h	116;"	d
 minix_find_first_zero_bit	../hw5/minix.h	166;"	d
 minix_find_first_zero_bit	../hw5_a/minix.h	/^static inline int minix_find_first_zero_bit(const void *vaddr, unsigned size)$/;"	f
-minix_find_first_zero_bit	../hw5_a/minix.h	116;"	d
-minix_find_first_zero_bit	../hw5_a/minix.h	166;"	d
+minix_find_first_zero_bit	../hw5_a/minix.h	118;"	d
+minix_find_first_zero_bit	../hw5_a/minix.h	168;"	d
 minix_find_first_zero_bit	minix.h	/^static inline int minix_find_first_zero_bit(const void *vaddr, unsigned size)$/;"	f
-minix_find_first_zero_bit	minix.h	116;"	d
-minix_find_first_zero_bit	minix.h	166;"	d
+minix_find_first_zero_bit	minix.h	118;"	d
+minix_find_first_zero_bit	minix.h	168;"	d
 minix_free_block	../hw5/bitmap.c	/^void minix_free_block(struct inode *inode, unsigned long block)$/;"	f
 minix_free_block	../hw5_a/bitmap.c	/^void minix_free_block(struct inode *inode, unsigned long block)$/;"	f
 minix_free_block	bitmap.c	/^void minix_free_block(struct inode *inode, unsigned long block)$/;"	f
@@ -1088,12 +998,12 @@ minix_sb_info	minix.h	/^struct minix_sb_info {$/;"	s
 minix_set_bit	../hw5/minix.h	110;"	d
 minix_set_bit	../hw5/minix.h	145;"	d
 minix_set_bit	../hw5/minix.h	163;"	d
-minix_set_bit	../hw5_a/minix.h	110;"	d
-minix_set_bit	../hw5_a/minix.h	145;"	d
-minix_set_bit	../hw5_a/minix.h	163;"	d
-minix_set_bit	minix.h	110;"	d
-minix_set_bit	minix.h	145;"	d
-minix_set_bit	minix.h	163;"	d
+minix_set_bit	../hw5_a/minix.h	112;"	d
+minix_set_bit	../hw5_a/minix.h	147;"	d
+minix_set_bit	../hw5_a/minix.h	165;"	d
+minix_set_bit	minix.h	112;"	d
+minix_set_bit	minix.h	147;"	d
+minix_set_bit	minix.h	165;"	d
 minix_set_inode	../hw5/inode.c	/^void minix_set_inode(struct inode *inode, dev_t rdev)$/;"	f
 minix_set_inode	../hw5_1/inode.c	/^void minix_set_inode(struct inode *inode, dev_t rdev)$/;"	f
 minix_set_inode	../hw5_a/inode.c	/^void minix_set_inode(struct inode *inode, dev_t rdev)$/;"	f
@@ -1125,30 +1035,30 @@ minix_symlink_inode_operations	inode.c	/^static const struct inode_operations mi
 minix_test_and_clear_bit	../hw5/minix.h	112;"	d
 minix_test_and_clear_bit	../hw5/minix.h	147;"	d
 minix_test_and_clear_bit	../hw5/minix.h	164;"	d
-minix_test_and_clear_bit	../hw5_a/minix.h	112;"	d
-minix_test_and_clear_bit	../hw5_a/minix.h	147;"	d
-minix_test_and_clear_bit	../hw5_a/minix.h	164;"	d
-minix_test_and_clear_bit	minix.h	112;"	d
-minix_test_and_clear_bit	minix.h	147;"	d
-minix_test_and_clear_bit	minix.h	164;"	d
+minix_test_and_clear_bit	../hw5_a/minix.h	114;"	d
+minix_test_and_clear_bit	../hw5_a/minix.h	149;"	d
+minix_test_and_clear_bit	../hw5_a/minix.h	166;"	d
+minix_test_and_clear_bit	minix.h	114;"	d
+minix_test_and_clear_bit	minix.h	149;"	d
+minix_test_and_clear_bit	minix.h	166;"	d
 minix_test_and_set_bit	../hw5/minix.h	108;"	d
 minix_test_and_set_bit	../hw5/minix.h	143;"	d
 minix_test_and_set_bit	../hw5/minix.h	162;"	d
-minix_test_and_set_bit	../hw5_a/minix.h	108;"	d
-minix_test_and_set_bit	../hw5_a/minix.h	143;"	d
-minix_test_and_set_bit	../hw5_a/minix.h	162;"	d
-minix_test_and_set_bit	minix.h	108;"	d
-minix_test_and_set_bit	minix.h	143;"	d
-minix_test_and_set_bit	minix.h	162;"	d
+minix_test_and_set_bit	../hw5_a/minix.h	110;"	d
+minix_test_and_set_bit	../hw5_a/minix.h	145;"	d
+minix_test_and_set_bit	../hw5_a/minix.h	164;"	d
+minix_test_and_set_bit	minix.h	110;"	d
+minix_test_and_set_bit	minix.h	145;"	d
+minix_test_and_set_bit	minix.h	164;"	d
 minix_test_bit	../hw5/minix.h	/^static inline int minix_test_bit(int nr, const void *vaddr)$/;"	f
 minix_test_bit	../hw5/minix.h	114;"	d
 minix_test_bit	../hw5/minix.h	165;"	d
 minix_test_bit	../hw5_a/minix.h	/^static inline int minix_test_bit(int nr, const void *vaddr)$/;"	f
-minix_test_bit	../hw5_a/minix.h	114;"	d
-minix_test_bit	../hw5_a/minix.h	165;"	d
+minix_test_bit	../hw5_a/minix.h	116;"	d
+minix_test_bit	../hw5_a/minix.h	167;"	d
 minix_test_bit	minix.h	/^static inline int minix_test_bit(int nr, const void *vaddr)$/;"	f
-minix_test_bit	minix.h	114;"	d
-minix_test_bit	minix.h	165;"	d
+minix_test_bit	minix.h	116;"	d
+minix_test_bit	minix.h	167;"	d
 minix_truncate	../hw5/inode.c	/^void minix_truncate(struct inode * inode)$/;"	f
 minix_truncate	../hw5_1/inode.c	/^void minix_truncate(struct inode * inode)$/;"	f
 minix_truncate	../hw5_a/inode.c	/^void minix_truncate(struct inode * inode)$/;"	f
@@ -1174,37 +1084,17 @@ mutex	../hw3/prob7/problem_7_n.c	/^pthread_mutex_t mutex = PTHREAD_MUTEX_INITIAL
 mutex	../hw3/prob7/problem_7_o.c	/^pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v
 mutex	../hw3/submit/problem_7.c	/^pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v
 my_close	../hw5/p5.c	/^int my_close (int fd)$/;"	f
-my_close	../hw5_a/p5.c	/^int my_close (int fd)$/;"	f
-my_close	p5.c	/^int my_close (int fd)$/;"	f
 my_creat	../hw5/p5.c	/^int my_creat (char * path)$/;"	f
-my_creat	../hw5_a/p5.c	/^int my_creat (char * path)$/;"	f
-my_creat	p5.c	/^int my_creat (char * path)$/;"	f
 my_mkdir	../hw5/p5.c	/^int my_mkdir (char * path)$/;"	f
-my_mkdir	../hw5_a/p5.c	/^int my_mkdir (char * path)$/;"	f
-my_mkdir	p5.c	/^int my_mkdir (char * path)$/;"	f
 my_mkfs	../hw5/p5.c	/^void my_mkfs ()$/;"	f
-my_mkfs	../hw5_a/p5.c	/^void my_mkfs ()$/;"	f
-my_mkfs	p5.c	/^void my_mkfs ()$/;"	f
 my_open	../hw4/shady.c	/^asmlinkage int my_open (const char* file, int flags, int mode){$/;"	f
 my_open	../hw4/sub/shady.c	/^asmlinkage int my_open (const char* file, int flags, int mode){$/;"	f
 my_open	../hw5/p5.c	/^int my_open (char * path)$/;"	f
-my_open	../hw5_a/p5.c	/^int my_open (char * path)$/;"	f
-my_open	p5.c	/^int my_open (char * path)$/;"	f
 my_read	../hw5/p5.c	/^int my_read (int fileDescription, char * destination, int readLength)$/;"	f
-my_read	../hw5_a/p5.c	/^int my_read (int fileDescription, char * destination, int readLength)$/;"	f
-my_read	p5.c	/^int my_read (int fileDescription, char * destination, int readLength)$/;"	f
 my_remove	../hw5/p5.c	/^int my_remove (char * path)$/;"	f
-my_remove	../hw5_a/p5.c	/^int my_remove (char * path)$/;"	f
-my_remove	p5.c	/^int my_remove (char * path)$/;"	f
 my_rename	../hw5/p5.c	/^int my_rename (char * oldpath, char * newpath)$/;"	f
-my_rename	../hw5_a/p5.c	/^int my_rename (char * oldpath, char * newpath)$/;"	f
-my_rename	p5.c	/^int my_rename (char * oldpath, char * newpath)$/;"	f
 my_rmdir	../hw5/p5.c	/^int my_rmdir (char * path)$/;"	f
-my_rmdir	../hw5_a/p5.c	/^int my_rmdir (char * path)$/;"	f
-my_rmdir	p5.c	/^int my_rmdir (char * path)$/;"	f
 my_write	../hw5/p5.c	/^int my_write (int fileDescription, char * source, int writeLength)$/;"	f
-my_write	../hw5_a/p5.c	/^int my_write (int fileDescription, char * source, int writeLength)$/;"	f
-my_write	p5.c	/^int my_write (int fileDescription, char * source, int writeLength)$/;"	f
 n_consumer	../hw3/prob7/problem_7.c	/^int n_consumer = 0;$/;"	v
 n_consumer	../hw3/prob7/problem_71.c	/^int n_consumer = 0;$/;"	v
 n_consumer	../hw3/prob7/problem_7_n.c	/^int n_consumer = 0;$/;"	v
@@ -1242,10 +1132,8 @@ name	../hw5/minix_fs.h	/^	char name[0];$/;"	m	struct:minix_dir_entry
 name	../hw5/p5.c	/^	char name[10][20];$/;"	m	struct:folder	file:
 name	../hw5_a/minix_fs.h	/^	char name[0];$/;"	m	struct:minix3_dir_entry
 name	../hw5_a/minix_fs.h	/^	char name[0];$/;"	m	struct:minix_dir_entry
-name	../hw5_a/p5.c	/^	char name[10][20];$/;"	m	struct:folder	file:
 name	minix_fs.h	/^	char name[0];$/;"	m	struct:minix3_dir_entry
 name	minix_fs.h	/^	char name[0];$/;"	m	struct:minix_dir_entry
-name	p5.c	/^	char name[10][20];$/;"	m	struct:folder	file:
 namecompare	../hw5/dir.c	/^static inline int namecompare(int len, int maxlen,$/;"	f	file:
 namecompare	../hw5_a/dir.c	/^static inline int namecompare(int len, int maxlen,$/;"	f	file:
 namecompare	dir.c	/^static inline int namecompare(int len, int maxlen,$/;"	f	file:
@@ -1262,15 +1150,11 @@ obj-m	Makefile	/^obj-m := minix.o$/;"	m
 old_open	../hw4/shady.c	/^asmlinkage int (*old_open) (const char*, int, int);$/;"	v
 old_open	../hw4/sub/shady.c	/^asmlinkage int (*old_open) (const char*, int, int);$/;"	v
 openedFileNum	../hw5/p5.c	/^int openedFileNum;$/;"	v
-openedFileNum	../hw5_a/p5.c	/^int openedFileNum;$/;"	v
-openedFileNum	p5.c	/^int openedFileNum;$/;"	v
 openedFiles	../hw5/p5.c	/^int openedFiles[10];					\/*files which has openned*\/$/;"	v
-openedFiles	../hw5_a/p5.c	/^int openedFiles[10];					\/*files which has openned*\/$/;"	v
-openedFiles	p5.c	/^int openedFiles[10];					\/*files which has openned*\/$/;"	v
 p	../hw5/itree_common.c	/^	block_t	*p;$/;"	m	struct:__anon10	file:
 p	../hw5_1/itree_common.c	/^	block_t	*p;$/;"	m	struct:__anon5	file:
-p	../hw5_a/itree_common.c	/^	block_t	*p;$/;"	m	struct:__anon6	file:
-p	itree_common.c	/^	block_t	*p;$/;"	m	struct:__anon1	file:
+p	../hw5_a/itree_common.c	/^	block_t	*p;\/\/pointer to first level block$/;"	m	struct:__anon6	file:
+p	itree_common.c	/^	block_t	*p;\/\/pointer to first level block$/;"	m	struct:__anon1	file:
 produce	../hw3/prob7/problem_7.c	/^void *produce(void *arg){$/;"	f
 produce	../hw3/prob7/problem_71.c	/^void *produce(void *arg){$/;"	f
 produce	../hw3/prob7/problem_7_n.c	/^void *produce(void *arg){$/;"	f
@@ -1299,8 +1183,6 @@ read_block	../hw5/block.c	/^int read_block (int block_num, char * block)$/;"	f
 read_block	../hw5_a/block.c	/^int read_block (int block_num, char * block)$/;"	f
 read_block	block.c	/^int read_block (int block_num, char * block)$/;"	f
 resolveFilePath	../hw5/p5.c	/^int resolveFilePath(char * path,char **folderNameArray)$/;"	f
-resolveFilePath	../hw5_a/p5.c	/^int resolveFilePath(char * path,char **folderNameArray)$/;"	f
-resolveFilePath	p5.c	/^int resolveFilePath(char * path,char **folderNameArray)$/;"	f
 s	../hw3/hw3/prob4/problem_4.c	/^volatile spin_lock_t s;$/;"	v
 s	../hw3/hw3/prob5/problem_5.c	/^spin_lock_t s;$/;"	v
 s	../hw3/prob4/problem_4.c	/^volatile spin_lock_t s;$/;"	v
@@ -1442,8 +1324,6 @@ second	../hw3/prob7/problem_7_n.c	/^int second = 0;$/;"	v
 second	../hw3/prob7/problem_7_o.c	/^int second = 0;$/;"	v
 second	../hw3/submit/problem_7.c	/^int second = 0;$/;"	v
 secondLevelIndirectBlock	../hw5/p5.c	/^	int secondLevelIndirectBlock;$/;"	m	struct:inode	file:
-secondLevelIndirectBlock	../hw5_a/p5.c	/^	int secondLevelIndirectBlock;$/;"	m	struct:inode	file:
-secondLevelIndirectBlock	p5.c	/^	int secondLevelIndirectBlock;$/;"	m	struct:inode	file:
 serving	../hw3/hw3/prob5/problem_5.c	/^	int serving;$/;"	m	struct:_spin_lock_t	file:
 serving	../hw3/prob5/problem_5.c	/^	int serving;$/;"	m	struct:_spin_lock_t	file:
 serving	../hw3/prob7/problem_5.c	/^	int serving;$/;"	m	struct:_spin_lock_t	file:
@@ -1586,10 +1466,6 @@ splice_branch	../hw5_a/itree_common.c	/^static inline int splice_branch(struct i
 splice_branch	itree_common.c	/^static inline int splice_branch(struct inode *inode,$/;"	f	file:
 superblock	../hw5/p5.c	/^struct superblock$/;"	s	file:
 superblock	../hw5/p5.c	/^}superblock;$/;"	v	typeref:struct:superblock
-superblock	../hw5_a/p5.c	/^struct superblock$/;"	s	file:
-superblock	../hw5_a/p5.c	/^}superblock;$/;"	v	typeref:struct:superblock
-superblock	p5.c	/^struct superblock$/;"	s	file:
-superblock	p5.c	/^}superblock;$/;"	v	typeref:struct:superblock
 system_call_table_address	../hw4/shady.c	/^void **system_call_table_address = (void*)0xc15b3020;	\/*sys_call_table address in System.map file*\/$/;"	v
 system_call_table_address	../hw4/sub/shady.c	/^void **system_call_table_address = (void*)0xc15b3020;	\/*sys_call_table address in System.map file*\/$/;"	v
 tail	../hw3/hw3/prob6/problem_6.c	/^	int head, tail;$/;"	m	struct:_queue_t	file:
@@ -1784,11 +1660,7 @@ waiting	../hw3/prob7/problem_7_o.c	/^	int waiting;$/;"	m	struct:_spin_lock_t	fil
 waiting	../hw3/submit/problem_5.c	/^	int waiting;$/;"	m	struct:_spin_lock_t	file:
 waiting	../hw3/submit/problem_7.c	/^	int waiting;$/;"	m	struct:_spin_lock_t	file:
 writeFolderToHardisk	../hw5/p5.c	/^int writeFolderToHardisk(int index,struct folder Folder)$/;"	f
-writeFolderToHardisk	../hw5_a/p5.c	/^int writeFolderToHardisk(int index,struct folder Folder)$/;"	f
-writeFolderToHardisk	p5.c	/^int writeFolderToHardisk(int index,struct folder Folder)$/;"	f
 writeInodeToHardisk	../hw5/p5.c	/^int writeInodeToHardisk(int index,struct inode newInode)$/;"	f
-writeInodeToHardisk	../hw5_a/p5.c	/^int writeInodeToHardisk(int index,struct inode newInode)$/;"	f
-writeInodeToHardisk	p5.c	/^int writeInodeToHardisk(int index,struct inode newInode)$/;"	f
 write_block	../hw5/block.c	/^int write_block (int block_num, char * block)$/;"	f
 write_block	../hw5_a/block.c	/^int write_block (int block_num, char * block)$/;"	f
 write_block	block.c	/^int write_block (int block_num, char * block)$/;"	f

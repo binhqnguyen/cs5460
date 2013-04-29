@@ -2,7 +2,7 @@
 
 typedef struct {
 	block_t	*p;//pointer to first level block
-	block_t	key;//pointer to real block
+	block_t	key;//pointer to real block. 0 IF NOT IN BUFFER (init val = 0)
 	struct buffer_head *bh;
 } Indirect;
 
@@ -163,70 +163,52 @@ changed:
 
 
 /*load a block from disk to buffer_head bh*/
+
 static inline int get_block(struct inode * inode, sector_t block,
 			struct buffer_head *bh, int create)
 {
 	int err = -EIO;
-	int offsets[DEPTH];
-	Indirect chain[DEPTH];
-	Indirect *partial;
-	int left;
-	int depth = block_to_path(inode, block, offsets); /*get the depth (indirect) that this block is in*/
+	unsigned long block_value = 0;
+	int new_block = 0;
+
 	printk(KERN_INFO "itree_common: get_block\n");
-	//if (depth == 0)/*invalid block number*/
 	if (!is_valid_block(inode, block))/*check for valid block*/
 		goto out;
 
-reread:
-	partial = get_branch(inode, depth, offsets, chain, &err);
-
-	/* Simplest case - block found, no allocation needed */
-	if (!partial) {
-got_it:	
-		map_bh(bh, inode->i_sb, block_to_cpu(chain[depth-1].key));/*map a block (on disk) to bh*/
-		printk(KERN_INFO "itree_common->get_block: get_branch inode found, block  %lu\n",block_to_cpu(chain[depth-1].key));
-		/* Clean up and exit */
-		partial = chain+depth-1; /* the whole chain */
-		goto cleanup;
+	block_value = *(i_data(inode)+block); //get the value contain in the zone inside the inode.
+	if (!block_value){	//block=0, not found on disk
+		goto new_block;
 	}
-	printk(KERN_INFO "itree_common->get_block: get_branch inode not found\n");
-
+	else{	//block found on disk
+		map_bh(bh, inode->i_sb, block_value);	
+		printk(KERN_INFO "itree_common->get_block: block in zone %lu found on disk, value=%lu\n",block_to_cpu(block),block_value);
+	}
 	/* Next simple case - plain lookup or failed read of indirect block */
 	if (!create || err == -EIO) {
-cleanup:
-		while (partial > chain) {
-			brelse(partial->bh);
-			partial--;
-		}
+		printk(KERN_INFO "itree_common->get_block: read an unfound block, error\n");
 out:
 		return err;
 	}
-
-	/*
-	 * Indirect block might be removed by truncate while we were
-	 * reading it. Handling of that case (forget what we've got and
-	 * reread) is taken out of the main path.
-	 */
-	if (err == -EAGAIN)
-		goto changed;
-
-	left = (chain + depth) - partial;
-	err = alloc_branch(inode, left, offsets+(partial-chain), partial);
-	if (err)
-		goto cleanup;
-
-	if (splice_branch(inode, chain, partial, left) < 0)
-		goto changed;
-
-	set_buffer_new(bh);
-	goto got_it;
-
-changed:
-	while (partial > chain) {
-		brelse(partial->bh);
-		partial--;
+	/*Create a new block*/
+	/*So far, block contains only block number, in the extent version, block contains both block number and length of region*/
+new_block:
+	new_block = minix_new_block(inode);
+	if (new_block!=0){ //succeed allocated a new block
+		bh = sb_getblk(inode->i_sb, new_block);	//new a block on disk.
+		lock_buffer(bh);
+		memset(bh->b_data, 0, bh->b_size);
+		set_buffer_uptodate(bh);
+		unlock_buffer(bh);
+		mark_buffer_dirty_inode(bh,inode);
+		printk(KERN_INFO "itree_common->get_block: New block created, bitmap = %d\n",new_block);
+		err = 0; //succeed
 	}
-	goto reread;
+	else{	//failed allocating a new block
+		minix_free_block(inode,block);
+		printk(KERN_INFO "itree_common->get_block: failed allocating new block\n");
+		err = -ENOSPC;
+	}
+	return err;
 }
 
 static inline int all_zeroes(block_t *p, block_t *q)

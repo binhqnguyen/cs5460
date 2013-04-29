@@ -6,6 +6,8 @@ typedef struct {
 	struct buffer_head *bh;
 } Indirect;
 
+#define NBLOCKS_MAX = 1 << 28;	//28 bits can present maximum 2^28 blocks. 
+
 static DEFINE_RWLOCK(pointers_lock);
 
 static int is_valid_block(struct inode *inode, long block){
@@ -17,8 +19,10 @@ static int is_valid_block(struct inode *inode, long block){
 		printk("MINIX-fs: block_to_path: block %ld < 0 on dev %s\n",block, bdevname(sb->s_bdev, b));
 		retval = 0;
 		
-	} else if (block >= (minix_sb(inode->i_sb)->s_max_size/sb->s_blocksize)) {
-		if (printk_ratelimit())
+	} else 
+	if (block >= (minix_sb(inode->i_sb)->s_max_size/sb->s_blocksize)) {
+	//if ( (block>>4) > NBLOCKS_MAX){	
+	if (printk_ratelimit())
 			printk("MINIX-fs: block_to_path: "
 			       "block %ld too big on dev %s\n",
 				block, bdevname(sb->s_bdev, b));
@@ -161,37 +165,45 @@ changed:
 	return -EAGAIN;
 }
 
-static int alloc_extent(struct inode *inode, unsigned long *block){
-	*block = minix_new_block(inode);
-	if (*block!=0){ //succeed allocated a new block in bitmap
-		//bh = sb_getblk(inode->i_sb, block);	//new a block on disk.
-		//lock_buffer(bh);
-		//memset(bh->b_data, 0, bh->b_size);
-		//set_buffer_uptodate(bh);
-		//unlock_buffer(bh);
-		//mark_buffer_dirty_inode(bh,inode);
-		printk(KERN_INFO "itree_common->get_block: New block created, bitmap = %lu\n",*block);
-		return 0;
+static int alloc_extent(struct inode *inode, int *block_bg, int* length){
+	int i = 0;
+	int bl = 0;
+	*block_bg = minix_new_block(inode);	//allocate the 1st block
+	if (*block_bg!=0){ //succeed allocated the 1st blockbitmap
+		printk(KERN_INFO "itree_common->alloc_extent: 1st block created, bitmap = %d\n",*block_bg);
+		for (i=0; i < *length-1;++i){ //create the rest
+			bl = minix_new_block(inode);
+			printk(KERN_EMERG "alloc_extent: new block %d\n",bl);	
+			if (bl!=0) //succeed allocated a new block in bitmap
+				printk(KERN_EMERG "alloc_extent: new block %d\n",bl);		else{
+				printk(KERN_EMERG "alloc_extent: failed allocating block extent num. %d\n",i);
+				return -ENOSPC;
+			}
+		}
 	}
-	return -ENOSPC;	//failed
+	return 0;
 }
 
 /*load a block from disk to buffer_head bh*/
-
 static inline int get_block(struct inode * inode, sector_t block,
 			struct buffer_head *bh, int create)
 {
 	int err = -EIO;
 	unsigned long block_value = 0;
+	int block_bg = 0;
+	int length = 0;
 
 	printk(KERN_INFO "itree_common: get_block\n");
 	if (!is_valid_block(inode, block))/*check for valid block*/
 		goto out;
 	block_value = *(i_data(inode)+block); //get the value contain in the zone inside the inode.
+	block_bg = block_value >>4;
+	length = (block_value << 28) >> 28;
 reread:
-	if (block_value!=0){	//block!=0, found on disk
-		map_bh(bh, inode->i_sb, block_value);	
-		printk(KERN_INFO "itree_common->get_block: block in zone %lu found on disk, value=%lu\n",block_to_cpu(block),block_value);
+	printk(KERN_EMERG "get_block: reading block value = %lu, block_bg=%d, length=%d\n",block_value, block_bg, length);
+	if (block_bg!=0){	//block!=0, found on disk
+		map_bh(bh, inode->i_sb, block_bg);	
+		printk(KERN_INFO "itree_common->get_block: block in zone %lu found on disk, value=<%d,%d>\n",block_to_cpu(block),block_bg,length);
 		err = 0; 	//succeed.
 		goto out;
 	}
@@ -205,7 +217,7 @@ out:
 	printk(KERN_EMERG "get_block: creating new block\n");
 	/*Block not found and creating needed, create a new block*/
 	/*So far, block contains only block number, in the extent version, block contains both block number and length of region*/
-	err = alloc_extent(inode, &block_value);	
+	err = alloc_extent(inode, &block_bg, &length);	
 	if (err==0)	//succeed, reread block again
 		goto reread;
 	else{	//failed allocating a new block
@@ -312,7 +324,8 @@ static inline void truncate (struct inode * inode)
 	int n;
 	int first_whole;
 	long iblock;
-
+	
+	printk(KERN_EMERG "itree_common: truncate\n");
 	iblock = (inode->i_size + sb->s_blocksize -1) >> sb->s_blocksize_bits;
 	block_truncate_page(inode->i_mapping, inode->i_size, get_block);
 
@@ -360,17 +373,14 @@ do_indirects:
 
 static inline unsigned nblocks(loff_t size, struct super_block *sb)
 {
-	int k = sb->s_blocksize_bits - 10;
-	unsigned blocks, res, direct = DIRECT, i = DEPTH;
-	blocks = (size + sb->s_blocksize - 1) >> (BLOCK_SIZE_BITS + k);
+	int k = sb->s_blocksize_bits - 10;	//s_blocksize_bits=10.
+	unsigned blocks, res, direct = DIRECT;
+	blocks = (size + sb->s_blocksize - 1) >> (BLOCK_SIZE_BITS + k);	//k=-4, BLOCK_SIZE_BITS=10 (1024B block).
 	res = blocks;
-	while (--i && blocks > direct) {
-		blocks -= direct;
-		blocks += sb->s_blocksize/sizeof(block_t) - 1;
-		blocks /= sb->s_blocksize/sizeof(block_t);
-		res += blocks;
-		direct = 1;
-	}
+	//if (blocks > direct) {
+	//	printk(KERN_EMERG "nblocks: file have some extent\n");
+	//}
+	printk(KERN_EMERG "nblocks: size = %d, return %d\n", (int)size, (int)res);
 	return res;
 }
 

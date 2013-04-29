@@ -263,6 +263,8 @@ static inline void truncate (struct inode * inode)
 	int first_whole;
 	long iblock;
 
+	printk(KERN_INFO "itree_common: truncate\n");
+
 	iblock = (inode->i_size + sb->s_blocksize -1) >> sb->s_blocksize_bits;
 	block_truncate_page(inode->i_mapping, inode->i_size, get_block);
 

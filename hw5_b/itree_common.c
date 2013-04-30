@@ -272,7 +272,7 @@ static block_t get_block_value(struct inode *inode, sector_t block){
 		} 
 		sec++; //next sector
 	}
-not_found:
+//not_found:
 	return 0;
 }
 /*load a block from disk to buffer_head bh*/
@@ -407,17 +407,25 @@ static void free_branches(struct inode *inode, block_t *p, block_t *q, int depth
 
 static inline void truncate (struct inode * inode)
 {
-	struct super_block *sb = inode->i_sb;
+	//struct super_block *sb = inode->i_sb;
 	block_t *idata = i_data(inode);
-	int offsets[DEPTH];
-	Indirect chain[DEPTH];
-	Indirect *partial;
-	block_t nr = 0;
-	int n;
-	int first_whole;
-	long iblock;
+	//int offsets[DEPTH];
+	//Indirect chain[DEPTH];
+	//Indirect *partial;
+	block_t bl_value = 0;
+	block_t bg = 0;
+	int len = 0;
+	int i = 0;
 	
+	//int n;
+	//int first_whole;
+	//long iblock;
+	int offset = 0;	
+	//struct buffer_head *bh;
+
 	printk(KERN_EMERG "itree_common: truncate\n");
+	
+	/*
 	iblock = (inode->i_size + sb->s_blocksize -1) >> sb->s_blocksize_bits;
 	block_truncate_page(inode->i_mapping, inode->i_size, get_block);
 
@@ -440,7 +448,7 @@ static inline void truncate (struct inode * inode)
 			mark_buffer_dirty_inode(partial->bh, inode);
 		free_branches(inode, &nr, &nr+1, (chain+n-1) - partial);
 	}
-	/* Clear the ends of indirect blocks on the shared branch */
+	// Clear the ends of indirect blocks on the shared branch 
 	while (partial > chain) {
 		free_branches(inode, partial->p + 1, block_end(partial->bh),
 				(chain+n-1) - partial);
@@ -448,19 +456,32 @@ static inline void truncate (struct inode * inode)
 		brelse (partial->bh);
 		partial--;
 	}
-do_indirects:
-	/* Kill the remaining (whole) subtrees */
-	while (first_whole < DEPTH-1) {
-		nr = idata[DIRECT+first_whole];
-		if (nr) {
-			idata[DIRECT+first_whole] = 0;
-			mark_inode_dirty(inode);
-			free_branches(inode, &nr, &nr+1, first_whole+1);
+	*/
+//do_indirects:
+	while (offset < DIRECT) {
+		bl_value = idata[offset];
+		bg = bl_value >> LEN;
+		len = (bl_value << BLOCK_BITS) >> BLOCK_BITS;
+		if (bl_value == 0 || bg == 0){
+			offset++;
+			continue; //skip the empty inodes
 		}
-		first_whole++;
-	}
+		idata[offset] = 0; //mark inode zones free (0)
+		for (i=-1; i <= MAX_LEN; ++i){
+			//bh = sb_bread(inode->i_sb, bg);
+			//if (!bh)
+			//	continue;
+			//bforget(bh);
+			printk(KERN_EMERG ".......truncate: freeing %d\n", (int)bg);
+			minix_free_block(inode, bg);
+			bg++;
+		}
+		offset++;
+	}		
+	//free_data(inode, &idata[0], &idata[DIRECT]);
 	inode->i_mtime = inode->i_ctime = CURRENT_TIME_SEC;
 	mark_inode_dirty(inode);
+	return;
 }
 
 static inline unsigned nblocks(loff_t size, struct super_block *sb)

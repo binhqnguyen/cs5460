@@ -211,13 +211,13 @@ ret:
 
 }
 
-static int update_inode(struct inode *inode, Extent last_extent){
+static int update_inode(struct inode *inode, Extent last_extent, int not_contiguous){
 	int retval = 0;
 	//int bg = 0, len = 0;
 	block_t block_val = 0;
 	block_val = ((int)last_extent.bg << LEN) | last_extent.len;
 	printk(KERN_EMERG "update_inode: bg = %d, len = %d, block_val = %d, offset = %d\n", (int)last_extent.bg, (int)last_extent.len, (int)block_val, (int) last_extent.offset);
-	minix_i(inode)->u.i2_data[last_extent.offset+1] = (int)block_val;
+	minix_i(inode)->u.i2_data[last_extent.offset+not_contiguous] = (int)block_val;
 	mark_inode_dirty(inode);
 	print_inode(inode);
 	return retval;
@@ -231,16 +231,23 @@ static int alloc_extent(struct inode *inode, int *block_bg){
 		//If not, add new extent on inode.
 		last_extent = get_last_extent(inode);
 		printk(KERN_EMERG "alloc_extent: new block = %d, last_extent.bg = %d, last_extent.len = %d\n",*block_bg,(int)last_extent.bg,(int)last_extent.len);
-		if ( *block_bg == last_extent.bg+last_extent.len ){//if contiguous
+		if ( *block_bg == (last_extent.bg+last_extent.len+1) ){//if contiguous
 			printk(KERN_EMERG "alloc_extent: contiguous\n");
 			last_extent.len++;
+			//TODO if len > MAX_LEN
+			//goto update not contiguous (new extent).
+			if (last_extent.len >= MAX_LEN){ 
+				printk(KERN_EMERG "Extent exceed the MAX_LEN\n");
+				goto not_contiguous;
+			}
+			update_inode(inode,last_extent,0);
+			return 0;
 		}
-		else{	//not contiguous
-			printk(KERN_EMERG "alloc_extent: not contiguous, new extent <%d,%d>\n",*block_bg,0);
-			last_extent.bg = *block_bg;
-			last_extent.len = 0;
-		}
-		update_inode(inode, last_extent);
+not_contiguous: 	//not contiguous
+		printk(KERN_EMERG "alloc_extent: not contiguous, new extent <%d,%d>\n",*block_bg,0);
+		last_extent.bg = *block_bg;
+		last_extent.len = 0;
+		update_inode(inode, last_extent,1);
 		return 0;
 	}
 	return -ENOSPC;

@@ -9,6 +9,13 @@
 #define MINIX_V1		0x0001		/* original minix fs */
 #define MINIX_V2		0x0002		/* minix V2 fs */
 #define MINIX_V3		0x0003		/* minix V3 fs */
+#define NBLOCKS_MAX  1<<28	//28 bits can present maximum 2^28 blocks. 
+#define BLOCK_BITS 28	//28 bits block value
+#define LEN 4 		//4 bits len (16)
+#define NBLOCKS_INODE_MAX DIRECT*(1<<LEN) //each extent can have a maximum length of 16 (7*16).
+#define MAX_LEN 1<<LEN
+
+
 
 /*
  * minix fs inode data in memory

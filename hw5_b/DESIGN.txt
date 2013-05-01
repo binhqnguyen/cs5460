@@ -1,0 +1,57 @@
+Extent Minix File System
+Binh Nguyen 00811209
+Please contact me if sth is wrong: binh@cs.utah.edu
+================================================
+
+1. Design:
+----------
+
++ Inode: contains maximum 7 extents, each in its sector.
++ Each extent is 32-bit number, first 4 bits is the length of the extent, and the rest 28 bits is the beginning block number of the extent. 
++ The maximum file possible is (actual implemented): 7*16 = 112 blocks or 112 KB. (7 extents * 16 blocks (4bits) per extent).
++ If each extent is 1 block, the maximum file is 7KB.
+
+
+2. How it was implemented:
+--------------------------
+
++ get_block(): read a sector from inode. If sector is not on inode, allocate a new block and reread (look alloc_extent()).
+
++ get_block_value(): actually seek and read a sector on inode. An example of inode looks like:
+  
+	..(other data)..
+	-----------------
+	|  1380  |  15  | <---(extent #1, 32bits)
+	-----------------
+	|  1396  |  15  |
+	-----------------
+	|  1412  |  3   |
+	-----------------
+	|   0    |  0   |
+	-----------------
+	 (other sectors)
+	
+	This inode contains 3 extents, 33 blocks (15+15+3). The next allocated block will be in the 3rd extent, and the 3rd extent will be: <1412,4>.
+
+	get_block_value() checks if a sector is in which extent, get the beginning of the extent, add an offset to get the block value.
+
++ alloc_extent(): allocates new block if block is not in inode. Allocating block might have 2 cases: (1) add the new block to the current extent (if blocks are contiguous) by increasing the length. (2) if the new block is not contiguous or the length of the extent exceeds 15, then new extent is added to the inode.
+
++ truncate(): scane through the extents, delete all blocks in their regions.
+
+
+3. Testing:
+------------
+PASSED test cases:
+	1. mount/unmount.
+	2. copy a file to the fs.
+	3. delete a file from the fs.
+	4. copy a extra large (5MB) file to the fs (failed, since only support 112KB).
+	5. read a file from the fs, edit and write it back to the fs.
+	6. deleta all files (and do "df" to see the number of blocks used is decreased, or truncate works correctly).
+	7. copy the entire directory to the fs, delete it.
+	8. compile a project inside the fs (compile this project for example). Delete the compiled project.
+
+4. Handin:
+------------
+All files given and DESIGN.TXT

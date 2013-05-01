@@ -23,11 +23,7 @@ static inline block_t *i_data(struct inode *inode)
 #define DIRCOUNT 7 /*number of direct blocks*/
 #define INDIRCOUNT(sb) (1 << ((sb)->s_blocksize_bits - 2))
 
-
-/*get block position in an inode
-*return n: level in which the block is in.
-*offsets[i]: offset of block in level (i-1)
-*/
+/*
 static int block_to_path(struct inode * inode, long block, int offsets[DEPTH])
 {
 	int n = 0;
@@ -60,7 +56,7 @@ static int block_to_path(struct inode * inode, long block, int offsets[DEPTH])
 	}
 	return n;
 }
-
+*/
 #include "itree_common.c"
 
 int V2_minix_get_block(struct inode * inode, long block,

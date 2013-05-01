@@ -20,7 +20,7 @@ static inline block_t *i_data(struct inode *inode)
 {
 	return (block_t *)minix_i(inode)->u.i1_data;
 }
-
+/*
 static int block_to_path(struct inode * inode, long block, int offsets[DEPTH])
 {
 	int n = 0;
@@ -47,7 +47,7 @@ static int block_to_path(struct inode * inode, long block, int offsets[DEPTH])
 	}
 	return n;
 }
-
+*/
 #include "itree_common.c"
 
 int V1_minix_get_block(struct inode * inode, long block,

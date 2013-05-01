@@ -14,6 +14,7 @@ typedef struct{
 
 static DEFINE_RWLOCK(pointers_lock);
 
+/* Check if a sector is in the range*/
 static int is_valid_block(struct inode *inode, long block){
 	char b[BDEVNAME_SIZE];
 	struct super_block *sb = inode->i_sb;
@@ -24,7 +25,6 @@ static int is_valid_block(struct inode *inode, long block){
 		retval = 0;
 		
 	} else 
-	//if (block >= (minix_sb(inode->i_sb)->s_max_size/sb->s_blocksize)) {
 	if (block > NBLOCKS_INODE_MAX){	
 		if (printk_ratelimit())
 			printk(KERN_EMERG "MINIX-fs: block_to_path: "
@@ -92,7 +92,7 @@ failure:
 no_block:
 	return p;
 }
-
+/*
 static int alloc_branch(struct inode *inode,
 			     int num,
 			     int *offsets,
@@ -105,7 +105,7 @@ static int alloc_branch(struct inode *inode,
 	branch[0].key = cpu_to_block(parent);
 	if (parent) for (n = 1; n < num; n++) {
 		struct buffer_head *bh;
-		/* Allocate the next block */
+		// Allocate the next block /
 		int nr = minix_new_block(inode);
 		if (!nr)
 			break;
@@ -124,14 +124,14 @@ static int alloc_branch(struct inode *inode,
 	if (n == num)
 		return 0;
 
-	/* Allocation failed, free what we already allocated */
+	// Allocation failed, free what we already allocated //
 	for (i = 1; i < n; i++)
 		bforget(branch[i].bh);
 	for (i = 0; i < n; i++)
 		minix_free_block(inode, block_to_cpu(branch[i].key));
 	return -ENOSPC;
 }
-
+*/
 static inline int splice_branch(struct inode *inode,
 				     Indirect chain[DEPTH],
 				     Indirect *where,
@@ -168,7 +168,7 @@ changed:
 		minix_free_block(inode, block_to_cpu(where[i].key));
 	return -EAGAIN;
 }
-
+/*
 static void print_inode(struct inode *inode){
 	int i  = 0 ;
 	printk(KERN_EMERG "inode: ");
@@ -177,7 +177,9 @@ static void print_inode(struct inode *inode){
 	}
 	printk(KERN_EMERG "\n");
 }
+*/
 
+/* Get the lastest extent in the inode*/
 static Extent get_last_extent(struct inode *inode){
 	block_t bl_value = 0;
 	block_t bg = 0;
@@ -187,21 +189,18 @@ static Extent get_last_extent(struct inode *inode){
 	retval.len = 0;
 	retval.offset = -1;
 
-	print_inode(inode);
 	while ( sec < DIRECT) { //check all non empty sector in inode.
 		bl_value = *(i_data(inode)+sec);
 		bg = bl_value >> LEN;
-		len = (bl_value << BLOCK_BITS ) >> BLOCK_BITS;	//length.
+		len = (bl_value << BLOCK_BITS ) >> BLOCK_BITS;	
 		if (bg == 0){ //hit the first empty extent	
-			printk(KERN_EMERG "get_last_extent: hit! offset = %d\n", sec-1);
 			if (sec==0) goto ret;	//if inode is empty
 			bl_value = *(i_data(inode)+sec-1);
 			bg = bl_value >> LEN;
-			len = (bl_value << BLOCK_BITS ) >> BLOCK_BITS;	//length.
+			len = (bl_value << BLOCK_BITS ) >> BLOCK_BITS;	
 			retval.bg = bg;	
 			retval.len = len;
 			retval.offset = sec-1;
-			printk(KERN_EMERG "xxxx last_extent <bg,len> =  <%d,%d>\n",(int)bg, (int)len);
 			goto ret;
 		} 
 		sec++; //next sector
@@ -211,40 +210,35 @@ ret:
 
 }
 
+/* Mark the inode dirty to update its extents*/
 static int update_inode(struct inode *inode, Extent last_extent, int not_contiguous){
 	int retval = 0;
-	//int bg = 0, len = 0;
 	block_t block_val = 0;
 	block_val = ((int)last_extent.bg << LEN) | last_extent.len;
-	printk(KERN_EMERG "update_inode: bg = %d, len = %d, block_val = %d, offset = %d\n", (int)last_extent.bg, (int)last_extent.len, (int)block_val, (int) last_extent.offset);
 	minix_i(inode)->u.i2_data[last_extent.offset+not_contiguous] = (int)block_val;
 	mark_inode_dirty(inode);
-	print_inode(inode);
 	return retval;
 }
 
+/* Allocating a new extent to store the block_bg
+ * Increase the length of the extent if new block is contiguous.
+ * Create a new extent if the new block is NOT contiguous.
+ */
 static int alloc_extent(struct inode *inode, int *block_bg){
 	Extent last_extent;
 	*block_bg = minix_new_block(inode);
 	if (*block_bg!=0){ //succeed allocated the block
-		//Check if this new block is in the contiguous region.
-		//If not, add new extent on inode.
 		last_extent = get_last_extent(inode);
-		printk(KERN_EMERG "alloc_extent: new block = %d, last_extent.bg = %d, last_extent.len = %d\n",*block_bg,(int)last_extent.bg,(int)last_extent.len);
-		if ( *block_bg == (last_extent.bg+last_extent.len+1) ){//if contiguous
-			printk(KERN_EMERG "alloc_extent: contiguous\n");
+		if ( *block_bg == (last_extent.bg+last_extent.len+1) ){ //if new block is  contiguous with existing extent, increase extent's length
 			last_extent.len++;
-			//TODO if len > MAX_LEN
-			//goto update not contiguous (new extent).
-			if (last_extent.len >= MAX_LEN){ 
+			if (last_extent.len >= MAX_LEN){ //this extent is too large (>16), create a new one.
 				printk(KERN_EMERG "Extent exceed the MAX_LEN\n");
 				goto not_contiguous;
 			}
 			update_inode(inode,last_extent,0);
 			return 0;
 		}
-not_contiguous: 	//not contiguous
-		printk(KERN_EMERG "alloc_extent: not contiguous, new extent <%d,%d>\n",*block_bg,0);
+not_contiguous: 	//new block is not contiguous, simply create a new extent.
 		last_extent.bg = *block_bg;
 		last_extent.len = 0;
 		update_inode(inode, last_extent,1);
@@ -253,62 +247,51 @@ not_contiguous: 	//not contiguous
 	return -ENOSPC;
 }
 
-/*obtain block value of the specified sector (of inode)*/
+/*Get a block value from a given sector number*/
 /*Return 0 if not found*/
 static block_t get_block_value(struct inode *inode, sector_t block){
 	uint32_t bl_value = 0;
 	uint32_t bg = 0, len = 0, sum_len = 0, sec = 0, retval = 0;
-	while ( (sec < DIRECT) ){ //check all non empty sector in inode.
+	while ( (sec < DIRECT) ){ //scane all non empty sectors in inode to look for the finding sector.
 		bl_value = *(i_data(inode)+sec);
 		bg = bl_value >> LEN;
-		len = (bl_value << BLOCK_BITS ) >> BLOCK_BITS;	//length.
-		printk(KERN_EMERG "**get_block_value: reading <bg,len> = <%d,%d>\n",(int)bg,(int)len);
+		len = (bl_value << BLOCK_BITS ) >> BLOCK_BITS;
 		sum_len += len;
-		if (sum_len > block){
-			sum_len -= len; //last sector.
+		if (sum_len > block){ //passed the finding sector
+			sum_len -= len; 
 			retval = (int) (bg + block - sum_len);
-			printk(KERN_EMERG "**get_block_value: FOUND sector = %d; extent = %d; bg = %d; offset = %d; value = %d\n",(int)block,(int)sec,(int)bg,(int)(block-sum_len), retval);
-			return retval; //bg = begin block of the extent. (block-sum_len)=offset of the block in the CONTIGUOUS region. 
+			return retval; //bg = begin block of the extent. (block-sum_len) = the position of the finding sector. 
 		} 
 		sec++; //next sector
 	}
-//not_found:
 	return 0;
 }
-/*load a block from disk to buffer_head bh*/
+
+/*read a block from the inode
+ *if not in inode, allocate a new one, and add it to extent
+ */
 static inline int get_block(struct inode * inode, sector_t block,
 			struct buffer_head *bh, int create)
 {
 	int err = -EIO;
-	//unsigned long block_value = 0;
 	int block_bg = 0;
-	//int length = 0;
 
-	printk(KERN_INFO "itree_common: get_block,sector = %d\n",(int)block);
 	if (!is_valid_block(inode, block))/*check for valid block*/
 		goto out;
-	block_bg = get_block_value(inode, block);
-	//block_value = *(i_data(inode)+block); //get the value contain in the zone inside the inode.
-	//block_bg = block_value >> LEN;
-	//length = (block_value << BLOCK_BITS) >> BLOCK_BITS;
+	block_bg = get_block_value(inode, block);/*get the value contained in the block from the extents on the inode*/
 reread:
-	//printk(KERN_EMERG "get_block: reading sector = %d, block_value = %d\n", (int)block, (int)block_bg);
 	if (block_bg!=0){	//block!=0, found on disk
 		map_bh(bh, inode->i_sb, block_bg);	
-
-		printk(KERN_INFO "itree_common->get_block: block in sector %d found on disk, value= %d\n",(int)block,block_bg);
 		err = 0; 	//succeed.
 		goto out;
 	}
 	/* Next simple case - plain lookup or failed read of indirect block */
 	if (!create) {
 		printk(KERN_INFO "itree_common->get_block: can't find sector %d on inode\n",(int)block);
-out:
-		printk(KERN_EMERG "get_block returns err = %d\n",err);
 		return err;
 	}
 	/*Block not found and creating needed, create a new block*/
-	/*So far, block contains only block number, in the extent version, block contains both block number and length of region*/
+	/*A block contains both block number and length of region*/
 	err = alloc_extent(inode, &block_bg);	
 	if (err==0)	//succeed, reread block again
 		goto reread;
@@ -318,6 +301,8 @@ out:
 		err = -ENOSPC;
 		goto out;
 	}
+out:
+	return err;
 }
 
 static inline int all_zeroes(block_t *p, block_t *q)
@@ -328,6 +313,7 @@ static inline int all_zeroes(block_t *p, block_t *q)
 	return 1;
 }
 
+/*
 static Indirect *find_shared(struct inode *inode,
 				int depth,
 				int offsets[DEPTH],
@@ -367,7 +353,7 @@ static Indirect *find_shared(struct inode *inode,
 no_top:
 	return partial;
 }
-
+*/
 static inline void free_data(struct inode *inode, block_t *p, block_t *q)
 {
 	unsigned long nr;
@@ -380,7 +366,7 @@ static inline void free_data(struct inode *inode, block_t *p, block_t *q)
 		}
 	}
 }
-
+/*
 static void free_branches(struct inode *inode, block_t *p, block_t *q, int depth)
 {
 	struct buffer_head * bh;
@@ -404,81 +390,32 @@ static void free_branches(struct inode *inode, block_t *p, block_t *q, int depth
 	} else
 		free_data(inode, p, q);
 }
-
+*/
 static inline void truncate (struct inode * inode)
 {
-	//struct super_block *sb = inode->i_sb;
 	block_t *idata = i_data(inode);
-	//int offsets[DEPTH];
-	//Indirect chain[DEPTH];
-	//Indirect *partial;
 	block_t bl_value = 0;
 	block_t bg = 0;
 	int len = 0;
 	int i = 0;
-	
-	//int n;
-	//int first_whole;
-	//long iblock;
 	int offset = 0;	
-	//struct buffer_head *bh;
 
-	printk(KERN_EMERG "itree_common: truncate\n");
-	
-	/*
-	iblock = (inode->i_size + sb->s_blocksize -1) >> sb->s_blocksize_bits;
-	block_truncate_page(inode->i_mapping, inode->i_size, get_block);
-
-	n = block_to_path(inode, iblock, offsets);
-	if (!n)
-		return;
-
-	if (n == 1) {
-		free_data(inode, idata+offsets[0], idata + DIRECT);
-		first_whole = 0;
-		goto do_indirects;
-	}
-
-	first_whole = offsets[0] + 1 - DIRECT;
-	partial = find_shared(inode, n, offsets, chain, &nr);
-	if (nr) {
-		if (partial == chain)
-			mark_inode_dirty(inode);
-		else
-			mark_buffer_dirty_inode(partial->bh, inode);
-		free_branches(inode, &nr, &nr+1, (chain+n-1) - partial);
-	}
-	// Clear the ends of indirect blocks on the shared branch 
-	while (partial > chain) {
-		free_branches(inode, partial->p + 1, block_end(partial->bh),
-				(chain+n-1) - partial);
-		mark_buffer_dirty_inode(partial->bh, inode);
-		brelse (partial->bh);
-		partial--;
-	}
-	*/
-//do_indirects:
+	//scane through all the extents in the inode
 	while (offset < DIRECT) {
 		bl_value = idata[offset];
 		bg = bl_value >> LEN;
 		len = (bl_value << BLOCK_BITS) >> BLOCK_BITS;
-		if (bl_value == 0 || bg == 0){
+		if (bl_value == 0 || bg == 0){ //if already empty skip
 			offset++;
-			continue; //skip the empty inodes
+			continue; 
 		}
 		idata[offset] = 0; //mark inode zones free (0)
-		for (i=-1; i <= MAX_LEN; ++i){
-			//bh = sb_bread(inode->i_sb, bg);
-			//if (!bh)
-			//	continue;
-			//bforget(bh);
-			printk(KERN_EMERG ".......truncate: freeing %d\n", (int)bg);
+		for (i=-1; i <= MAX_LEN; ++i){ //free all the blocks recorded in the extent.
 			minix_free_block(inode, bg);
 			bg++;
 		}
 		offset++;
 	}		
-	//free_data(inode, &idata[0], &idata[DIRECT]);
 	inode->i_mtime = inode->i_ctime = CURRENT_TIME_SEC;
 	mark_inode_dirty(inode);
 	return;
@@ -490,10 +427,6 @@ static inline unsigned nblocks(loff_t size, struct super_block *sb)
 	unsigned blocks, res;
 	blocks = (size + sb->s_blocksize - 1) >> (BLOCK_SIZE_BITS + k);	//k=-4, BLOCK_SIZE_BITS=10 (1024B block).
 	res = blocks;
-	//if (blocks > direct) {
-	//	printk(KERN_EMERG "nblocks: file have some extent\n");
-	//}
-	printk(KERN_EMERG "nblocks: size = %d, return %d\n", (int)size, (int)res);
 	return res;
 }
 

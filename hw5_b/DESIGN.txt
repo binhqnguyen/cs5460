@@ -51,6 +51,7 @@ PASSED test cases:
 	6. deleta all files (and do "df" to see the number of blocks used is decreased, or truncate works correctly).
 	7. copy the entire directory to the fs, delete it.
 	8. compile a project inside the fs (compile this project for example). Delete the compiled project.
+*Notice: root previlege is needed to operate these tests.
 
 4. Handin:
 ------------
